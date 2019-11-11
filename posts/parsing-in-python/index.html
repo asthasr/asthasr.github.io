@@ -309,13 +309,7 @@ model. What if we considered the <em>update</em> as our data structure instead?<
         updates = []
 
         <span style="font-weight:bold">for</span> field, value <span style="font-weight:bold">in</span> request_body.items():
-            <span style="font-weight:bold">if</span> key <span style="font-weight:bold">in</span> model_class.mutable_fields:
-                field_error = <span style="font-weight:bold;font-style:italic">None</span>
-            <span style="font-weight:bold">elif</span> key <span style="font-weight:bold">in</span> model_class.fields:
-                field_error = FieldErrors.Immutable
-            <span style="font-weight:bold">else</span>:
-                field_error = FieldErrors.Unknown
-
+            ...  <span style="color:#888;font-style:italic"># We&#39;d check whether the field is known and mutable here.</span>
             updates.append(FieldUpdate(field, value, field_error))
 
         <span style="font-weight:bold;font-style:italic">self</span>.updates = updates
