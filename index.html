@@ -8,7 +8,7 @@
   <meta name="generator" content="Hugo 0.59.1" />
 
   
-  <meta name="description" content="Some description">
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
   
 
   
@@ -169,21 +169,33 @@ blockquote,
   border-left: 5px solid #6c757d;
 }
 
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
 </style>
+
 </head>
 
+
 <body>
-  <nav class="custom-navbar">
+  <div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
   <div class="container">
     
     <a href="/">Posts</a>
-    
-    <a href="/tags/">Tags</a>
     
     <a href="/index.xml">RSS</a>
     
   </div>
 </nav>
+
   
   <div class="container">
     <article>
@@ -196,6 +208,39 @@ blockquote,
 <h1>Posts</h1>
 
 
+
+  <p>
+    <a href="https://asthasr.github.io/posts/parsing-in-python/">&ldquo;Parsing&rdquo; in Python</a>
+    
+    
+    <br>
+    <small class="text-secondary">Nov 10, 2019</small>
+    
+
+<small><code><a href="https://asthasr.github.io/tags/programming">programming</a></code></small>
+
+
+<small><code><a href="https://asthasr.github.io/tags/python">python</a></code></small>
+
+
+<small><code><a href="https://asthasr.github.io/tags/concepts">concepts</a></code></small>
+
+
+<small><code><a href="https://asthasr.github.io/tags/types">types</a></code></small>
+
+    
+    <br>
+    <p>I recently read <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">&ldquo;Parse, Don&rsquo;t Validate&rdquo;
+</a>
+and liked it enough to share it with my coworkers and let it <a href="https://lobste.rs/s/uemphs/parse_don_t_validate">bring me out of
+retirement</a> on
+<a href="https://lobste.rs/">lobste.rs</a>. It captures a concept that I have struggled to
+explain, leading to many cases where I couldn&rsquo;t say why I thought something was
+better beyond a vague &ldquo;It&rsquo;s a matter of taste.&rdquo; That&rsquo;s not very satisfactory as
+a justification when you&rsquo;re trying to explain to someone why they think they
+should rework a piece of code in a review.</p>
+    
+  </p>
 
     </article>
   </div>
