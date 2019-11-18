@@ -6,10 +6,20 @@
     <description>Recent content on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Nov 2019 14:02:05 +0700</lastBuildDate>
+    <lastBuildDate>Sat, 16 Nov 2019 09:05:35 +0700</lastBuildDate>
     
 	<atom:link href="https://asthasr.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Danger of &#34;Simplicity&#34;</title>
+      <link>https://asthasr.github.io/posts/danger-of-simplicity/</link>
+      <pubDate>Sat, 16 Nov 2019 09:05:35 +0700</pubDate>
+      
+      <guid>https://asthasr.github.io/posts/danger-of-simplicity/</guid>
+      <description>There are a few tendencies among programmers that involve the totem of &amp;ldquo;simplicity.&amp;rdquo; There&amp;rsquo;s the ancient concept of KISS, of course, but there&amp;rsquo;s also the much-abused YAGNI, the insistence that we &amp;ldquo;Choose Boring Technology,&amp;rdquo; entire languages that base their elevator pitch around the idea that they&amp;rsquo;re &amp;ldquo;simple,&amp;rdquo; and the concept in object-oriented design that &amp;ldquo;every class should have a single responsibility.&amp;rdquo;
+The problem with these approaches is that &amp;ldquo;simplicity&amp;rdquo; never gets a rigorous definition.</description>
+    </item>
     
     <item>
       <title>&#34;Parsing&#34; in Python</title>
