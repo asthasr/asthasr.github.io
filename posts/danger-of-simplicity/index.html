@@ -236,19 +236,20 @@ not apply to all types of programs, and each choice imposes costs.</p>
 
 <p>The creators of Go have said, sometimes in pejorative terms,<sup class="footnote-ref" id="fnref:dis"><a href="#fn:dis">1</a></sup> that &ldquo;average
 programmers&rdquo; have difficulty understanding complex languages, and have set themselves
-against them by designing one with a relatively small syntactic grammar, error handling
-based on return codes, and no generics. They looked at the landscape of &ldquo;complicated&rdquo;
-languages and decided that the form of simplicity that they&rsquo;d optimize for would be the
-initial learning curve.</p>
+against that complexity by designing one with a relatively small syntactic grammar,
+error handling based on return codes, and no generics. They looked at the landscape of
+&ldquo;complicated&rdquo; languages and decided that the form of simplicity that they&rsquo;d optimize for
+would be the initial learning curve.</p>
 
 <p>On the other hand, Rust&rsquo;s designers aimed at a different concept of simplicity. They
 wanted to protect users from the types of memory errors that have led to countless CVEs
-and bugs in C and C++ programs. They did so by embracing a type-theoretic idea called
+and bugs in C and C++ programs. They did so by embracing the type-theoretic concept of
 &ldquo;affine types,&rdquo; called &ldquo;lifetimes&rdquo; in Rust.<sup class="footnote-ref" id="fnref:aff"><a href="#fn:aff">2</a></sup> They also eliminated the traditional
 idea of null<sup class="footnote-ref" id="fnref:null"><a href="#fn:null">3</a></sup> by making Haskell-like <code>Result</code> and <code>Option</code> types core to the
 language.</p>
 
-<p>Both of these decisions, in major modern languages, solve certain classes of
+<p>,
+Both of these decisions, in major modern languages, solve certain classes of
 problems&mdash;and both pay a price for their choices. Go&rsquo;s error handling has become a
 <a href="https://pbs.twimg.com/media/DCIF7-2W0AEAv9c.jpg">meme</a>, for example. Articles to help
 with understanding lifetimes in Rust are nearly as ubiquitous as monad tutorials for the
@@ -260,12 +261,12 @@ language has failed in its goals&mdash;it&rsquo;s just that each has chosen diff
 
 <h2 id="down-to-earth">Down to Earth</h2>
 
-<p>Most programmers aren&rsquo;t writing custom programming languages, so the choice of &ldquo;what to
+<p>Most programmers aren&rsquo;t writing programming languages, so the choice of &ldquo;what to
 simplify&rdquo; may seem esoteric, but it&rsquo;s not. Consider data serialization. When you first
-implement a web service, it can seem really simple to model both deserialization and
+implement a web service, it can seem &ldquo;simple&rdquo; to model both deserialization and
 serialization using the same objects. Then, since you&rsquo;re implementing something new, you
 naturally want to keep it <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>,
-so you hook up your preferred serialization library to your ORM models.</p>
+so you hook up your serialization library to your ORM models.</p>
 
 <p>Then it turns out that you need to add a field to a table for batch processing and omit
 that from emitted JSON.  Then it turns out that the enormous client that is going to pay
