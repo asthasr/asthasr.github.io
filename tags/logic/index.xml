@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>logic on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+    <link>https://asthasr.github.io/tags/logic/</link>
+    <description>Recent content in logic on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Nov 2019 14:51:10 +0700</lastBuildDate>
+    
+	<atom:link href="https://asthasr.github.io/tags/logic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On Symbolic Logic</title>
+      <link>https://asthasr.github.io/posts/on-symbolic-logic/</link>
+      <pubDate>Wed, 20 Nov 2019 14:51:10 +0700</pubDate>
+      
+      <guid>https://asthasr.github.io/posts/on-symbolic-logic/</guid>
+      <description>MathJax = {tex: { inlineMath: [[&#39;$&#39;, &#39;$&#39;]] }};  I went to public school in the United States, and I was always &amp;ldquo;bad at math.&amp;rdquo; I hated homework and tests, and it never got better: as I went through the grades, the problems got longer and more intricate, and I inevitably would make a calculation error&amp;mdash;misplacing a decimal or flubbing an easy sum&amp;mdash;halfway through. I got used to seeing $\color{red}{-\frac{1}{2}}$ on my papers.</description>
+    </item>
+    
+  </channel>
+</rss>

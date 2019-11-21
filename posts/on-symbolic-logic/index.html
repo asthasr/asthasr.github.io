@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.59.1" />
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>On Symbolic Logic | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+</style>
+
+</head>
+
+
+<body>
+  <div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>On Symbolic Logic</h1>
+
+
+<script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+<p>I went to public school in the United States, and I was always &ldquo;bad at math.&rdquo; I hated
+homework and tests, and it never got better: as I went through the grades, the problems
+got longer and more intricate, and I <em>inevitably</em> would make a calculation
+error&mdash;misplacing a decimal or flubbing an easy sum&mdash;halfway through. I got used to
+seeing $\color{red}{-\frac{1}{2}}$ on my papers. Those add up!</p>
+
+<p>In college, the first thing I did when planning my path through general education was
+look for a way to avoid Calculus. My carefully selected &ldquo;college statistics&rdquo; course had
+not transferred from high school, so I needed something else. I found &ldquo;Symbolic Logic,&rdquo;
+hidden away in the philosophy department. Math? In a philosophy course?  That weird math
+credit ended up being one of my favorite college courses, and the most relevant to my
+career.</p>
+
+<h1 id="what-is-it">What is it?</h1>
+
+<p>Logic has a long history. If you&rsquo;ve studied philosophy or rhetoric, you&rsquo;ll be familiar
+with propositional logic, where an argument is laid out in the form of premises and a
+conclusion. The author&rsquo;s argument is that the conclusion she proposes follows from the
+premises she asserts:</p>
+
+<ol>
+<li>Socrates is a man.</li>
+<li>All men are mortal.</li>
+<li>Therefore, Socrates is mortal.</li>
+</ol>
+
+<p>Even informal essays and opinion pieces follow very similar thesis/argument/conclusion
+structures.<sup class="footnote-ref" id="fnref:essays"><a href="#fn:essays">1</a></sup> This structure can be expressed formally:</p>
+
+<!-- One day, there will be a competently designed markup language that can express
+     tables better than raw HTML. This is not that day. -->
+
+<table style="margin-bottom: 1em;">
+    <tr>
+        <td style="padding-right: 2em;">Socrates ($S$) is a member of set $M$, "Men";</td>
+        <td>$S \in M$</td>
+    </tr>
+    <tr>
+        <td style="padding-right: 2em;">All members $m$ of set $M$ are members of set $D$, "mortals";</td>
+        <td>$\forall m \in M \Rightarrow m \in D$</td>
+    </tr>
+    <tr>
+        <td style="padding-right: 2em;">Therefore, $S$ is a member of set $D$.</td>
+        <td>$\therefore S \in D$</td>
+    </tr>
+</table>
+
+<p>This symbolic representation, along with closely related concepts like set theory,
+allows us to express relationships between premises and conclusions without some of the
+baggage of a particular natural language. For example, take &ldquo;and&rdquo; and &ldquo;but.&rdquo; These
+English words are linguistically different, but are both represented in symbols by a
+single concept: logical conjunction ($\land$ or $\&amp;$). This avoids the contradiction
+implied by &ldquo;but.&rdquo; Other constructs can be represented as well:</p>
+
+<table style="margin-bottom: 1em;">
+    <tr>
+        <td style="padding-right: 2em;">Neither $A$ nor $B$.</td>
+        <td>$\lnot (A \lor B)$</td>
+    </tr>
+    <tr>
+        <td style="padding-right: 2em;">Either $A$ or $B$, but not both.</td>
+        <td>$A \oplus B$</td>
+    </tr>
+    <tr>
+        <td style="padding-right: 2em;">Both $A$ and $B$, or neither.</td>
+        <td>$\lnot (A \oplus B)$</td>
+    </tr>
+</table>
+
+<p>By now, even if you haven&rsquo;t learned symbolic logic before, you are probably starting to
+think this feels a little familiar. Haven&rsquo;t we seen them somewhere before?</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">neither = <span style="font-weight:bold">not</span> (a <span style="font-weight:bold">or</span> b)
+xor = a ^ b
+xnor = <span style="font-weight:bold">not</span> (a ^ b)</code></pre></div>
+<h2 id="comprehension">Comprehension</h2>
+
+<p>All boolean (and &ldquo;bitwise&rdquo;) operators are equivalent to logical operations.
+Understanding the latter allowed me to become a much better and more confident
+programmer. They also gave me one of the least sexy tools in my programming arsenal,
+which I originally used to learn these concepts in that &ldquo;philosophy&rdquo; class: truth
+tables.</p>
+
+<p>A truth table, universally despised by beginning students of logic, is a table that
+you build to understand the &ldquo;output&rdquo; of a statement. For example, the truth table for a
+simple statement like $A \land B$, or &ldquo;$A$ and $B$,&rdquo; would look like this:</p>
+
+<table style="margin-bottom: 1em; text-align: center;">
+    <tr style="border-bottom: 1px solid #ccc;">
+        <th>$A$</th>
+        <th style="padding-right: 0.5em;">$B$</th>
+        <th style="border-left: 1px solid #ccc; padding-right: 0.5em;"></th>
+        <th style="padding-right: 0.5em;">$A \land B$</th>
+        <th style="border-left: 1px solid #ccc; padding-right: 0.5em;"></th>
+        <th>$\therefore$<th>
+    </tr>
+
+    <tr>
+        <td>T</td>
+        <td>T</td>
+        <td rowspan=5 style="border-left: 1px solid #ccc">
+        <td>T</td>
+        <td rowspan=5 style="border-left: 1px solid #ccc">
+        <td>T</td>
+    </tr>
+    <tr><td>T</td><td>F</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>T</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+</table>
+
+<p>In each row, the truth value of each proposition (e.g. $A$) is written. To the right,
+the truth value of each section of the statement is derived from the inputs. Finally,
+the truth value of the overall statement is written at the right, although it&rsquo;s not
+necessary for a statement this simple.</p>
+
+<p>For a more comlex example, consider the statement $(A \land B) \lor C$, which means
+&ldquo;either $C$ is true or both $A$ and $B$ are true.&rdquo;</p>
+
+<table style="margin-bottom: 1em; text-align: center;">
+    <tr style="border-bottom: 1px solid #ccc;">
+        <th>$A$</th>
+        <th>$B$</th>
+        <th style="padding-right: 0.5em;">$C$</th>
+        <th style="border-left: 1px solid #ccc; padding-right: 0.5em;"></th>
+        <th>$A \land B$</th>
+        <th style="padding-right: 0.5em;">$\space\ldots \lor C$</th>
+        <th style="border-left: 1px solid #ccc; padding-right: 0.5em;"></th>
+        <th>$\therefore$</th>
+    </tr>
+
+    <tr>
+        <td>T</td>
+        <td>T</td>
+        <td>T</td>
+        <td rowspan=8 style="border-left: 1px solid #ccc"></td>
+        <td>T</td>
+        <td>T</td>
+        <td rowspan=8 style="border-left: 1px solid #ccc"></td>
+        <td>T</td>
+    </tr>
+
+    <tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+    <tr><td>T</td><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+    <tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+
+    <tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+    <tr><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+    <tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+</table>
+
+<p>I once argued with a colleague for over an hour because he had written a feature with
+contradictory conditionals, something equivalent to $A \land \lnot A$.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">feature</span>(a, b):
+    <span style="font-weight:bold">if</span> a:
+        do_something()
+
+        <span style="font-weight:bold">if</span> b <span style="font-weight:bold">and</span> <span style="font-weight:bold">not</span> a:
+            do_something_else()</code></pre></div>
+<p>No matter what I did, I couldn&rsquo;t make him understand that <code>do_something_else()</code> could
+never be reached. The way that I finally got through to him was to write the code on a
+board and make him trace the path for each combination, <code>(True, True)</code>, <code>(True, False)</code>,
+and so on, with a marker, and then make a table that said &ldquo;yes&rdquo; or &ldquo;no&rdquo; for whether the
+function call was reached&mdash;a stealth truth table.<sup class="footnote-ref" id="fnref:colleague"><a href="#fn:colleague">2</a></sup></p>
+
+<h2 id="automate-the-boring-stuff">Automate the Boring Stuff</h2>
+
+<p>Truth tables are laborious to construct. They have $2^n$ rows, where $n$ is the number
+of propositions in your statement. The columns grow as you add more operators. Happily,
+the congruence between boolean logic in programming languages and the more formal
+operators of symbolic logic means that we can put Python to work for us.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic"># We will use `product`, from the `itertools` package, to generate arguments to our</span>
+<span style="color:#888;font-style:italic"># functions.</span>
+<span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">itertools</span> <span style="font-weight:bold">import</span> product
+
+<span style="color:#888;font-style:italic"># This is a module that allows us to inspect and interact with functions at a higher</span>
+<span style="color:#888;font-style:italic"># level than usual, for metaprogramming. We&#39;ll use it here to find out how many</span>
+<span style="color:#888;font-style:italic"># arguments a function takes.</span>
+<span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">inspect</span> <span style="font-weight:bold">import</span> signature
+
+<span style="color:#888;font-style:italic"># This function accepts a function, `f`, that will be called with the correct number of</span>
+<span style="color:#888;font-style:italic"># arguments and have its resultant truth table generated.</span>
+<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">truth_table</span>(f):
+    num_args = <span style="font-weight:bold;font-style:italic">len</span>(signature(f).parameters)
+    premises = <span style="color:#666;font-style:italic">&#34; &#34;</span>.join(<span style="color:#666;font-style:italic">&#34;abcdefgh&#34;</span>[:num_args])
+    header = f<span style="color:#666;font-style:italic">&#34;{premises} | {f.__name__}&#34;</span>
+    <span style="font-weight:bold">print</span>(header)
+    <span style="font-weight:bold">print</span>(<span style="color:#666;font-style:italic">&#34;-&#34;</span> * <span style="font-weight:bold;font-style:italic">len</span>(header))
+
+    <span style="font-weight:bold">for</span> args <span style="font-weight:bold">in</span> product((<span style="font-weight:bold;font-style:italic">True</span>, <span style="font-weight:bold;font-style:italic">False</span>), repeat=num_args):
+        <span style="font-weight:bold">print</span>(
+            <span style="color:#666;font-style:italic">&#34;{premise_values} | {f_value}&#34;</span>.format(
+                premise_values=<span style="color:#666;font-style:italic">&#34; &#34;</span>.join(<span style="color:#666;font-style:italic">&#34;T&#34;</span> <span style="font-weight:bold">if</span> arg <span style="font-weight:bold">else</span> <span style="color:#666;font-style:italic">&#34;F&#34;</span> <span style="font-weight:bold">for</span> arg <span style="font-weight:bold">in</span> args),
+                f_value=<span style="color:#666;font-style:italic">&#34;T&#34;</span> <span style="font-weight:bold">if</span> f(*args) <span style="font-weight:bold">else</span> <span style="color:#666;font-style:italic">&#34;F&#34;</span>,
+            )
+        )</code></pre></div>
+<p>We can define a function that looks a lot like our more complex example above,
+$(A \land B) \lor C$.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">a_and_b_or_c</span>(a, b, c):
+    <span style="font-weight:bold">return</span> (a <span style="font-weight:bold">and</span> b) <span style="font-weight:bold">or</span> c</code></pre></div>
+<p>Calling <code>truth_table(a_and_b_or_c)</code> produces a beautiful ASCII rendition of a truth
+table. Try it out!</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>I didn&rsquo;t know symbolic logic <em>existed</em> before I saw it listed in the course catalog.
+That it became a course I loved, and has helped me build a career that I enjoy,
+illustrates the serendipity of learning: we don&rsquo;t always know what we don&rsquo;t know, nor
+the <em>significance</em> of that gap. We must always strive to find and fill them.</p>
+
+<h2 id="exercises">Exercises</h2>
+
+<p>Since this is a &ldquo;knowledge&rdquo; post rather than an opinion piece I thought I&rsquo;d add an
+appendix here with some exercises.</p>
+
+<ol>
+<li>Use the built-in <code>operator</code> module in Python and generate truth tables for all of the
+basic logical operations.<sup class="footnote-ref" id="fnref:ops"><a href="#fn:ops">3</a></sup></li>
+<li>$\star$ The <code>truth_table</code> function can generate an overall truth table for a given
+function of <nobr><code>[bool...] -&gt; bool</code></nobr>, but it does not give separate columns
+for all of the &ldquo;substatements,&rdquo; as illustrated in the manually-built truth table
+above.  Implement an alternative that can. (It doesn&rsquo;t need to accept arbitrary
+functions, though.)</li>
+<li>The concept of &ldquo;validity&rdquo; enters the picture emerges if there is a statement like
+$A \Rightarrow B$ (&ldquo;$A$ implies $B$&rdquo;), but $A$ is true and $B$ is false. Using your
+improved generator from exercise two, report when a given row of a truth table is
+invalid.</li>
+</ol>
+
+<p>Enjoy!</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:essays">There, the challenge is usually judging whether the premises are true, rather than whether the argument is sound.
+ <a class="footnote-return" href="#fnref:essays"><sup>[return]</sup></a></li>
+<li id="fn:colleague">I found it hard to have empathy. It was a heated discussion. Over the years, though, I&rsquo;ve learned that all of us have gaps. I hope I helped him fill one of his. I wish I could&rsquo;ve been more patient at that time.
+ <a class="footnote-return" href="#fnref:colleague"><sup>[return]</sup></a></li>
+<li id="fn:ops">The <a href="https://docs.python.org/3/library/operator.html">documentation</a> is comprehensive. Note that some functions, like <code>and_</code> and <code>or_</code>, are suffixed with an underscore to avoid collision with Python syntax.
+ <a class="footnote-return" href="#fnref:ops"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>
