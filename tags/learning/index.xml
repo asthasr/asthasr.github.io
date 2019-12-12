@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>learning on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+    <link>https://asthasr.github.io/tags/learning/</link>
+    <description>Recent content in learning on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://asthasr.github.io/tags/learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mind the Gaps</title>
+      <link>https://asthasr.github.io/posts/mind-the-gaps/</link>
+      <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://asthasr.github.io/posts/mind-the-gaps/</guid>
+      <description>&amp;ldquo;If you truly accumulate effort for a long time, then you will advance.&amp;rdquo; Xunzi.
+ It&amp;rsquo;s no secret that many programmers are self-taught. Some of us, myself included, lack formal credentials related to computer science. I&amp;rsquo;ve worked with good programmers who didn&amp;rsquo;t graduate high school. It&amp;rsquo;s a strange profession, with the skills often acquired simply as a side effect of tinkering. You don&amp;rsquo;t hear about many civil engineers or corporate attorneys who do what they do because they enjoyed playing Zork on their dad&amp;rsquo;s office computer.</description>
+    </item>
+    
+  </channel>
+</rss>
