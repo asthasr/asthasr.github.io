@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.59.1" />
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>The M-Word: The Culture of Programming | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+</style>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The M-Word: The Culture of Programming"/>
+<meta name="twitter:description" content="In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&rdquo;&mdash;you lose the ability to explain it to anybody. &mdash; Doug Crockford.
+ I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&rsquo;ve probably used."/>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>The M-Word: The Culture of Programming</h1>
+
+
+<blockquote>
+<p>In addition to it begin useful, it is also cursed and the curse of the monad is that
+once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&rdquo;&mdash;you lose
+the ability to explain it to anybody. &mdash; <em>Doug Crockford.</em></p>
+</blockquote>
+
+<p>I had a problem, once. I was working on a Rails application which generated integration
+files to be consumed by external partners. They were generated every night in a dozen
+formats and shipped around the Internet to populate sites you&rsquo;ve probably used.  Since
+it was a typical Rails application, the code used the Rails ORM directly:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+    xml.Widget <span style="font-weight:bold">do</span> |xw|
+        xw.Title db_widget.title.titlecase
+        xw.Description db_widget.description.truncate(120)
+        xw.Color db_widget.color.name <span style="font-weight:bold">unless</span> db_widget.color.nil?
+    <span style="font-weight:bold">end</span>
+<span style="font-weight:bold">end</span></code></pre></div>
+<p>All of the builders were in different formats and made different assumptions about the
+data, and almost all of the fields were nullable in the database. Any generator that
+omitted a <code>.nil?</code> check anywhere could suddenly break. My solution was relatively
+straightforward. Since all of these integrations were built on the same data structure,
+I decided to add an additional shim to encode the true state of the world, eliminating
+direct accesses to the database. This would allow me to control those pesky
+<code>NoMethodError</code>s that were causing our integrations to fail every few days, and as a
+side effect reduce queries to the database. After the change, the code looked something
+like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+    xml.Widget <span style="font-weight:bold">do</span> |xw|
+        xw.Title shim.widget.title.titlecase.or_else <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>
+        xw.Description shim.widget.description.truncate(120).or_else <span style="color:#666;font-style:italic">&#34;&#34;</span>
+        db_widget.color.map { |color| xw.Color color.name }
+    <span style="font-weight:bold">end</span>
+<span style="font-weight:bold">end</span></code></pre></div>
+<p>Two problems solved, right? Performance improved because the shim could query once and
+cache the result for many different exports. Data-related failures were all but
+eliminated, because a failure to explicitly unwrap the shim value showed up during
+testing instead of in production. Easy-peasy.</p>
+
+<p>Unfortunately, my technical solution was a social debacle. I&rsquo;m not sure of a better way
+to phrase it: many of my coworkers found the code <em>baffling</em> after I changed it, and I
+made the mistake of using the term &ldquo;monad&rdquo; to refer to the pattern. Overnight, I became
+&ldquo;the monad guy.&rdquo; During scrums, people would ask me questions like &ldquo;are you putting
+monads anywhere else?&rdquo; &ldquo;How are the monads going?&rdquo; I even tried to give a lunch and
+learn about how to use the library, and people came and made sarcastic comments during
+<em>that</em>. The situation contributed to my departing the company later that year.</p>
+
+<p>Where did I go wrong?</p>
+
+<p>I knew about monads from previously learning Haskell. The company, however, wasn&rsquo;t a
+Haskell shop. We wrote Ruby and Java, and most of the developers there had no interest
+whatsoever in Haskell. Furthermore, I approached the problem from an enthusiast&rsquo;s
+standpoint. I explained what I thought the advantages were, what I would use them for,
+and explained the theory behind them. Worse, I introduced a library which was explicit
+about being a monadic <code>Maybe</code> type. No beating around the bush: its tagline was &ldquo;a Maybe
+monad for Ruby.&rdquo;</p>
+
+<p>If I could, I would go back in time and avoid all of that. Instead, I would
+write a small class within the codebase, less general and powerful than the library,
+and never bring the issue up in scrum at all (an action made necessary by the company&rsquo;s
+policy on adding new libraries). In this hypothetical timeline, I would never have
+uttered &ldquo;the M-word&rdquo; at that company at all.</p>
+
+<h2 id="when-in-rome">When In Rome</h2>
+
+<p>Every language has its culture. In my previous article, <a href="/posts/danger-of-simplicity">&ldquo;The Danger of
+&lsquo;Simplicity,&rsquo;&rdquo;</a> I contrasted the different choices that Go
+and Rust have made in terms of <em>what to simplify.</em> Those choices pervade the
+communities: the Go community debates whether new language features will have too large
+of an impact on compilation time. The Rust community debates the compiled size of the
+<code>format!</code> macro in embedded contexts. Both are equally valid concerns, and the
+significance of each issue arises from the choices made in the language design.</p>
+
+<p>Furthermore, although you can disagree with aspects of a language&rsquo;s culture, it makes
+little sense to fight it. If your company writes Ruby, write Ruby. Don&rsquo;t try to write
+Haskell (or Go, or Rust). You&rsquo;ll start at a disadvantage. For example, function calls
+are very expensive in Ruby and Python, to the degree that inlining simple methods can be
+an early step in performance optimization.</p>
+
+<p>If you need to &ldquo;import&rdquo; a concept&mdash;and I stand by the structure of my solution to the
+integration problem above&mdash;do so in an <em>idiomatic</em> way. If I had referred to the shim
+as a <code>DatabaseCache</code> and used methods like <code>fetch</code> and <code>has?</code> instead of the library&rsquo;s
+<code>or_else</code> and <code>map</code>, I think that the familiar language would&rsquo;ve solved the social
+problem, despite an uglier API.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+    xml.Widget <span style="font-weight:bold">do</span> |xw|
+        xw.Title db_cache.widget.fetch(<span style="color:#666;font-style:italic">:title</span>, <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>).titlecase
+        xw.Description db_cache.widget.fetch(<span style="color:#666;font-style:italic">:description</span>, <span style="color:#666;font-style:italic">&#34;&#34;</span>).truncate(120)
+        xw.Color db_cache.widget.fetch(<span style="color:#666;font-style:italic">:color</span>).fetch(<span style="color:#666;font-style:italic">:name</span>) <span style="font-weight:bold">if</span> db_cache.widget.has?(<span style="color:#666;font-style:italic">:color</span>)
+    <span style="font-weight:bold">end</span>
+<span style="font-weight:bold">end</span></code></pre></div>
+<p>Such compromises eliminate theoretical explanations of what&rsquo;s happening. They reduce the
+problem of unfamiliarity when new team members need to read or review your code. Most
+importantly, if you design your software with a concept in mind, you can achieve many of
+its benefits even without explaining to your colleagues the reason that you conceived
+the design.</p>
+
+<h2 id="but-why-is-it-hard-anyway">&hellip;but why is it hard, anyway?</h2>
+
+<p>I opened this post with a Douglas Crockford quote. I think it&rsquo;s more generally
+applicable: you can learn about a concept and have that concept change your way of
+thinking, only to find that afterwards you can&rsquo;t explain why.  It&rsquo;s very difficult to
+shift your thinking to how you were <em>before</em> you learned something, especially if it or
+its prerequisites was significant.  Monads are an example, but not the only one:
+object-oriented programming had a reputation as &ldquo;academic nonsense&rdquo; during its rise, and
+Lisp has more &ldquo;learn Lisp to free your mind!&rdquo; memes than any other language.</p>
+
+<p>Furthermore, a challenge to a programmer&rsquo;s methods or knowledge can seem like a personal
+attack. Programming is pure thought, and the results of a new technique are not
+immediately obvious. Contrast something like building furniture. If you see someone
+demonstrate a superior technique, the performance of that technique and its results are
+obvious. It&rsquo;s easy to be egoless in such immediate crafts, because you want to produce
+the thing you&rsquo;ve just seen. In programming, understanding the product of a new technique
+often requires you to understand the technique in question and, worse, the problems with
+your own approach that motivate the change.</p>
+
+<p>Complicating the problem is the issue that I mentioned in <a href="/posts/mind-the-gaps">my last
+post</a>: since all programmers are self-taught, it&rsquo;s easy to stumble
+into someone&rsquo;s knowledge gaps when trying to explain something. Defensiveness is a
+common response to this inadvertent &ldquo;insult.&rdquo; If you are suffering from imposter syndrome
+and someone shows you a technique motivated by a problem with your current practices, it
+feels like a validation of that imposter syndrome. The only way to combat this is to be
+as compassionate as possible in teaching, and reinforce for your students, repeatedly,
+that failure to understand a new concept is not a personal indictment.  For any
+difficult idea, every student will have a different moment of epiphany. Tutorials
+written from different perspectives will reach different people.</p>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>
