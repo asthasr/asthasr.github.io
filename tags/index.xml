@@ -6,10 +6,37 @@
     <description>Recent content in Tags on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Dec 2019 15:46:58 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 08:27:13 +0700</lastBuildDate>
     
 	<atom:link href="https://asthasr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>concepts</title>
+      <link>https://asthasr.github.io/tags/concepts/</link>
+      <pubDate>Sun, 22 Dec 2019 08:27:13 +0700</pubDate>
+      
+      <guid>https://asthasr.github.io/tags/concepts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>exercises</title>
+      <link>https://asthasr.github.io/tags/exercises/</link>
+      <pubDate>Sun, 22 Dec 2019 08:27:13 +0700</pubDate>
+      
+      <guid>https://asthasr.github.io/tags/exercises/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>https://asthasr.github.io/tags/programming/</link>
+      <pubDate>Sun, 22 Dec 2019 08:27:13 +0700</pubDate>
+      
+      <guid>https://asthasr.github.io/tags/programming/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>learning</title>
@@ -21,38 +48,11 @@
     </item>
     
     <item>
-      <title>programming</title>
-      <link>https://asthasr.github.io/tags/programming/</link>
-      <pubDate>Sat, 14 Dec 2019 15:46:58 +0700</pubDate>
-      
-      <guid>https://asthasr.github.io/tags/programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>teams</title>
       <link>https://asthasr.github.io/tags/teams/</link>
       <pubDate>Sat, 14 Dec 2019 15:46:58 +0700</pubDate>
       
       <guid>https://asthasr.github.io/tags/teams/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>logic</title>
-      <link>https://asthasr.github.io/tags/logic/</link>
-      <pubDate>Wed, 20 Nov 2019 14:51:10 +0700</pubDate>
-      
-      <guid>https://asthasr.github.io/tags/logic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>math</title>
-      <link>https://asthasr.github.io/tags/math/</link>
-      <pubDate>Wed, 20 Nov 2019 14:51:10 +0700</pubDate>
-      
-      <guid>https://asthasr.github.io/tags/math/</guid>
       <description></description>
     </item>
     

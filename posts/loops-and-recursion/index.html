@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.59.1" />
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>Loops and Recursion | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+</style>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Loops and Recursion"/>
+<meta name="twitter:description" content="Recursion was a concept that took me a long time to understand. It wasn&rsquo;t until years after I&rsquo;d started programming that I felt I really understood it, and it wasn&rsquo;t until years after that that I felt confident reaching for it as a tool. Like almost everyone, the first way that I learned to think of iteration was with loops. If you wanted to add something together, for example, you would create a &ldquo;bookkeeping&rdquo; variable and modify it inside the loop."/>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>Loops and Recursion</h1>
+
+
+<p>Recursion was a concept that took me a long time to understand. It wasn&rsquo;t until years
+after I&rsquo;d started programming that I felt I really understood it, and it wasn&rsquo;t until
+years after <em>that</em> that I felt confident reaching for it as a tool. Like almost
+everyone, the first way that I learned to think of iteration was with loops. If you
+wanted to add something together, for example, you would create a &ldquo;bookkeeping&rdquo; variable
+and modify it inside the loop.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">add_range</span>(start: <span style="font-weight:bold;font-style:italic">int</span>, end: <span style="font-weight:bold;font-style:italic">int</span>) -&gt; <span style="font-weight:bold;font-style:italic">int</span>:
+    total = 0
+    <span style="font-weight:bold">for</span> n <span style="font-weight:bold">in</span> <span style="font-weight:bold;font-style:italic">range</span>(start, end + 1):
+        total += n
+    <span style="font-weight:bold">return</span> total</code></pre></div>
+<p>It&rsquo;s like writing down a number, looking at the next one, erasing the previous one, and
+writing down the new one. Recursion comes less naturally.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">add_range_rec</span>(start: <span style="font-weight:bold;font-style:italic">int</span>, end: <span style="font-weight:bold;font-style:italic">int</span>) -&gt; <span style="font-weight:bold;font-style:italic">int</span>:
+    <span style="font-weight:bold">if</span> start == end:
+        <span style="font-weight:bold">return</span> start
+    <span style="font-weight:bold">else</span>:
+        <span style="font-weight:bold">return</span> start + add_range_rec(start + 1, end)</code></pre></div>
+<p>Thinking recursively is more like saying &ldquo;First, if I&rsquo;ve reached this state,
+stop.<sup class="footnote-ref" id="fnref:term"><a href="#fn:term">1</a></sup> Otherwise, add the current number to the sum of all the other numbers.&rdquo;
+Next, consider a simple linked list:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">@dataclass
+<span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">Node</span>:
+    elem: Any
+    rest: Optional[<span style="color:#666;font-style:italic">&#34;Node&#34;</span>] = <span style="font-weight:bold;font-style:italic">None</span>
+
+    <span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">push</span>(<span style="font-weight:bold;font-style:italic">self</span>, elem):
+        <span style="font-weight:bold">return</span> Node(elem, rest=<span style="font-weight:bold;font-style:italic">self</span>)</code></pre></div>
+<p>We can construct the list using our <code>push</code> method:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">xs = Node(5).push(10).push(15)
+<span style="color:#888;font-style:italic"># Node(elem=15, rest=Node(elem=10, rest=Node(elem=5, rest=None)))</span></code></pre></div>
+<p>This is a simple &ldquo;recursive data structure,&rdquo; referring to itself as the type of one of
+its own properties (<code>rest</code>). The <code>push</code> method isn&rsquo;t recursive or iterative, though,
+because it doesn&rsquo;t need to be: pushing a value onto the head of a linked list is just a
+question of creating a new element with its <code>rest</code> pointing to the previously-existing
+list. If we wanted to find the last element, though, we have a choice. We can implement
+<code>last</code> iteratively, keeping track of which node we&rsquo;re looking at,</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">last</span>(<span style="font-weight:bold;font-style:italic">self</span>):
+    target = <span style="font-weight:bold;font-style:italic">self</span>.rest
+
+    <span style="font-weight:bold">while</span> target.rest <span style="font-weight:bold">is</span> <span style="font-weight:bold">not</span> <span style="font-weight:bold;font-style:italic">None</span>:
+        target = target.rest
+
+    <span style="font-weight:bold">return</span> target.elem</code></pre></div>
+<p>or we can ask each node in turn for its last element.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">last_rec</span>(<span style="font-weight:bold;font-style:italic">self</span>):
+    <span style="font-weight:bold">if</span> <span style="font-weight:bold;font-style:italic">self</span>.rest <span style="font-weight:bold">is</span> <span style="font-weight:bold;font-style:italic">None</span>:
+        <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">self</span>.elem
+    <span style="font-weight:bold">else</span>:
+        <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">self</span>.rest.last_rec()</code></pre></div>
+<p>Something to realize from these examples is that both loops and recursion can express
+the same concepts.<sup class="footnote-ref" id="fnref:iso"><a href="#fn:iso">2</a></sup> Whether you write code iteratively or recursively, under the
+hood they are implemented with looping, and even at the high level you can always
+translate one to the other. Knowing that, you may wonder why you&rsquo;d <em>ever</em> choose to
+express an algorithm recursively. The answer is simply that some algorithms are more
+naturally expressed recursively, treating each step as a &ldquo;subproblem.&rdquo;</p>
+
+<p>Consider the famous problem, &ldquo;How many ways are there to make change for $1?&rdquo; Expressed
+as a series of subproblems, it&rsquo;s actually relatively straightforward:</p>
+
+<ol>
+<li>How do you make change for $1 using 50&cent;, 25&cent; 10&cent;, 5&cent;, and
+1&cent;?</li>
+<li>How do you make change for 50&cent; using 50&cent;, 25&cent; 10&cent;, 5&cent;, and
+1&cent;?</li>
+<li>How do you make change for 75&cent; using 25&cent; 10&cent;, 5&cent;, and 1&cent;?</li>
+<li>How do you make change for 90&cent; using 10&cent;, 5&cent;, and 1&cent;?</li>
+<li>How do you make change for 99&cent; using 1&cent;?</li>
+<li>&hellip;</li>
+</ol>
+
+<p>This continues until you have counted each subproblem and totaled them up to the top
+level.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">COINS = [50, 25, 10, 5, 1]
+
+<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">make_change</span>(amt, last=COINS[0]):
+    <span style="font-weight:bold">if</span> amt == 0:  <span style="color:#888;font-style:italic"># If the target amount is zero, count this as one path.</span>
+        <span style="font-weight:bold">return</span> 1
+
+    <span style="color:#888;font-style:italic"># Otherwise, recurse into the subproblems, one per valid coin.</span>
+    valid_coins = (c <span style="font-weight:bold">for</span> c <span style="font-weight:bold">in</span> COINS <span style="font-weight:bold">if</span> c &lt;= amt <span style="font-weight:bold">and</span> c &lt;= last)
+    <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">sum</span>(make_change(amt - c, c) <span style="font-weight:bold">for</span> c <span style="font-weight:bold">in</span> valid_coins)</code></pre></div>
+<p>By contrast, trying to implement this in an iterative style is a little more verbose.
+The best way is to use a stack; this is a common technique for translating recursive
+algorithms to iterative implementations. In essence, it trades function calls for a
+collection of actions to be taken, which is then handled with some manual bookkeeping.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">make_change_stack</span>(amt):
+    total = 0
+    stack = [(amt, COINS[0])]
+
+    <span style="font-weight:bold">while</span> stack:
+        amt, last = stack.pop()
+
+        <span style="font-weight:bold">if</span> amt == 0:
+            total += 1
+        <span style="font-weight:bold">else</span>:
+            valid_coins = (c <span style="font-weight:bold">for</span> c <span style="font-weight:bold">in</span> COINS <span style="font-weight:bold">if</span> c &lt;= amt <span style="font-weight:bold">and</span> c &lt;= last)
+            stack.extend((amt - c, c) <span style="font-weight:bold">for</span> c <span style="font-weight:bold">in</span> valid_coins)
+
+    <span style="font-weight:bold">return</span> total</code></pre></div>
+<p>The last concept I want to introduce is &ldquo;dynamic programming.&rdquo; This is another concept
+that was confusing to me for a long time, because it was hard to pin down exactly what
+its proponents were arguing for; in fact, I went to a talk about it at a conference that
+remains, to this day, the single most incomprehensible talk I have ever attended.
+Eventually, I figured out that the general idea is &ldquo;recursion with caching.&rdquo; It&rsquo;s
+extremely difficult to implement this in Python, as you must add an import statement and
+a decorator.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">functools</span> <span style="font-weight:bold">import</span> lru_cache
+
+@lru_cache(maxsize=<span style="font-weight:bold;font-style:italic">None</span>)
+<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">make_change</span>(amt, last=COINS[0]):
+    <span style="font-weight:bold">if</span> amt == 0:
+        <span style="font-weight:bold">return</span> 1
+
+    valid_coins = (c <span style="font-weight:bold">for</span> c <span style="font-weight:bold">in</span> COINS <span style="font-weight:bold">if</span> c &lt;= amt <span style="font-weight:bold">and</span> c &lt;= last)
+    <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">sum</span>(make_change(amt - c, c) <span style="font-weight:bold">for</span> c <span style="font-weight:bold">in</span> valid_coins)</code></pre></div>
+<h2 id="exercises">Exercises</h2>
+
+<p>Just as I did in my post about <a href="/posts/on-symbolic-logic">symbolic logic</a>, I offer
+several exercises here that will help you build your understanding of recursion (and
+loops, for that matter).</p>
+
+<ol>
+<li>When you call a function recursively, it gets pushed into the &ldquo;call stack.&rdquo; Most
+languages have a limit on how deep this stack can be. Experiment to figure out how
+deep the stack is in Python (or your favorite language).</li>
+<li>The <code>@lru_cache</code> decorator stores the results of a function for a given set of
+inputs. By how much does it decrease the number of calls to <code>make_change</code> compared to
+the uncached recursive version?</li>
+<li>The <code>@lru_cache</code> strategy can&rsquo;t be immediately applied to the stack-based
+implementation of <code>make_change</code>. However, a similar strategy can be used; implement
+it.</li>
+<li>$\star$ Even in languages where the stack depth is relatively shallow, like Python,
+there are methods for implementing recursion safely. One of them is called a
+&ldquo;trampoline.&rdquo; Research and write an implementation.</li>
+<li>$\star \star$ Using the disassembly tools in the
+<a href="https://docs.python.org/3/library/dis.html"><code>dis</code></a> module, compare the compiled
+bytecode of the stack- and recursion-based implementations of <code>make_change</code>. What
+differences do you note between the functions?</li>
+</ol>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:term">This is called the &ldquo;termination condition,&rdquo; and every recursive function must have one.
+ <a class="footnote-return" href="#fnref:term"><sup>[return]</sup></a></li>
+<li id="fn:iso">In formal terms, they are &ldquo;isomorphic.&rdquo;
+ <a class="footnote-return" href="#fnref:iso"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>
