@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://asthasr.github.io/</loc>
+    <lastmod>2020-04-23T08:16:06-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/posts/</loc>
+    <lastmod>2020-04-23T08:16:06-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/posts/under-the-rug/</loc>
+    <lastmod>2020-04-23T08:16:06-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://asthasr.github.io/categories/</loc>
     <lastmod>2019-12-22T08:27:13+07:00</lastmod>
   </url>
@@ -13,22 +28,12 @@
   </url>
   
   <url>
-    <loc>https://asthasr.github.io/</loc>
-    <lastmod>2019-12-22T08:27:13+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://asthasr.github.io/tags/exercises/</loc>
     <lastmod>2019-12-22T08:27:13+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://asthasr.github.io/posts/loops-and-recursion/</loc>
-    <lastmod>2019-12-22T08:27:13+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/posts/</loc>
     <lastmod>2019-12-22T08:27:13+07:00</lastmod>
   </url>
   

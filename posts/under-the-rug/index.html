@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.59.1" />
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>Under the Rug | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+</style>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Under the Rug"/>
+<meta name="twitter:description" content="I don&rsquo;t like docopt. That makes me an outlier; most people I&rsquo;ve talked to seem to think it makes command-line applications &ldquo;easy.&rdquo; They like its premise that, by writing documentation, you&rsquo;re writing code. When you make a command-line application with docopt, you&rsquo;ve automatically got the help text written and the module documented properly, right? Why bother with something verbose and object-oriented like argparse?
+My objection is that you aren&rsquo;t writing code, but you&rsquo;re also not writing documentation, despite the name of the package."/>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>Under the Rug</h1>
+<p>I don&rsquo;t like <a href="http://docopt.org"><code>docopt</code></a>. That makes me an outlier; most people I&rsquo;ve talked to seem to
+think it makes command-line applications &ldquo;easy.&rdquo; They like its premise that, by writing
+documentation, you&rsquo;re writing code. When you make a command-line application with
+<code>docopt</code>, you&rsquo;ve automatically got the help text written and the module documented
+properly, right? Why bother with something verbose and object-oriented like
+<a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>?</p>
+
+<p>My objection is that you aren&rsquo;t writing code, but you&rsquo;re also not writing documentation,
+despite the name of the package.  Instead, you&rsquo;re writing in a <a href="https://en.wikipedia.org/wiki/Domain-specific_language">domain-specific
+language</a> embedded in a string within your application code.  From Python&rsquo;s point of
+view, that string has no structure: it&rsquo;s not &ldquo;code&rdquo; until it&rsquo;s parsed by the <code>docopt</code>
+parser, which is itself six hundred lines of procedural Python.</p>
+
+<p>DSLs can be powerful and well designed:</p>
+
+<ul>
+<li>SQL expresses relational algebra for querying databases.</li>
+<li>XPath allows terse access to XML elements and properties.</li>
+<li>yacc specifies grammars for parsing languages.</li>
+</ul>
+
+<p>The common theme across all of these is that they understand themselves as languages,
+though, and commit to that perspective. SQL is an ISO standard, and
+<a href="https://www.postgresql.org/docs/12/queries-table-expressions.html#QUERIES-FROM">implementation-specific documents</a> usually include formal or nearly-formal
+grammars of their structures. XPath is a <a href="https://www.w3.org/TR/2017/REC-xpath-31-20170321/">W3C standard</a>.  <code>yacc</code> isn&rsquo;t
+standardized, but it&rsquo;s old, popular, and so well-documented that it became an de facto
+standard; the <a href="https://www.gnu.org/software/bison/manual/bison.html">GNU Bison manual</a> is a comprehensive reference.</p>
+
+<p>The structure of these languages is a first-class citizen, designed to meet the needs of
+the domain. By contrast, bad DSLs take a superficial approach, often marked by a design
+that privileges the &ldquo;happy path&rdquo; and can&rsquo;t cope with changes when they become necessary.
+Their &ldquo;prettiness&rdquo; falls apart when they meet use cases that weren&rsquo;t considered in their
+design.  For example, if you look at any code that uses <code>docopt</code>, you&rsquo;ll see a lot of
+type handling after arguments have already been &ldquo;parsed&rdquo;:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic"># Among other declarations of options.</span>
+<span style="color:#666;font-style:italic">&#34;&#34;&#34;
+</span><span style="color:#666;font-style:italic">  --count    The number of times to do something.
+</span><span style="color:#666;font-style:italic">&#34;&#34;&#34;</span>
+
+<span style="color:#888;font-style:italic"># Within the application code.</span>
+count = arguments[<span style="color:#666;font-style:italic">&#34;--count&#34;</span>]
+
+<span style="font-weight:bold">if</span> count:
+    count = <span style="font-weight:bold;font-style:italic">int</span>(count)
+<span style="font-weight:bold">else</span>:
+    os.exit(<span style="color:#666;font-style:italic">&#34;You must supply a count!&#34;</span>)</code></pre></div>
+<p>These stem from gaps in the design of the language: how do you specify the type of data
+provided to an argument? How do you specify that an argument is required? How do you
+specify a group of arguments are related? How do you specify defaults for positional
+arguments? How can you tell which part of your &ldquo;docstring&rdquo; is causing your arguments to
+parse incorrectly? (The answer to all of these is simply &ldquo;you can&rsquo;t.&rdquo;)</p>
+
+<p>Another example is the <a href="https://cucumber.io/docs/gherkin/">Gherkin</a> language for writing behavioral tests. Its marketing
+pitch is simplicity in expressing tests:</p>
+
+<pre><code>Feature: Guess the word
+
+  Scenario: Maker starts a game
+    When the Maker starts a game
+    Then the Maker waits for a Breaker to join
+
+  Scenario: Breaker joins a game
+    Given the Maker has started a game with the word &quot;silky&quot;
+    When the Breaker joins the Maker's game
+    Then the Breaker must guess a word with 5 characters
+</code></pre>
+
+<p>The language, as defined in the &ldquo;brochure,&rdquo; consists largely of a few keywords:
+<code>Feature</code>, <code>Scenario</code>, <code>Given</code>, <code>When</code>, <code>Then</code>, and <code>Background</code>. In reality, though,
+the code behind real Cucumber features is a regular expression (that matches against the
+&ldquo;English&rdquo; sentence in the feature file) combined with a block of actual application code
+that performs the work. Here&rsquo;s a more realistic example:</p>
+
+<pre><code>Scenario: Simple data from environment
+    Given I use a fixture named &quot;environment_plugin&quot;
+    Given I set the environment variables exactly to:
+      | variable    | value           |
+      | test        | Hello, World!   |
+    When I successfully run `tiller -b . -v -n`
+    Then a file named &quot;test.txt&quot; should exist
+    And the file &quot;test.txt&quot; should contain &quot;Hello, World!&quot;
+</code></pre>
+
+<p>Can you find the definition of the <code>I use a fixture named</code> function? What about
+<code>I set the environment variables exactly to</code>? <code>I successfully run</code>? How are file
+existence and contents comparison being handled? Make no mistake: these &ldquo;step
+definitions&rdquo; are code (in a bad language) and can fail or behave in surprising ways just
+as any other code can, but with the added twist that their API is inscrutable and
+unsearchable.</p>
+
+<p>A distinct, but related, problem is a language that seems generally simple and effective
+but which is badly defined. INI files are a good example of this type of failure. When a
+new project chooses to use a different format, usually one that requires a third-party
+parser, there&rsquo;s inevitably an outcry: &ldquo;Why not just use INI files? They&rsquo;re so simple!&rdquo;
+As a <a href="https://en.wikipedia.org/wiki/INI_file#Comparison_of_INI_parsers">comparative feature matrix</a> shows, though, this is a false simplicity. You
+can&rsquo;t trust what you get across platforms, languages, or versions of INI parsers,
+because the language is so poorly defined that numerous dialects have sprung up. Using
+something like <a href="https://github.com/toml-lang/toml">TOML</a> may seem like an unnecessarily contrarian decision, but it frees
+you from concerns about the lack of structure in a worse format.</p>
+
+<p>There&rsquo;s a reason that Niklaus Wirth entitled his most famous book <em>Algorithms + Data
+Structures = Programs.</em> The structures that your programs use and produce&ndash;implicit or
+explicit&ndash;are an integral part of those programs. They must be able to consistently
+represent the values and functions that you use, or they will push that complexity into
+other, less visible and less cohesive parts of the program. Don&rsquo;t be fooled by a sales
+pitch that ignores necessary aspects of its target domain.</p>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>
