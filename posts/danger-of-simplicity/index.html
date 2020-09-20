@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.59.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -175,7 +175,7 @@ div.title {
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The Danger of &#34;Simplicity&#34;"/>
-<meta name="twitter:description" content="There are a few tendencies among programmers that involve the totem of &ldquo;simplicity.&rdquo; There&rsquo;s the ancient concept of KISS, of course, but there&rsquo;s also the much-abused YAGNI, the insistence that we &ldquo;Choose Boring Technology,&rdquo; entire languages that base their elevator pitch around the idea that they&rsquo;re &ldquo;simple,&rdquo; and the concept in object-oriented design that &ldquo;every class should have a single responsibility.&rdquo;
+<meta name="twitter:description" content="There are a few tendencies among programmers that involve the totem of &ldquo;simplicity.&rdquo; There&rsquo;s the ancient concept of KISS, of course, but there&rsquo;s also the much-abused YAGNI, the insistence that we &ldquo;Choose Boring Technology,&quot; entire languages that base their elevator pitch around the idea that they&rsquo;re &ldquo;simple,&rdquo; and the concept in object-oriented design that &ldquo;every class should have a single responsibility.&rdquo;
 The problem with these approaches is that &ldquo;simplicity&rdquo; never gets a rigorous definition."/>
 
 </head>
@@ -203,31 +203,25 @@ The problem with these approaches is that &ldquo;simplicity&rdquo; never gets a 
   <div class="container">
     <article>
       <h1>The Danger of &ldquo;Simplicity&rdquo;</h1>
-
-
 <p>There are a few tendencies among programmers that involve the totem of
 &ldquo;simplicity.&rdquo; There&rsquo;s the ancient concept of KISS, of course, but there&rsquo;s also the
 much-abused <a href="https://www.martinfowler.com/bliki/Yagni.html">YAGNI</a>, the insistence that we
-<a href="https://mcfunley.com/choose-boring-technology">&ldquo;Choose Boring Technology,&rdquo;</a> entire
+<a href="https://mcfunley.com/choose-boring-technology">&ldquo;Choose Boring Technology,&quot;</a> entire
 languages that base their elevator pitch around the idea that they&rsquo;re &ldquo;simple,&rdquo; and the
 concept in object-oriented design that &ldquo;every class should have a single
 responsibility.&rdquo;</p>
-
 <p>The problem with these approaches is that &ldquo;simplicity&rdquo; never gets a rigorous definition.
 The rhetoric around them is tautological: &ldquo;Do the simple thing.&rdquo; &ldquo;Which one is that?&rdquo;
 &ldquo;The simple one, isn&rsquo;t it obvious?&rdquo; If you disagree with the assessment of what
 constitutes simplicity, you&rsquo;re met with incredulity. &ldquo;What do you <em>mean</em>, you think Go&rsquo;s
 error handling is bad? It&rsquo;s <em>simple!</em>&rdquo; How can we make this less confrontational? How
 can we articulate a position more powerful than &ldquo;syntax highlighting is juvenile?&rdquo;</p>
-
 <h2 id="the-purpose-of-programming">The Purpose of Programming</h2>
-
 <p>It&rsquo;s easy to get lost in minutiae. Who hasn&rsquo;t shaved a yak? Still, the ultimate purpose
 of programming as a profession or hobby is clear: we want to apply the raw power of
 computation to a problem, and know that the &ldquo;recipe&rdquo; we&rsquo;ve written can be trusted to
 solve the problem we think that it does.  Code, in itself, is not an asset. A solved
 problem is an asset.</p>
-
 <p>The types of programs that we need to deliver, their performance models, their failure
 modes, and the methods we can use to understand them are all different depending on the
 environment in which we work, but the need for trust in our programs is universal. I
@@ -235,28 +229,23 @@ think the worst fear for a programmer is a program that not only <em>misbehaves<
 <em>misbehaves in ways we don&rsquo;t understand</em>. We want tools that do what they&rsquo;re supposed to
 do, or, if they can&rsquo;t, that fail predictably in ways that we can quickly understand and
 fix.</p>
-
 <p>When someone argues for &ldquo;simplicity,&rdquo; they are almost always arguing implicitly for
 concepts that they believe improve the possibility of trustworthiness. The problem
 emerges when programmers of all types forget that their preferred model of success does
 not apply to all types of programs, and each choice imposes costs.</p>
-
 <h2 id="what-are-we-optimizing-for">What are we optimizing for?</h2>
-
-<p>The creators of Go have said, sometimes in pejorative terms,<sup class="footnote-ref" id="fnref:dis"><a href="#fn:dis">1</a></sup> that &ldquo;average
+<p>The creators of Go have said, sometimes in pejorative terms,<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> that &ldquo;average
 programmers&rdquo; have difficulty understanding complex languages, and have set themselves
 against that complexity by designing one with a relatively small syntactic grammar,
 error handling based on return codes, and no generics. They looked at the landscape of
 &ldquo;complicated&rdquo; languages and decided that the form of simplicity that they&rsquo;d optimize for
 would be the initial learning curve.</p>
-
 <p>On the other hand, Rust&rsquo;s designers aimed at a different concept of simplicity. They
 wanted to protect users from the types of memory errors that have led to countless CVEs
 and bugs in C and C++ programs. They did so by embracing the type-theoretic concept of
-&ldquo;affine types,&rdquo; called &ldquo;lifetimes&rdquo; in Rust.<sup class="footnote-ref" id="fnref:aff"><a href="#fn:aff">2</a></sup> They also eliminated the traditional
-idea of null<sup class="footnote-ref" id="fnref:null"><a href="#fn:null">3</a></sup> by making Haskell-like <code>Result</code> and <code>Option</code> types core to the
+&ldquo;affine types,&rdquo; called &ldquo;lifetimes&rdquo; in Rust.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> They also eliminated the traditional
+idea of null<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> by making Haskell-like <code>Result</code> and <code>Option</code> types core to the
 language.</p>
-
 <p>Both of these decisions, in major modern languages, solve certain classes of
 problems&mdash;and both pay a price for their choices. Go&rsquo;s error handling has become a
 <a href="https://pbs.twimg.com/media/DCIF7-2W0AEAv9c.jpg">meme</a>, for example. Articles to help
@@ -264,30 +253,23 @@ with understanding lifetimes in Rust are nearly as ubiquitous as monad tutorials
 aspiring Haskeller, and it turns out that a lot of important data structures are pretty
 hard to implement when you have to worry about them. Still, you can&rsquo;t say that either
 language has failed in its goals&mdash;it&rsquo;s just that each has chosen different tradeoffs.</p>
-
 <p>In other words: every decision made in order to simplify a program will cost something.</p>
-
 <h2 id="down-to-earth">Down to Earth</h2>
-
 <p>Most programmers aren&rsquo;t writing programming languages, so the choice of &ldquo;what to
 simplify&rdquo; may seem esoteric, but it&rsquo;s not. Consider data serialization. When you first
 implement a web service, it can seem &ldquo;simple&rdquo; to model both deserialization and
 serialization using the same objects. Then, since you&rsquo;re implementing something new, you
 naturally want to keep it <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>,
 so you hook up your serialization library to your ORM models.</p>
-
 <p>Then it turns out that you need to add a field to a table for batch processing and omit
 that from emitted JSON.  Then it turns out that the enormous client that is going to pay
 your salaries for the next three years <em>really</em> needs XML output.  Then it turns out
 that the <em>other</em> client, the one owned by your main investor&rsquo;s brother, is intrinsically
 incapable of sending in any input other than DOS-formatted CSVs, for some reason.</p>
-
 <p>Suddenly, it looks like unifying serialization, deserialization, and persistence
 involved a few more tradeoffs than it seemed when you were writing <code>class Widget:</code> in
 that fresh new git repository, right?</p>
-
 <h2 id="the-elusive-universal">The Elusive Universal</h2>
-
 <p>If everything is a tradeoff, how do we make any decision about the design of our
 software at all? It&rsquo;s tempting to make hard and fast rules. There are plenty of those:
 &ldquo;Methods should never have more than five lines of code,&rdquo; &ldquo;no line of code should be
@@ -295,26 +277,21 @@ written without a unit test,&rdquo; or &ldquo;all production code is pair progra
 doing, though, is <em>hiding</em> the choice from you (or lying about it). It&rsquo;s not that the
 choice wasn&rsquo;t made, it&rsquo;s that someone else made it, and now wants to convince you that
 their opinion has no cost.</p>
-
 <p>Instead of accepting this at face value, instead think about <em>how</em> to make those choices
 for yourself. Think about the different ways that code can be simple, and the things to
 which that particular simplicity is opposed.</p>
-
 <p>For example, dynamically typed languages like Python (or Ruby, Lisp, etc.) are easy and
 pleasant to write. They avoid the difficulty of convincing a compiler that you&rsquo;ve
 written your code correctly, but they&rsquo;re harder for a new team member to comprehend:
 you&rsquo;re trading fluent writing for more laborious reading.</p>
-
 <p>Short functions, methods, and classes are quick to read, but must either be built of
 many lower-level functions or themselves comprise parts of larger compositions in order
 to accomplish anything. You&rsquo;re trading away locality in favor of concision.</p>
-
 <p>Error codes are easier to understand than exceptions or <code>Result</code> types, but they don&rsquo;t
 carry much information. You&rsquo;re trading ease of comprehension for difficulty of
 debugging. Exceptions carry a great deal of information but break the sequentiality of
 the code. Result types can carry information <em>and</em> preserve sequentiality, but can
 require a lot of &ldquo;plumbing&rdquo; in order to compose and handle different types of errors.</p>
-
 <p>Each of these examples illustrates choices you need to make. You can reduce the number
 of things you care about to help with making them: limiting your choice of programming
 languages to a particular set, committing to use automatic formatters, or standardizing
@@ -322,21 +299,21 @@ on a DevOps toolchain can all help to reduce the number of decisions that need t
 made. In the end, though, it will come down to <em>how should I implement this feature?</em>
 and you&rsquo;ll make better decisions about that if you understand that <em>simplicity is not
 simple.</em></p>
-
 <p>And that you should not trust anyone who claims it is.</p>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:dis">It&rsquo;s inflammatory, but the article <a href="http://nomad.uk.net/articles/why-gos-design-is-a-disservice-to-intelligent-programmers.html">&ldquo;Why Go&rsquo;s design is a disservice to intelligent programmers&rdquo;</a> is worth reading just for the quotes from Rob Pike.
- <a class="footnote-return" href="#fnref:dis"><sup>[return]</sup></a></li>
-<li id="fn:aff">Consider reading the three chapters <a href="https://doc.rust-lang.org/1.9.0/book/ownership.html">&ldquo;Ownership,&rdquo;</a> <a href="https://doc.rust-lang.org/1.9.0/book/references-and-borrowing.html">&ldquo;References and Borrowing,&rdquo;</a> and <a href="https://doc.rust-lang.org/1.9.0/book/lifetimes.html">&ldquo;Lifetimes&rdquo;</a> from the online Rust Book, if you want to understand this concept.
- <a class="footnote-return" href="#fnref:aff"><sup>[return]</sup></a></li>
-<li id="fn:null">Tony Hoare&rsquo;s presentation on the subject, <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">&ldquo;The Billion Dollar Mistake,&rdquo;</a> is a great talk and explains why they&rsquo;d <em>want</em> to do something so weird.
- <a class="footnote-return" href="#fnref:null"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>It&rsquo;s inflammatory, but the article <a href="http://nomad.uk.net/articles/why-gos-design-is-a-disservice-to-intelligent-programmers.html">&ldquo;Why Go&rsquo;s design is a disservice to intelligent programmers&rdquo;</a> is worth reading just for the quotes from Rob Pike. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Consider reading the three chapters <a href="https://doc.rust-lang.org/1.9.0/book/ownership.html">&ldquo;Ownership,&quot;</a> <a href="https://doc.rust-lang.org/1.9.0/book/references-and-borrowing.html">&ldquo;References and Borrowing,&quot;</a> and <a href="https://doc.rust-lang.org/1.9.0/book/lifetimes.html">&ldquo;Lifetimes&rdquo;</a> from the online Rust Book, if you want to understand this concept. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Tony Hoare&rsquo;s presentation on the subject, <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">&ldquo;The Billion Dollar Mistake,&quot;</a> is a great talk and explains why they&rsquo;d <em>want</em> to do something so weird. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
     </article>
   </div>

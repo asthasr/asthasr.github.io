@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.59.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -175,7 +175,7 @@ div.title {
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The M-Word: The Culture of Programming"/>
-<meta name="twitter:description" content="In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&rdquo;&mdash;you lose the ability to explain it to anybody. &mdash; Doug Crockford.
+<meta name="twitter:description" content="In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&quot;&mdash;you lose the ability to explain it to anybody. &mdash; Doug Crockford.
  I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&rsquo;ve probably used."/>
 
 </head>
@@ -203,14 +203,11 @@ div.title {
   <div class="container">
     <article>
       <h1>The M-Word: The Culture of Programming</h1>
-
-
 <blockquote>
 <p>In addition to it begin useful, it is also cursed and the curse of the monad is that
-once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&rdquo;&mdash;you lose
+once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&quot;&mdash;you lose
 the ability to explain it to anybody. &mdash; <em>Doug Crockford.</em></p>
 </blockquote>
-
 <p>I had a problem, once. I was working on a Rails application which generated integration
 files to be consumed by external partners. They were generated every night in a dozen
 formats and shipped around the Internet to populate sites you&rsquo;ve probably used.  Since
@@ -221,8 +218,8 @@ it was a typical Rails application, the code used the Rails ORM directly:</p>
         xw.Description db_widget.description.truncate(120)
         xw.Color db_widget.color.name <span style="font-weight:bold">unless</span> db_widget.color.nil?
     <span style="font-weight:bold">end</span>
-<span style="font-weight:bold">end</span></code></pre></div>
-<p>All of the builders were in different formats and made different assumptions about the
+<span style="font-weight:bold">end</span>
+</code></pre></div><p>All of the builders were in different formats and made different assumptions about the
 data, and almost all of the fields were nullable in the database. Any generator that
 omitted a <code>.nil?</code> check anywhere could suddenly break. My solution was relatively
 straightforward. Since all of these integrations were built on the same data structure,
@@ -237,12 +234,11 @@ like this:</p>
         xw.Description shim.widget.description.truncate(120).or_else <span style="color:#666;font-style:italic">&#34;&#34;</span>
         db_widget.color.map { |color| xw.Color color.name }
     <span style="font-weight:bold">end</span>
-<span style="font-weight:bold">end</span></code></pre></div>
-<p>Two problems solved, right? Performance improved because the shim could query once and
+<span style="font-weight:bold">end</span>
+</code></pre></div><p>Two problems solved, right? Performance improved because the shim could query once and
 cache the result for many different exports. Data-related failures were all but
 eliminated, because a failure to explicitly unwrap the shim value showed up during
 testing instead of in production. Easy-peasy.</p>
-
 <p>Unfortunately, my technical solution was a social debacle. I&rsquo;m not sure of a better way
 to phrase it: many of my coworkers found the code <em>baffling</em> after I changed it, and I
 made the mistake of using the term &ldquo;monad&rdquo; to refer to the pattern. Overnight, I became
@@ -250,9 +246,7 @@ made the mistake of using the term &ldquo;monad&rdquo; to refer to the pattern. 
 monads anywhere else?&rdquo; &ldquo;How are the monads going?&rdquo; I even tried to give a lunch and
 learn about how to use the library, and people came and made sarcastic comments during
 <em>that</em>. The situation contributed to my departing the company later that year.</p>
-
 <p>Where did I go wrong?</p>
-
 <p>I knew about monads from previously learning Haskell. The company, however, wasn&rsquo;t a
 Haskell shop. We wrote Ruby and Java, and most of the developers there had no interest
 whatsoever in Haskell. Furthermore, I approached the problem from an enthusiast&rsquo;s
@@ -260,29 +254,24 @@ standpoint. I explained what I thought the advantages were, what I would use the
 and explained the theory behind them. Worse, I introduced a library which was explicit
 about being a monadic <code>Maybe</code> type. No beating around the bush: its tagline was &ldquo;a Maybe
 monad for Ruby.&rdquo;</p>
-
 <p>If I could, I would go back in time and avoid all of that. Instead, I would
 write a small class within the codebase, less general and powerful than the library,
 and never bring the issue up in scrum at all (an action made necessary by the company&rsquo;s
 policy on adding new libraries). In this hypothetical timeline, I would never have
 uttered &ldquo;the M-word&rdquo; at that company at all.</p>
-
 <h2 id="when-in-rome">When In Rome</h2>
-
 <p>Every language has its culture. In my previous article, <a href="/posts/danger-of-simplicity">&ldquo;The Danger of
-&lsquo;Simplicity,&rsquo;&rdquo;</a> I contrasted the different choices that Go
+&lsquo;Simplicity,'&quot;</a> I contrasted the different choices that Go
 and Rust have made in terms of <em>what to simplify.</em> Those choices pervade the
 communities: the Go community debates whether new language features will have too large
 of an impact on compilation time. The Rust community debates the compiled size of the
 <code>format!</code> macro in embedded contexts. Both are equally valid concerns, and the
 significance of each issue arises from the choices made in the language design.</p>
-
 <p>Furthermore, although you can disagree with aspects of a language&rsquo;s culture, it makes
 little sense to fight it. If your company writes Ruby, write Ruby. Don&rsquo;t try to write
 Haskell (or Go, or Rust). You&rsquo;ll start at a disadvantage. For example, function calls
 are very expensive in Ruby and Python, to the degree that inlining simple methods can be
 an early step in performance optimization.</p>
-
 <p>If you need to &ldquo;import&rdquo; a concept&mdash;and I stand by the structure of my solution to the
 integration problem above&mdash;do so in an <em>idiomatic</em> way. If I had referred to the shim
 as a <code>DatabaseCache</code> and used methods like <code>fetch</code> and <code>has?</code> instead of the library&rsquo;s
@@ -294,15 +283,13 @@ problem, despite an uglier API.</p>
         xw.Description db_cache.widget.fetch(<span style="color:#666;font-style:italic">:description</span>, <span style="color:#666;font-style:italic">&#34;&#34;</span>).truncate(120)
         xw.Color db_cache.widget.fetch(<span style="color:#666;font-style:italic">:color</span>).fetch(<span style="color:#666;font-style:italic">:name</span>) <span style="font-weight:bold">if</span> db_cache.widget.has?(<span style="color:#666;font-style:italic">:color</span>)
     <span style="font-weight:bold">end</span>
-<span style="font-weight:bold">end</span></code></pre></div>
-<p>Such compromises eliminate theoretical explanations of what&rsquo;s happening. They reduce the
+<span style="font-weight:bold">end</span>
+</code></pre></div><p>Such compromises eliminate theoretical explanations of what&rsquo;s happening. They reduce the
 problem of unfamiliarity when new team members need to read or review your code. Most
 importantly, if you design your software with a concept in mind, you can achieve many of
 its benefits even without explaining to your colleagues the reason that you conceived
 the design.</p>
-
 <h2 id="but-why-is-it-hard-anyway">&hellip;but why is it hard, anyway?</h2>
-
 <p>I opened this post with a Douglas Crockford quote. I think it&rsquo;s more generally
 applicable: you can learn about a concept and have that concept change your way of
 thinking, only to find that afterwards you can&rsquo;t explain why.  It&rsquo;s very difficult to
@@ -310,7 +297,6 @@ shift your thinking to how you were <em>before</em> you learned something, espec
 its prerequisites was significant.  Monads are an example, but not the only one:
 object-oriented programming had a reputation as &ldquo;academic nonsense&rdquo; during its rise, and
 Lisp has more &ldquo;learn Lisp to free your mind!&rdquo; memes than any other language.</p>
-
 <p>Furthermore, a challenge to a programmer&rsquo;s methods or knowledge can seem like a personal
 attack. Programming is pure thought, and the results of a new technique are not
 immediately obvious. Contrast something like building furniture. If you see someone
@@ -319,7 +305,6 @@ obvious. It&rsquo;s easy to be egoless in such immediate crafts, because you wan
 the thing you&rsquo;ve just seen. In programming, understanding the product of a new technique
 often requires you to understand the technique in question and, worse, the problems with
 your own approach that motivate the change.</p>
-
 <p>Complicating the problem is the issue that I mentioned in <a href="/posts/mind-the-gaps">my last
 post</a>: since all programmers are self-taught, it&rsquo;s easy to stumble
 into someone&rsquo;s knowledge gaps when trying to explain something. Defensiveness is a

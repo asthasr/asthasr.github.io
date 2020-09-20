@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.68.3" />
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>Rust Needs Metaphors, Part 1: Lifetimes | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+</style>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rust Needs Metaphors, Part 1: Lifetimes"/>
+<meta name="twitter:description" content="I recently had a conversation with a friend who said: &ldquo;I don&rsquo;t trust most of what I hear about Rust, because it sounds like agitprop from the Rust Evangelism Strike Force, but people like you whom I trust and respect seem to like it. Can you help me understand why?&rdquo;
+I tried to. I said things that make sense, in the abstract: it offers a very powerful type system, it allows me to feel more confident about my code in surprising ways, and so on."/>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>Rust Needs Metaphors, Part 1: Lifetimes</h1>
+<p>I recently had a conversation with a friend who said: &ldquo;I don&rsquo;t trust most of what I hear
+about Rust, because it sounds like agitprop from the Rust Evangelism Strike Force, but
+people like you whom I trust and respect seem to like it. Can you help me understand
+why?&rdquo;</p>
+<p>I tried to. I said things that make sense, in the abstract: it offers a very powerful
+type system, it allows me to feel more confident about my code in surprising ways, and
+so on. As I went on, though, I realized something: while that&rsquo;s all true, it is
+inadequate as an explanation for the experience that Rust provides.</p>
+<p>A few days later, another conversation <a href="https://lobste.rs/s/zgwjpg/go_vs_rust_for_back_end_development#c_hkr3cu">on lobste.rs</a> led me to another
+realization: I deeply disagree with the comment that Rust implies more &ldquo;cognitive
+overhead&rdquo; than Go, but I still lacked the language to explain why, so I didn&rsquo;t respond.</p>
+<p>So here we are. This may be messy, and it&rsquo;s certainly going to be incomplete, but I hope
+to lay out a few foundational metaphors that help to explain the learning curve in
+concrete and practical terms, hopefully helping more people enjoy the language.</p>
+<h1 id="understanding-the-impact-of-lifetimes">Understanding the Impact of Lifetimes</h1>
+<p>The obvious initial learning burden, the first thing you hit, is the &ldquo;lifetime&rdquo; problem.
+It&rsquo;s Rust&rsquo;s novelty, of course, the ticket to memory safety without garbage collection.
+It&rsquo;s also what Rust is complains about most when you first start trying to write it. It
+can feel almost abusive. &ldquo;Temporary value dropped while borrowed, <em>you idiot.</em>&rdquo; &ldquo;Closure
+may outlive borrowed value. <em>Can&rsquo;t you do anything right?</em>&rdquo;</p>
+<p>An important switch flipped for me when I realized that these errors are learning
+opportunities. They are illustrating for you places where potential memory errors would
+have occurred in less &ldquo;assertive&rdquo; languages, and often tell you how to correct them
+(complete with ASCII art and ANSI coloration). The problem is that there&rsquo;s very little
+practical literature about these corrections, no accepted metaphors to use in relation
+to the changes you need to make, and the changes can feel unnatural at first.</p>
+<p>It&rsquo;s as if you&rsquo;ve gone to the doctor, said: &ldquo;It hurts when I do this,&rdquo; and he helpfully
+tells you &ldquo;well, don&rsquo;t do that&rdquo;&mdash;but it feels as if he&rsquo;s telling you not to blink your
+eyes.</p>
+<p>There are a few basic rules of thumb that I have arrived at, though, that I think can
+help make the jump:</p>
+<ol>
+<li>Bindings aren&rsquo;t a matter of style.</li>
+<li>Data must always be managed.</li>
+<li>If you have to type <code>'a</code>, you might be doing it wrong.</li>
+<li>When in doubt, make an army of clones.</li>
+</ol>
+<p>Each of these could probably be a blog post on its own, but I&rsquo;m going to try to treat
+them briefly here and may revisit them in future posts.</p>
+<h2 id="bindings-arent-a-matter-of-style">Bindings aren&rsquo;t a matter of style</h2>
+<p>If you&rsquo;re used to writing a typical garbage-collected language, like Python or Ruby, you
+probably think of local variables as a convenience. You extract them to make things
+easier to read, or to break up a long chain of functions into a few statements. This is
+perfectly valid, and similar approaches can be used in Rust.</p>
+<p>In Rust, though, bindings <em>matter.</em> Many lifetime-related errors can be alleviated by
+simply binding the value to a local before using it. This is because a <code>let</code> binding is
+associating the value with the scope in which the <code>let</code> occurs, whereas calling a
+function in a chained statement (particularly if you&rsquo;re using lambdas) may lead to a
+value being bound to a scope that gets dropped before you expect.</p>
+<p>Consider the following:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+    <span style="font-weight:bold;font-style:italic">let</span> x = <span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string().as_mut_str();
+    x.make_ascii_uppercase();
+    println!(<span style="color:#666;font-style:italic">&#34;{}&#34;</span>, x);
+}
+</code></pre></div><p>Here, the compiler will raise an error because <code>&quot;foo&quot;</code> is converted to a <code>String</code>, but
+the next call creates a mutable reference to it that actually lasts longer than the
+string itself. This error can be fixed by making sure that the string lives long enough:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> foo = <span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string();
+    <span style="font-weight:bold;font-style:italic">let</span> x = foo.as_mut_str();
+    x.make_ascii_uppercase();
+    println!(<span style="color:#666;font-style:italic">&#34;{}&#34;</span>, x);
+}
+</code></pre></div><p>You can try it in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=637ef5cf07175e8d0912aa4a88ecbfbc">playground</a>.</p>
+<h2 id="data-must-always-be-managed">Data must always be managed</h2>
+<p>The implication of the previous rule permeates the language. Every piece of data that
+you need to use needs to be pulled &ldquo;up&rdquo; to a common ancestor. If you envision an
+application as a tree, Rust expects that all data must exist at or before the &ldquo;fork&rdquo; of
+all of the branches that make use of that data. This can feel really unnatural at first.
+We&rsquo;re used to having data implicitly created at a distance, with no real ceremony around
+its management or eventual demise.</p>
+<p>If we applied this logic to the erroneous code above, you can see that the reference
+(produced by <code>as_mut_str</code>) is referring to data that we haven&rsquo;t pulled &ldquo;up&rdquo; to the outer
+scope:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+    <span style="font-weight:bold;font-style:italic">let</span> x = (<span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string()).as_mut_str();
+    println!(<span style="color:#666;font-style:italic">&#34;{}&#34;</span>, x);
+}
+</code></pre></div><p>Similar issues arise when you attempt to return a reference from a function, although
+the error message is more friendly:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">get_int</span>&lt;&#39;a&gt;() -&gt; <span style="font-weight:bold">&amp;</span>&#39;a <span style="font-weight:bold">u8</span> {
+    <span style="font-weight:bold;font-style:italic">let</span> x = 3;
+    &amp;x
+}
+</code></pre></div><p>This will produce an error that tells you that the function cannot return a reference to
+data that it owns. After all, that local, <code>x</code>, will &ldquo;die&rdquo; when the lifetime to which it
+is bound ends. The reference to it, which is being returned from the function, will not.</p>
+<p>Things like shared configuration must be treated similarly. Traditional languages often
+use module-level variables and singletons to contain these sorts of things; Rust
+typically doesn&rsquo;t.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+    <span style="font-weight:bold;font-style:italic">let</span> config = get_config();  <span style="color:#888;font-style:italic">// returns a config object.
+</span><span style="color:#888;font-style:italic"></span>    first(config);
+    second(config); <span style="color:#888;font-style:italic">// this will raise an error!
+</span><span style="color:#888;font-style:italic"></span>}
+</code></pre></div><p>In this case, <code>first</code> takes ownership of <code>config</code>. In order to use it in <code>second</code>, you
+need to either pass it by reference or clone it. In either case, the <code>main</code> function
+will retain ownership of the original object, and only ownership of the reference or
+clone will pass into the functions. You can try it out in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=cf145f031e1ed93fc10963ba26321fca">playground</a>.</p>
+<h2 id="if-you-have-to-type-a-you-might-be-doing-it-wrong">If you have to type <code>'a</code>, you might be doing it wrong</h2>
+<p>Introductions to Rust often seem to leap into &ldquo;implementing data structures.&rdquo; The
+problem is that this is exactly where Rust&rsquo;s ergonomics are the worst. Self-referential
+data structures can be hard, or in some cases impossible, to implement in Rust. Even
+&ldquo;plain references&rdquo; can be confusing at first, because you are required to tie them to a
+lifetime.</p>
+<p>So don&rsquo;t write them.</p>
+<p>You can get surprisingly far without using references in a <code>struct</code>. You might need to
+accept references to a string (<code>&amp;str</code>), slice (<code>&amp;[u8]</code>), or other value (e.g. <code>&amp;Config</code>)
+as arguments to a function, but the compiler is good at inferring lifetimes in most
+cases. If you aren&rsquo;t consciously <em>choosing</em> to write an explicit lifetime, ignore the
+compiler&rsquo;s admonition that you need one, back up, and think about why it thinks you do.
+You probably made a mistake.</p>
+<p>If you&rsquo;d like to see why I advise this technique instead of implementing data structures
+check out <a href="https://rust-unofficial.github.io/too-many-lists/">&ldquo;Learn Rust With Entirely Too Many Linked Lists,&quot;</a> which I think
+demonstrates why I think this is a bad path for the true beginner to take. Also, check
+out the various structures available in <a href="https://doc.rust-lang.org/std/collections/index.html"><code>std::collections</code></a> and <a href="https://lib.rs/data-structures">third-party
+crates</a>.</p>
+<h2 id="when-in-doubt-make-an-army-of-clones">When in doubt, make an army of clones</h2>
+<p>It&rsquo;s not bad form to use <code>.clone()</code>, especially not when you&rsquo;re working on a proof of
+concept or initial implementation. Don&rsquo;t get tangled up in a maze of lifetimes: just
+sidestep the issue by passing in a clone when you need to do so. If the implementation
+ends up working out well, you can come back and see whether you can refactor to use a
+simple reference (<code>&amp;T</code>) or a more specialized alternative like <code>Arc&lt;T&gt;</code>.</p>
+<h1 id="conclusions">Conclusions</h1>
+<p>This is not a complete treatment of any of these concepts. It&rsquo;s also not the last blog
+post in this series. I intend this to be very practical and concrete. If you have
+questions, tweet them at <a href="https://twitter.com/asthasr">me</a> or ask wherever blog posts are sold.</p>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>

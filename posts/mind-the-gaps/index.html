@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.59.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -203,90 +203,73 @@ div.title {
   <div class="container">
     <article>
       <h1>Mind the Gaps</h1>
-
-
 <blockquote>
 <p>&ldquo;If you truly accumulate effort for a long time, then you will advance.&rdquo; <em>Xunzi.</em></p>
 </blockquote>
-
 <p>It&rsquo;s no secret that many programmers are self-taught. Some of us, myself included, lack
 formal credentials related to computer science. I&rsquo;ve worked with good programmers who
 didn&rsquo;t graduate high school. It&rsquo;s a strange profession, with the skills often acquired
 simply as a side effect of tinkering.  You don&rsquo;t hear about many civil engineers or
 corporate attorneys who do what they do because they enjoyed playing Zork on their dad&rsquo;s
 office computer.</p>
-
 <p>The downside of this relative accessibility is that there&rsquo;s no curriculum for <em>making</em> a
 programmer. Universities often presume that their computer science students know how to
 program before they get to campus, and their curricula are aimed at producing computer
-<nobr>scientists&mdash;</nobr>a noble and necessary pursuit, but not one that produces
+<!-- raw HTML omitted -->scientists&mdash;<!-- raw HTML omitted -->a noble and necessary pursuit, but not one that produces
 knowledgeable working programmers. Graduates of those programs often end up little
 better off than anyone else when they&rsquo;re out of &ldquo;Advanced Compiler Optimization
 Techniques&rdquo; and into &ldquo;Sav-Mart needs the &lsquo;repeat previous order&rsquo; button on their B2B
 site by next Tuesday.&rdquo;</p>
-
 <p>Even worse off are those students who stumble into an &ldquo;industry-oriented&rdquo; curriculum at
 a community college or bootcamp. While a CS student from a university sometimes gets an
 education that has anachronisms and too much theory, these students are taught, at best,
 a few frameworks in accordance with the desires of local industry. Graduates, if they
 are capable, acquire that capability through their own effort.</p>
-
 <p>Think of junior programmers in the first few years of their careers: they&rsquo;ve taught
 themselves a language or two. They may know some theory, or they may not. If they do,
 they may still not know how it&rsquo;s relevant to real problems. They may have been tested
-rigorously on the trivia of future-proof technology like Silverlight.<sup class="footnote-ref" id="fnref:sl"><a href="#fn:sl">1</a></sup> They all
+rigorously on the trivia of future-proof technology like Silverlight.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> They all
 &ldquo;know how to program,&rdquo; and they can all muddle through, but how can they <em>improve?</em></p>
-
-<h2 id="how-do-you-know-what-you-don-t-know">How do you know what you don&rsquo;t know?</h2>
-
+<h2 id="how-do-you-know-what-you-dont-know">How do you know what you don&rsquo;t know?</h2>
 <p>There are gaps in all programmers&rsquo; knowledge. It&rsquo;s a source of the famous &ldquo;imposter
 syndrome,&rdquo; where we tend to feel that everyone around us knows more than we do. Despite
 this feeling that someone&rsquo;s going to find out that you&rsquo;re a fraud <em>at any moment</em>, it&rsquo;s
-hard to know exactly <em>why</em> we feel that way.  (That&rsquo;s why they call it a &ldquo;syndrome.&rdquo;)
+hard to know exactly <em>why</em> we feel that way.  (That&rsquo;s why they call it a &ldquo;syndrome.&quot;)
 The only way to escape this amorphous feeling of inadequacy is to try to find our gaps
 and fill them ourselves.</p>
-
 <p>Knowledge gaps are pernicious, though. You can do day-to-day work without ever really
 understanding a deficiency because a lot of the gaps don&rsquo;t show up immediately. They
 show up when you need to modify or debug your code in a year, and without external
 feedback you may never understand that your class might have been better if you&rsquo;d
 structured it differently. It&rsquo;s entirely possible to continue to get paid, year after
 year, for sub-par work.</p>
-
 <p>On the other hand, if you&rsquo;re a conscientious programmer, you probably <em>want</em> your gaps
 to become visible. The best ways that I know to discover them are exercises, reading,
 and third-person review.  I don&rsquo;t mean simple &ldquo;code kata,&rdquo; either, nor do I mean
 flavor-of-the-month agile manuals, or rubber-stamp &ldquo;peer review:&rdquo; study works only when
 you force yourself out of your comfort zone. If you aren&rsquo;t being challenged, and
 struggling to understand, you aren&rsquo;t <em>building</em> understanding.</p>
-
 <h2 id="exercises">Exercises</h2>
-
 <p>Find a site that presents exercise with varying degrees of difficulty and in different
 categories. You should be able to complete them in an editor of your choice, with a real
 language; don&rsquo;t bother with sites that require you to write pseudocode into a web
 editor. Similarly, avoid excessive gamification. The exercises are the point and should
 be the focus. Some good sites include:</p>
-
 <ul>
 <li><a href="https://adventofcode.com/">Advent of Code</a></li>
 <li><a href="https://open.kattis.com/">The Kattis Problem Archive</a></li>
 <li><a href="https://projecteuler.net/">Project Euler</a></li>
 <li><a href="https://www.spoj.com/">The Sphere Online Judge</a></li>
 </ul>
-
 <p>Try to find problems that are <em>hard for you</em>. Of particular interest are &ldquo;easy&rdquo; problems
 that you find difficult: why are they supposed to be easy? What concept are you missing
 that would <em>make</em> it easy?</p>
-
 <p>In addition, we&rsquo;re lucky that practice in our field requires very few materials. When
 you&rsquo;re working through a book, <em>do the exercises</em>. Copy the code samples. You may be
 surprised what sticks with you&mdash;it&rsquo;s been years since I read it, but I still remember
 one of the first exercises in <em>The C Programming Language</em>: &ldquo;Write a program to print a
 Celsius to Fahrenheit conversion table.&rdquo; That was the exercise that taught me <code>printf</code>.</p>
-
 <h2 id="reading">Reading</h2>
-
 <p>There&rsquo;s a genre of computer books that I think of as &ldquo;extruded technical product.&rdquo; They
 are produced to fill a publisher&rsquo;s spreadsheet. They usually have titles like <em>Mastering
 the Extremely Specific Software Package Version 18</em>, or <em>Teach Yourself Something
@@ -295,7 +278,6 @@ a categorical mistake. For example, many of the books with &ldquo;Patterns&rdquo
 up being quickly dated because they were cataloging techniques for dealing with Java&rsquo;s
 deficiencies. As other languages became more popular, and even as Java evolved, many of
 these techniques became unimportant or trivial.</p>
-
 <p>Instead, seek out difficulty and concepts. For example, you aren&rsquo;t going to be working
 with a mathematical Turing machine any time soon, but Petzold&rsquo;s <em>The Annotated Turing</em>
 is still an excellent book. You won&rsquo;t be wiring up ICs to build your own computer,
@@ -304,21 +286,17 @@ either, but his <em>Code</em> is also excellent. You may mostly write web applic
 lot about what can go wrong when things happen <em>almost</em> at the same time. JavaScript may
 be your forte, but <em>The Little Schemer</em> and <em>Thinking Forth</em> may give you a valuable,
 and surprising, perspective.</p>
-
 <p>One of my own gaps has always been mathematical concepts. I disliked math in school
 (thanks to the American educational system), but have focused a lot of my professional
 reading on books like Lawvere&rsquo;s <em>Conceptual Mathematics</em> and Knuth&rsquo;s <em>Concrete
 Mathematics</em>, to complement more programming-focused books like Sedgwick&rsquo;s <em>Algorithms</em>.</p>
-
 <h2 id="review">Review</h2>
-
 <p>An honest and skilled reviewer is worth their weight in gold. Someone who can take your
 code and review it for <em>semantics,</em> not just formatting, is a tool to take advantage of
 while you can. I&rsquo;ve noticed that many people view code review as a formality.  They will
 cursorily glance over a twenty line PR and throw <code>:lgtm:</code> in a comment, and Bob&rsquo;s your
-uncle.<sup class="footnote-ref" id="fnref:ikiru"><a href="#fn:ikiru">2</a></sup> You <em>want</em> someone who&rsquo;s a bit slow, who rejects more PRs than they
+uncle.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> You <em>want</em> someone who&rsquo;s a bit slow, who rejects more PRs than they
 approve.</p>
-
 <p>The second necessity of code review is open-mindedness, of course. Someone else&rsquo;s
 perspective should be valued, not immediately viewed as an attack. If someone says: &ldquo;I
 think this is hard to read,&rdquo; take them at their word, and ask them questions. <em>Why</em> is
@@ -326,33 +304,31 @@ it hard to read? What do you think would be a better alternative? The discussion
 valuable. Never say &ldquo;I like it the way it is&rdquo; or &ldquo;it&rsquo;s too late to change it now.&rdquo; The
 moment you do that, you&rsquo;ve thrown away the goodwill of the reviewer, because you&rsquo;ve
 wasted their time.</p>
-
-<h2 id="tl-dr">tl;dr</h2>
-
+<h2 id="tldr">tl;dr</h2>
 <p>To boil it down to an aphorism, find something that feels like genuine effort, and do
 it. Don&rsquo;t make excuses, either. It&rsquo;s easy to say that you want to learn, but you&rsquo;re &ldquo;too
 tired this week.&rdquo; Read, do exercises, ask questions. Even when you feel like you&rsquo;ve
 learned a new concept and filled a gap that doesn&rsquo;t mean that you&rsquo;re &ldquo;done.&rdquo; Find the
 next one and fill it!</p>
-
 <blockquote>
 <p>Learning proceeds until death, and only then does it stop. And so, the order of
 learning has a stopping point, but its purpose cannot be given up for even a moment.
-To pursue it is to be human. To give it up is to be a beast. <em>Xunzi.</em><sup class="footnote-ref" id="fnref:xunzi"><a href="#fn:xunzi">3</a></sup></p>
+To pursue it is to be human. To give it up is to be a beast. <em>Xunzi.</em><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
 </blockquote>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:sl">I once worked for a company that was in the process of rewriting its primary application from Microsoft Access to Microsoft Silverlight because the CTO thought that it would &ldquo;be around forever.&rdquo; I didn&rsquo;t stay very long.
- <a class="footnote-return" href="#fnref:sl"><sup>[return]</sup></a></li>
-<li id="fn:ikiru">This always makes me think of <a href="https://www.youtube.com/watch?v=vjEw_kM_82k"><em>Ikiru</em></a>.
- <a class="footnote-return" href="#fnref:ikiru"><sup>[return]</sup></a></li>
-<li id="fn:xunzi">Both quotes are from <em>Xunzi: the Complete Text</em>, translated by Eric L. Hutton.
- <a class="footnote-return" href="#fnref:xunzi"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>I once worked for a company that was in the process of rewriting its primary application from Microsoft Access to Microsoft Silverlight because the CTO thought that it would &ldquo;be around forever.&rdquo; I didn&rsquo;t stay very long. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>This always makes me think of <a href="https://www.youtube.com/watch?v=vjEw_kM_82k"><em>Ikiru</em></a>. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Both quotes are from <em>Xunzi: the Complete Text</em>, translated by Eric L. Hutton. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
     </article>
   </div>

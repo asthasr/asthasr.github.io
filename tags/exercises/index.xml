@@ -20,15 +20,5 @@
       <description>Recursion was a concept that took me a long time to understand. It wasn&amp;rsquo;t until years after I&amp;rsquo;d started programming that I felt I really understood it, and it wasn&amp;rsquo;t until years after that that I felt confident reaching for it as a tool. Like almost everyone, the first way that I learned to think of iteration was with loops. If you wanted to add something together, for example, you would create a &amp;ldquo;bookkeeping&amp;rdquo; variable and modify it inside the loop.</description>
     </item>
     
-    <item>
-      <title>On Symbolic Logic</title>
-      <link>https://asthasr.github.io/posts/on-symbolic-logic/</link>
-      <pubDate>Wed, 20 Nov 2019 14:51:10 +0700</pubDate>
-      
-      <guid>https://asthasr.github.io/posts/on-symbolic-logic/</guid>
-      <description>I went to public school in the United States, and I was always &amp;ldquo;bad at math.&amp;rdquo; I hated homework and tests, and it never got better: as I went through the grades, the problems got longer and more intricate, and I inevitably would make a calculation error&amp;mdash;misplacing a decimal or flubbing an easy sum&amp;mdash;halfway through. I got used to seeing $\color{red}{-\frac{1}{2}}$ on my papers. Those add up!
-In college, the first thing I did when planning my path through general education was look for a way to avoid Calculus.</description>
-    </item>
-    
   </channel>
 </rss>

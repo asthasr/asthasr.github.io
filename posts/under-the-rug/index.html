@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.59.1" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -209,28 +209,23 @@ documentation, you&rsquo;re writing code. When you make a command-line applicati
 <code>docopt</code>, you&rsquo;ve automatically got the help text written and the module documented
 properly, right? Why bother with something verbose and object-oriented like
 <a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>?</p>
-
 <p>My objection is that you aren&rsquo;t writing code, but you&rsquo;re also not writing documentation,
 despite the name of the package.  Instead, you&rsquo;re writing in a <a href="https://en.wikipedia.org/wiki/Domain-specific_language">domain-specific
 language</a> embedded in a string within your application code.  From Python&rsquo;s point of
 view, that string has no structure: it&rsquo;s not &ldquo;code&rdquo; until it&rsquo;s parsed by the <code>docopt</code>
 parser, which is itself six hundred lines of procedural Python.</p>
-
 <p>DSLs can be powerful and well designed:</p>
-
 <ul>
 <li>SQL expresses relational algebra for querying databases.</li>
 <li>XPath allows terse access to XML elements and properties.</li>
 <li>yacc specifies grammars for parsing languages.</li>
 </ul>
-
 <p>The common theme across all of these is that they understand themselves as languages,
 though, and commit to that perspective. SQL is an ISO standard, and
 <a href="https://www.postgresql.org/docs/12/queries-table-expressions.html#QUERIES-FROM">implementation-specific documents</a> usually include formal or nearly-formal
 grammars of their structures. XPath is a <a href="https://www.w3.org/TR/2017/REC-xpath-31-20170321/">W3C standard</a>.  <code>yacc</code> isn&rsquo;t
 standardized, but it&rsquo;s old, popular, and so well-documented that it became an de facto
 standard; the <a href="https://www.gnu.org/software/bison/manual/bison.html">GNU Bison manual</a> is a comprehensive reference.</p>
-
 <p>The structure of these languages is a first-class citizen, designed to meet the needs of
 the domain. By contrast, bad DSLs take a superficial approach, often marked by a design
 that privileges the &ldquo;happy path&rdquo; and can&rsquo;t cope with changes when they become necessary.
@@ -248,16 +243,14 @@ count = arguments[<span style="color:#666;font-style:italic">&#34;--count&#34;</
 <span style="font-weight:bold">if</span> count:
     count = <span style="font-weight:bold;font-style:italic">int</span>(count)
 <span style="font-weight:bold">else</span>:
-    os.exit(<span style="color:#666;font-style:italic">&#34;You must supply a count!&#34;</span>)</code></pre></div>
-<p>These stem from gaps in the design of the language: how do you specify the type of data
+    os.exit(<span style="color:#666;font-style:italic">&#34;You must supply a count!&#34;</span>)
+</code></pre></div><p>These stem from gaps in the design of the language: how do you specify the type of data
 provided to an argument? How do you specify that an argument is required? How do you
 specify a group of arguments are related? How do you specify defaults for positional
 arguments? How can you tell which part of your &ldquo;docstring&rdquo; is causing your arguments to
-parse incorrectly? (The answer to all of these is simply &ldquo;you can&rsquo;t.&rdquo;)</p>
-
+parse incorrectly? (The answer to all of these is simply &ldquo;you can&rsquo;t.&quot;)</p>
 <p>Another example is the <a href="https://cucumber.io/docs/gherkin/">Gherkin</a> language for writing behavioral tests. Its marketing
 pitch is simplicity in expressing tests:</p>
-
 <pre><code>Feature: Guess the word
 
   Scenario: Maker starts a game
@@ -268,14 +261,11 @@ pitch is simplicity in expressing tests:</p>
     Given the Maker has started a game with the word &quot;silky&quot;
     When the Breaker joins the Maker's game
     Then the Breaker must guess a word with 5 characters
-</code></pre>
-
-<p>The language, as defined in the &ldquo;brochure,&rdquo; consists largely of a few keywords:
+</code></pre><p>The language, as defined in the &ldquo;brochure,&rdquo; consists largely of a few keywords:
 <code>Feature</code>, <code>Scenario</code>, <code>Given</code>, <code>When</code>, <code>Then</code>, and <code>Background</code>. In reality, though,
 the code behind real Cucumber features is a regular expression (that matches against the
 &ldquo;English&rdquo; sentence in the feature file) combined with a block of actual application code
 that performs the work. Here&rsquo;s a more realistic example:</p>
-
 <pre><code>Scenario: Simple data from environment
     Given I use a fixture named &quot;environment_plugin&quot;
     Given I set the environment variables exactly to:
@@ -284,15 +274,12 @@ that performs the work. Here&rsquo;s a more realistic example:</p>
     When I successfully run `tiller -b . -v -n`
     Then a file named &quot;test.txt&quot; should exist
     And the file &quot;test.txt&quot; should contain &quot;Hello, World!&quot;
-</code></pre>
-
-<p>Can you find the definition of the <code>I use a fixture named</code> function? What about
+</code></pre><p>Can you find the definition of the <code>I use a fixture named</code> function? What about
 <code>I set the environment variables exactly to</code>? <code>I successfully run</code>? How are file
 existence and contents comparison being handled? Make no mistake: these &ldquo;step
 definitions&rdquo; are code (in a bad language) and can fail or behave in surprising ways just
 as any other code can, but with the added twist that their API is inscrutable and
 unsearchable.</p>
-
 <p>A distinct, but related, problem is a language that seems generally simple and effective
 but which is badly defined. INI files are a good example of this type of failure. When a
 new project chooses to use a different format, usually one that requires a third-party
@@ -302,7 +289,6 @@ can&rsquo;t trust what you get across platforms, languages, or versions of INI p
 because the language is so poorly defined that numerous dialects have sprung up. Using
 something like <a href="https://github.com/toml-lang/toml">TOML</a> may seem like an unnecessarily contrarian decision, but it frees
 you from concerns about the lack of structure in a worse format.</p>
-
 <p>There&rsquo;s a reason that Niklaus Wirth entitled his most famous book <em>Algorithms + Data
 Structures = Programs.</em> The structures that your programs use and produce&ndash;implicit or
 explicit&ndash;are an integral part of those programs. They must be able to consistently
