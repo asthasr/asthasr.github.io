@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.68.3" />
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>Rust Needs Metaphors, Part 2: Traits | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+</style>
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rust Needs Metaphors, Part 2: Traits"/>
+<meta name="twitter:description" content="When I began learning Haskell, typeclasses were confusing to me: at first, because I didn&rsquo;t fully understand why they were needed, and later, because I didn&rsquo;t understand the advantages they offered over Java&rsquo;s interfaces. If you&rsquo;re new to Rust but haven&rsquo;t used Haskell before, you&rsquo;ll likely be in the same boat, but moreso; traits are pervasive in the ecosystem.
+At heart, traits are very similar to interfaces in Java or C♯."/>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>Rust Needs Metaphors, Part 2: Traits</h1>
+<p>When I began learning Haskell, typeclasses were confusing to me: at first, because I
+didn&rsquo;t fully understand why they were needed, and later, because I didn&rsquo;t understand
+the advantages they offered over Java&rsquo;s interfaces. If you&rsquo;re new to Rust but haven&rsquo;t
+used Haskell before, you&rsquo;ll likely be in the same boat, but moreso; traits are pervasive
+in the ecosystem.</p>
+<p>At heart, traits <em>are</em> very similar to interfaces in Java or C♯. They describe the
+methods that must be implemented for a type in order to treat it as being bound by the
+contract. For example, if we use the classic example of animals that can make a sound:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Speaker {
+    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt;;
+}
+
+<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Dog</span> {}
+
+<span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Dog {
+    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
+        <span style="font-weight:bold;font-style:italic">Some</span>(<span style="color:#666;font-style:italic">&#34;Woof!&#34;</span>.to_string())
+    }
+}
+
+<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Cat</span> {}
+
+<span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Cat {
+    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
+        <span style="font-weight:bold;font-style:italic">Some</span>(<span style="color:#666;font-style:italic">&#34;Meow!&#34;</span>.to_string())
+    }
+}
+
+<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Fox</span> {}
+
+<span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Fox {
+    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
+        <span style="font-weight:bold;font-style:italic">None</span>
+    }
+}
+</code></pre></div><p>The crucial difference between traits and Java or C♯ interfaces is that the
+implementation of traits is not tied to the declaration of the type. You can implement
+your own trait for a foreign type, or a foreign trait for your own type, modifying a
+type&rsquo;s behavior after the type was originally defined. That brings us to the first rule,
+though: <strong>You can&rsquo;t meddle in foreign affairs.</strong> If you don&rsquo;t control either the trait
+or the type, you can&rsquo;t implement the trait for that type. If you really must, you can
+use the <a href="https://doc.rust-lang.org/stable/rust-by-example/generics/new_types.html">newtype idiom</a> to define an analogous type that is under your control.</p>
+<p>That rule doesn&rsquo;t capture the first trait-related confusion you&rsquo;re likely to hit when
+learning Rust, though. Reading documentation, you&rsquo;ll often find methods that you want to
+use. They aren&rsquo;t mentioned as being special in any way, but they don&rsquo;t show up in your
+autocompletion and won&rsquo;t compile. What gives? Well, <strong>you can&rsquo;t use what you can&rsquo;t
+see.</strong> Functionality in Rust is often implemented using traits to allow later extension,
+but if you don&rsquo;t pull the trait into scope you can&rsquo;t use its methods.</p>
+<p>In some cases, types have almost all of their implementation defined as traits. The best
+example, I think, is the <a href="https://www.rusoto.org/">Rusoto</a> ecosystem of AWS SDKs. It&rsquo;s divided into crates for
+each service, and each service in turn is implemented as a client type and a service
+trait:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">use</span> rusoto_core::Region;
+<span style="font-weight:bold">use</span> rusoto_s3::{S3Client, S3};
+
+<span style="color:#888;font-weight:bold">#[tokio::main]</span>
+async <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+    <span style="font-weight:bold;font-style:italic">let</span> client = S3Client::new(Region::UsEast1);
+    println!(<span style="color:#666;font-style:italic">&#34;{:?}&#34;</span>, client.list_buckets().await)
+}
+</code></pre></div><p>In this example, <code>S3Client</code> is a struct and <code>S3</code> is a trait. Almost all of the API
+functionality (like <code>list_buckets</code> here) is implemented as items on that trait. If you
+don&rsquo;t import <code>S3</code> alongside the concrete type, you can&rsquo;t use them.</p>
+<p>Last, for people coming from Haskell, it&rsquo;s important to realize that <strong>you can&rsquo;t believe
+everything you read.</strong> Rust traits are <em>similar to,</em> but aren&rsquo;t <em>identical to,</em> Haskell
+typeclasses. There are limitations in the Rust type system that mean that you can&rsquo;t
+express certain types of abstraction that you can in Haskell and its children, so be
+careful with carrying idioms over verbatim. (The next step along the road toward more
+complete correspondence is called &ldquo;Generic Associated Types&rdquo; (GATs) in the Rust
+ecosystem, and is the subject of <a href="https://github.com/rust-lang/rfcs/blob/master/text/1598-generic_associated_types.md">RFC #1598</a>.)</p>
+<p>Overall, I think that traits add an important piece of abstraction to a language,
+without too much additional complexity. If you&rsquo;re want a deeper dive, you might find the
+talk <a href="https://www.youtube.com/watch?v=grU-4u0Okto">&ldquo;Traits and You: A Deep Dive&rdquo;</a> helpful. If you&rsquo;re interested in the concept&rsquo;s
+origins, you may like the talk <a href="https://www.youtube.com/watch?v=6COvD8oynmI">&ldquo;Adventure with Types in Haskell&rdquo;</a> by Simon
+Peyton-Jones and the <a href="https://people.csail.mit.edu/dnj/teaching/6898/papers/wadler88.pdf">original paper</a> by Philip Wadler.</p>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>
