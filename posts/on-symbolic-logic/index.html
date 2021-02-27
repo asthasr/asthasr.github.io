@@ -226,16 +226,42 @@ premises she asserts:</p>
 </ol>
 <p>Even informal essays and opinion pieces follow very similar thesis/argument/conclusion
 structures.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> This structure can be expressed formally:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<!-- One day, there will be a competently designed markup language that can express
+     tables better than raw HTML. This is not that day. -->
+<table style="margin-bottom: 1em;">
+    <tr>
+        <td style="padding-right: 2em;">Socrates ($S$) is a member of set $M$, "Men";</td>
+        <td>$S \in M$</td>
+    </tr>
+    <tr>
+        <td style="padding-right: 2em;">All members $m$ of set $M$ are members of set $D$, "mortals";</td>
+        <td>$\forall m \in M \Rightarrow m \in D$</td>
+    </tr>
+    <tr>
+        <td style="padding-right: 2em;">Therefore, $S$ is a member of set $D$.</td>
+        <td>$\therefore S \in D$</td>
+    </tr>
+</table>
 <p>This symbolic representation, along with closely related concepts like set theory,
 allows us to express relationships between premises and conclusions without some of the
 baggage of a particular natural language. For example, take &ldquo;and&rdquo; and &ldquo;but.&rdquo; These
 English words are linguistically different, but are both represented in symbols by a
 single concept: logical conjunction ($\land$ or $\&amp;$). This avoids the contradiction
 implied by &ldquo;but.&rdquo; Other constructs can be represented as well:</p>
-<!-- raw HTML omitted -->
+<table style="margin-bottom: 1em;">
+    <tr>
+        <td style="padding-right: 2em;">Neither $A$ nor $B$.</td>
+        <td>$\lnot (A \lor B)$</td>
+    </tr>
+    <tr>
+        <td style="padding-right: 2em;">Either $A$ or $B$, but not both.</td>
+        <td>$A \oplus B$</td>
+    </tr>
+    <tr>
+        <td style="padding-right: 2em;">Both $A$ and $B$, or neither.</td>
+        <td>$\lnot (A \oplus B)$</td>
+    </tr>
+</table>
 <p>By now, even if you haven&rsquo;t learned symbolic logic before, you are probably starting to
 think this feels a little familiar. Haven&rsquo;t we seen them somewhere before?</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">neither = <span style="font-weight:bold">not</span> (a <span style="font-weight:bold">or</span> b)
@@ -250,48 +276,62 @@ tables.</p>
 <p>A truth table, universally despised by beginning students of logic, is a table that
 you build to understand the &ldquo;output&rdquo; of a statement. For example, the truth table for a
 simple statement like $A \land B$, or &ldquo;$A$ and $B$,&rdquo; would look like this:</p>
-<!-- raw HTML omitted -->
-<pre><code>&lt;tr&gt;
-    &lt;td&gt;T&lt;/td&gt;
-    &lt;td&gt;T&lt;/td&gt;
-    &lt;td rowspan=5 style=&quot;border-left: 1px solid #ccc&quot;&gt;
-    &lt;td&gt;T&lt;/td&gt;
-    &lt;td rowspan=5 style=&quot;border-left: 1px solid #ccc&quot;&gt;
-    &lt;td&gt;T&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;/tr&gt;
-</code></pre>
-<!-- raw HTML omitted -->
+<table style="margin-bottom: 1em; text-align: center;">
+    <tr style="border-bottom: 1px solid #ccc;">
+        <th>$A$</th>
+        <th style="padding-right: 0.5em;">$B$</th>
+        <th style="border-left: 1px solid #ccc; padding-right: 0.5em;"></th>
+        <th style="padding-right: 0.5em;">$A \land B$</th>
+        <th style="border-left: 1px solid #ccc; padding-right: 0.5em;"></th>
+        <th>$\therefore$</th>
+    </tr>
+    <tr>
+        <td>T</td>
+        <td>T</td>
+        <td rowspan=5 style="border-left: 1px solid #ccc">
+        <td>T</td>
+        <td rowspan=5 style="border-left: 1px solid #ccc">
+        <td>T</td>
+    </tr>
+    <tr><td>T</td><td>F</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>T</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+</table>
 <p>In each row, the truth value of each proposition (e.g. $A$) is written. To the right,
 the truth value of each section of the statement is derived from the inputs. Finally,
 the truth value of the overall statement is written at the right, although it&rsquo;s not
 necessary for a statement this simple.</p>
 <p>For a more complex example, consider the statement $(A \land B) \lor C$, which means
 &ldquo;either $C$ is true or both $A$ and $B$ are true.&rdquo;</p>
-<!-- raw HTML omitted -->
-<pre><code>&lt;tr&gt;
-    &lt;td&gt;T&lt;/td&gt;
-    &lt;td&gt;T&lt;/td&gt;
-    &lt;td&gt;T&lt;/td&gt;
-    &lt;td rowspan=8 style=&quot;border-left: 1px solid #ccc&quot;&gt;&lt;/td&gt;
-    &lt;td&gt;T&lt;/td&gt;
-    &lt;td&gt;T&lt;/td&gt;
-    &lt;td rowspan=8 style=&quot;border-left: 1px solid #ccc&quot;&gt;&lt;/td&gt;
-    &lt;td&gt;T&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;td&gt;T&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;F&lt;/td&gt;&lt;/tr&gt;
-</code></pre>
-<!-- raw HTML omitted -->
+<table style="margin-bottom: 1em; text-align: center;">
+    <tr style="border-bottom: 1px solid #ccc;">
+        <th>$A$</th>
+        <th>$B$</th>
+        <th style="padding-right: 0.5em;">$C$</th>
+        <th style="border-left: 1px solid #ccc; padding-right: 0.5em;"></th>
+        <th>$A \land B$</th>
+        <th style="padding-right: 0.5em;">$\space\ldots \lor C$</th>
+        <th style="border-left: 1px solid #ccc; padding-right: 0.5em;"></th>
+        <th>$\therefore$</th>
+    </tr>
+    <tr>
+        <td>T</td>
+        <td>T</td>
+        <td>T</td>
+        <td rowspan=8 style="border-left: 1px solid #ccc"></td>
+        <td>T</td>
+        <td>T</td>
+        <td rowspan=8 style="border-left: 1px solid #ccc"></td>
+        <td>T</td>
+    </tr>
+    <tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+    <tr><td>T</td><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+    <tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+    <tr><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+    <tr><td>F</td><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+    <tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+</table>
 <p>I once argued with a colleague for over an hour because he had written a feature with
 contradictory conditionals, something equivalent to $A \land \lnot A$.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">feature</span>(a, b):
@@ -357,7 +397,7 @@ appendix here with some exercises.</p>
 <li>Use the built-in <code>operator</code> module in Python and generate truth tables for all of the
 basic logical operations.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
 <li>$\star$ The <code>truth_table</code> function can generate an overall truth table for a given
-function of <!-- raw HTML omitted --><code>[bool...] -&gt; bool</code><!-- raw HTML omitted -->, but it does not give separate columns
+function of <nobr><code>[bool...] -&gt; bool</code></nobr>, but it does not give separate columns
 for all of the &ldquo;substatements,&rdquo; as illustrated in the manually-built truth table
 above.  Implement an alternative that can. (It doesn&rsquo;t need to accept arbitrary
 functions, though.)</li>
