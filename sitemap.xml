@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://asthasr.github.io/posts/abstraction-is-okay/</loc>
-    <lastmod>2021-02-26T20:47:38-05:00</lastmod>
+    <loc>https://asthasr.github.io/</loc>
+    <lastmod>2021-03-06T10:49:00-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://asthasr.github.io/</loc>
-    <lastmod>2021-02-26T20:47:38-05:00</lastmod>
+    <loc>https://asthasr.github.io/posts/how-blockchains-work/</loc>
+    <lastmod>2021-03-06T10:49:00-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://asthasr.github.io/posts/</loc>
+    <lastmod>2021-03-06T10:49:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/posts/abstraction-is-okay/</loc>
     <lastmod>2021-02-26T20:47:38-05:00</lastmod>
   </url>
   

@@ -6,10 +6,21 @@
     <description>Recent content in Posts on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Feb 2021 20:47:38 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 06 Mar 2021 10:49:00 -0500</lastBuildDate>
     
 	<atom:link href="https://asthasr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How Blockchains Work</title>
+      <link>https://asthasr.github.io/posts/how-blockchains-work/</link>
+      <pubDate>Sat, 06 Mar 2021 10:49:00 -0500</pubDate>
+      
+      <guid>https://asthasr.github.io/posts/how-blockchains-work/</guid>
+      <description>Chances are, you know what Bitcoin is. After all, it&amp;rsquo;s valued at over $47,000 per Bitcoin right now. This post isn&amp;rsquo;t about the business side of things, though, or the BTC speculative bubble. I want to explain how it works.1
+Foundations: Hashes and Ledgers First, a hash algorithm is a way to convert a given string into an unpredictable string of a fixed length, called a digest.
+Here&amp;rsquo;s a small Python program to demonstrate:</description>
+    </item>
     
     <item>
       <title>Abstraction is Okay, Magic is Not</title>
