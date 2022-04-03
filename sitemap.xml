@@ -3,22 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://asthasr.github.io/posts/parsing-in-python/</loc>
-    <lastmod>2019-11-10T14:02:05+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/tags/concepts/</loc>
-    <lastmod>2019-11-10T14:02:05+07:00</lastmod>
+    <loc>https://asthasr.github.io/categories/</loc>
+    <lastmod>2019-11-16T09:05:35+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://asthasr.github.io/</loc>
-    <lastmod>2019-11-10T14:02:05+07:00</lastmod>
+    <lastmod>2019-11-16T09:05:35+07:00</lastmod>
   </url>
   
   <url>
     <loc>https://asthasr.github.io/posts/</loc>
+    <lastmod>2019-11-16T09:05:35+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/categories/programming/</loc>
+    <lastmod>2019-11-16T09:05:35+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/tags/simplicity/</loc>
+    <lastmod>2019-11-16T09:05:35+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/tags/</loc>
+    <lastmod>2019-11-16T09:05:35+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/posts/danger-of-simplicity/</loc>
+    <lastmod>2019-11-16T09:05:35+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/tags/trust/</loc>
+    <lastmod>2019-11-16T09:05:35+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/posts/parsing-in-python/</loc>
     <lastmod>2019-11-10T14:02:05+07:00</lastmod>
   </url>
   
@@ -29,11 +54,6 @@
   
   <url>
     <loc>https://asthasr.github.io/tags/python/</loc>
-    <lastmod>2019-11-10T14:02:05+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/tags/</loc>
     <lastmod>2019-11-10T14:02:05+07:00</lastmod>
   </url>
   
