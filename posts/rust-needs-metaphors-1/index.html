@@ -220,9 +220,9 @@ concrete and practical terms, hopefully helping more people enjoy the language.<
 <h1 id="understanding-the-impact-of-lifetimes">Understanding the Impact of Lifetimes</h1>
 <p>The obvious initial learning burden, the first thing you hit, is the &ldquo;lifetime&rdquo; problem.
 It&rsquo;s Rust&rsquo;s novelty, of course, the ticket to memory safety without garbage collection.
-It&rsquo;s also what Rust is complains about most when you first start trying to write it. It
-can feel almost abusive. &ldquo;Temporary value dropped while borrowed, <em>you idiot.</em>&rdquo; &ldquo;Closure
-may outlive borrowed value. <em>Can&rsquo;t you do anything right?</em>&rdquo;</p>
+It&rsquo;s also what Rust complains about most when you first start trying to write it. It can
+feel almost abusive. &ldquo;Temporary value dropped while borrowed, <em>you idiot.</em>&rdquo; &ldquo;Closure may
+outlive borrowed value. <em>Can&rsquo;t you do anything right?</em>&rdquo;</p>
 <p>An important switch flipped for me when I realized that these errors are learning
 opportunities. They are illustrating for you places where potential memory errors would
 have occurred in less &ldquo;assertive&rdquo; languages, and often tell you how to correct them
