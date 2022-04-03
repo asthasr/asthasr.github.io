@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+    <link>https://asthasr.github.io/tags/rust/</link>
+    <description>Recent content in rust on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://asthasr.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rust Needs Metaphors, Part 1: Lifetimes</title>
+      <link>https://asthasr.github.io/posts/rust-needs-metaphors-1/</link>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://asthasr.github.io/posts/rust-needs-metaphors-1/</guid>
+      <description>I recently had a conversation with a friend who said: &amp;ldquo;I don&amp;rsquo;t trust most of what I hear about Rust, because it sounds like agitprop from the Rust Evangelism Strike Force, but people like you whom I trust and respect seem to like it. Can you help me understand why?&amp;rdquo;
+I tried to. I said things that make sense, in the abstract: it offers a very powerful type system, it allows me to feel more confident about my code in surprising ways, and so on.</description>
+    </item>
+    
+  </channel>
+</rss>

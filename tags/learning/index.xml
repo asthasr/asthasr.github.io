@@ -17,7 +17,7 @@
       <pubDate>Sat, 14 Dec 2019 15:46:58 +0700</pubDate>
       
       <guid>https://asthasr.github.io/posts/the-m-word/</guid>
-      <description>In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&amp;mdash;&amp;ldquo;Oh, that&amp;rsquo;s what it is!&amp;rdquo;&amp;mdash;you lose the ability to explain it to anybody. &amp;mdash; Doug Crockford.
+      <description>In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&amp;mdash;&amp;ldquo;Oh, that&amp;rsquo;s what it is!&amp;quot;&amp;mdash;you lose the ability to explain it to anybody. &amp;mdash; Doug Crockford.
  I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&amp;rsquo;ve probably used.</description>
     </item>
     

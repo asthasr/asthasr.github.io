@@ -6,7 +6,7 @@
     <description>Recent content in Categories on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Dec 2019 08:27:13 +0700</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://asthasr.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Programming</title>
       <link>https://asthasr.github.io/categories/programming/</link>
-      <pubDate>Sun, 22 Dec 2019 08:27:13 +0700</pubDate>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://asthasr.github.io/categories/programming/</guid>
       <description></description>
