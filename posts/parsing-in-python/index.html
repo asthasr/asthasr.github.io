@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.59.1" />
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>&#34;Parsing&#34; in Python | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+</style>
+
+</head>
+
+
+<body>
+  <div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>&ldquo;Parsing&rdquo; in Python</h1>
+<p>I recently read <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">&ldquo;Parse, Don&rsquo;t Validate&rdquo;
+</a>
+and liked it enough to share it with my coworkers and let it <a href="https://lobste.rs/s/uemphs/parse_don_t_validate">bring me out of
+retirement</a> on
+<a href="https://lobste.rs/">lobste.rs</a>. It captures a concept that I have struggled to
+explain, leading to many cases where I couldn&rsquo;t say why I thought something was
+better beyond a vague &ldquo;It&rsquo;s a matter of taste.&rdquo; That&rsquo;s not very satisfactory as
+a justification when you&rsquo;re trying to explain to someone why they think they
+should rework a piece of code in a review.</p>
+
+<p>Still, as compelling as I find the explanation, it has two practical flaws:
+first, most of us aren&rsquo;t writing Haskell every day. The message is more widely
+applicable than the language. I will offer explanations here with Python syntax
+and tools instead.  Second, dynamically typed languages don&rsquo;t offer static
+typechecking, so encoding facts in types is more limited. As such, I offer this
+rephrasing:</p>
+
+<blockquote>
+<p>Any validation of data should produce an object you can trust without
+further validation.</p>
+</blockquote>
+
+<p>Consider the basic fact of JSON parsing in a typical API project.  Your code
+receives a <code>str</code> object and, in most Python projects I have worked with,
+produces a <code>dict</code> with no further encoding of meaning.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">update_handler</span>(request):
+    body = json.loads(request.body)</code></pre></div>
+<p>This JSON parsing produces a more constrained object than a string. After all,
+JSON at least has some concept of validity and structure, and you <em>know</em> that
+you&rsquo;ve got either Python <code>dict</code> or an exception after this parse. Do you trust
+it, though?</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">update_handler</span>(request):
+    body = json.loads(request.body)
+
+    <span style="font-weight:bold">if</span> new_title := body.get(<span style="color:#666;font-style:italic">&#34;title&#34;</span>) <span style="font-weight:bold">is</span> <span style="font-weight:bold;font-style:italic">None</span>:
+        <span style="font-weight:bold">raise</span> HTTPBadRequest(<span style="color:#666;font-style:italic">&#34;whoopsidoodle&#34;</span>)</code></pre></div>
+<p>No, you don&rsquo;t. Worse, although you&rsquo;ve <em>validated</em> the input here, you haven&rsquo;t
+encoded the meaning in any way. This validation is local: only code that
+directly follows it in the <code>update_handler</code> function can <em>trust</em> that this piece
+of data has been validated. Any other consumer must repeat the same check, and
+it&rsquo;s depressingly common for validations that work perfectly when they&rsquo;re
+initially written to fall through the cracks as further code is added that
+relies on the data. &ldquo;This &lsquo;get item&rsquo; syntax needs to be replaced with a call to
+<code>.get</code>&rdquo; is one of my most frequent code review comments.</p>
+
+<p>So what can you do? One of the first tools to reach for is just the language&rsquo;s
+&ldquo;type definition&rdquo; tools. In Python, that means classes. If you convert external
+input to an internal class, you gain control over the parsing and validation of
+that input, and can choose how to handle cases where data is missing.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">Post</span>:
+    <span style="font-weight:bold">def</span> __init__(<span style="font-weight:bold;font-style:italic">self</span>, body):
+        <span style="font-weight:bold;font-style:italic">self</span>.title = update_body.get(<span style="color:#666;font-style:italic">&#34;title&#34;</span>, <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>)
+        <span style="font-weight:bold;font-style:italic">self</span>.author = ubdate_body.get(<span style="color:#666;font-style:italic">&#34;author&#34;</span>, <span style="color:#666;font-style:italic">&#34;Anonymous&#34;</span>)
+        ...</code></pre></div>
+<p>At least defaults are located in one place. It&rsquo;s not very extensible or
+adaptable, but if you have a <code>Post</code>, then by gosh there&rsquo;s going to be a
+<code>title</code>.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> With the new
+<a href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a> in Python, you
+can even make it a little more concise.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">dataclasses</span> <span style="font-weight:bold">import</span> dataclass
+
+@dataclass
+<span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">Post</span>:
+    title: <span style="font-weight:bold;font-style:italic">str</span> = <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>
+    author: <span style="font-weight:bold;font-style:italic">str</span> = <span style="color:#666;font-style:italic">&#34;Anonymous&#34;</span>
+    ...</code></pre></div>
+<p>The drawback of this type of approach, where you handle default cases in a
+central place, is that you aren&rsquo;t really capturing the meaning of what you
+received as input. For example, here&rsquo;s no distinction, in this code, between
+someone <em>intentionally</em> naming a post &ldquo;Untitled&rdquo; and someone simply forgetting
+to name a post. What if, later, the default needs to change?</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">dataclasses</span> <span style="font-weight:bold">import</span> dataclass
+
+@dataclass
+<span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">Post</span>:
+    title: <span style="font-weight:bold;font-style:italic">str</span> = <span style="font-weight:bold;font-style:italic">None</span>
+    author: <span style="font-weight:bold;font-style:italic">str</span> = <span style="font-weight:bold;font-style:italic">None</span>
+
+    <span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">has_title</span>(<span style="font-weight:bold;font-style:italic">self</span>):
+        <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">self</span>.title <span style="font-weight:bold">is</span> <span style="font-weight:bold">not</span> <span style="font-weight:bold;font-style:italic">None</span>
+
+    ...</code></pre></div>
+<p>Great, now we can determine that a title wasn&rsquo;t <nobr>supplied&mdash;but</nobr> this
+pushes the burden back onto the consumer once again, as discussed in the
+original article:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">update_handler</span>(request):
+    post = Post(**json.loads(request.body))
+    existing_post = request.dbsession.query(PostModel).get(request.params.id)
+
+    <span style="font-weight:bold">if</span> post.has_title():
+        existing_post.title = post.title
+
+    ...</code></pre></div>
+<p>We&rsquo;ve centralized this validation and eliminated the need to use <code>dict.get</code> by
+using a class, but nothing is making that title validation genuinely
+unnecessary. How can we do that? One rule is that &ldquo;smaller&rdquo; data types are
+easier to confidently operate on. Think of booleans versus strings. Thus, if we
+can make the data types we&rsquo;re operating on &ldquo;weaker,&rdquo; we can stop worrying about
+types they can&rsquo;t represent. So let&rsquo;s back up.</p>
+
+<p>What is our update handler trying to accomplish?</p>
+
+<p>It needs to <em>accept valid updates</em> and <em>reject invalid updates</em> for a given
+model. What if we considered the <em>update</em> as our data structure instead?</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">@dataclass
+<span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">FieldUpdate</span>
+    field_name: <span style="font-weight:bold;font-style:italic">str</span>
+    value: Any  <span style="color:#888;font-style:italic"># ``Any`` and ``Union`` are taken from the ``typing`` module.</span>
+    invalid_reason: Union[FieldErrors.Unknown, FieldErrors.Immutable, <span style="font-weight:bold;font-style:italic">None</span>]
+
+<span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">ModelUpdate</span>:
+    <span style="font-weight:bold">def</span> __init__(<span style="font-weight:bold;font-style:italic">self</span>, model_class, request_body):
+        updates = []
+
+        <span style="font-weight:bold">for</span> field, value <span style="font-weight:bold">in</span> request_body.items():
+            <span style="font-weight:bold">if</span> key <span style="font-weight:bold">in</span> model_class.mutable_fields:
+                field_error = <span style="font-weight:bold;font-style:italic">None</span>
+            <span style="font-weight:bold">elif</span> key <span style="font-weight:bold">in</span> model_class.fields:
+                field_error = FieldErrors.Immutable
+            <span style="font-weight:bold">else</span>:
+                field_error = FieldErrors.Unknown
+
+            updates.append(FieldUpdate(field, value, field_error))
+
+        <span style="font-weight:bold;font-style:italic">self</span>.updates = updates
+
+    <span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">apply</span>(<span style="font-weight:bold;font-style:italic">self</span>, model_obj):
+        <span style="font-weight:bold">if</span> <span style="font-weight:bold;font-style:italic">any</span>(u.invalid_reason <span style="font-weight:bold">for</span> u <span style="font-weight:bold">in</span> <span style="font-weight:bold;font-style:italic">self</span>.updates):
+            <span style="font-weight:bold">raise</span> InvalidUpdateError(...)
+
+        <span style="font-weight:bold">for</span> update <span style="font-weight:bold">in</span> <span style="font-weight:bold;font-style:italic">self</span>.updates:
+            <span style="font-weight:bold;font-style:italic">setattr</span>(model_obj, update.field, update.value)</code></pre></div>
+<p>The code is a lot more indirect (the word &ldquo;post&rdquo; doesn&rsquo;t appear anywhere in
+these classes), but calling code becomes more readable, and updates for any
+model that followed a similar pattern would be identical.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">update_handler</span>(request):
+    post = request.dbsession.query(Post).get(request.params.id)
+    ModelUpdate(Post, json.loads(request.body)).apply()</code></pre></div>
+<p>In the real world, of course, validations at the edge of your system are more
+complex. We wouldn&rsquo;t pass in raw JSON input to a class like <code>ModelUpdate</code>.
+Instead, we could use tools like
+<a href="https://marshmallow.readthedocs.io/en/stable/"><code>marshmallow</code></a> and
+<a href="https://pypi.org/project/marshmallow-dataclass/"><code>marshmallow-dataclass</code></a> to
+centralize logic around deserialization.<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup></p>
+
+<p>Boiling it down to a few rules: put validation at the edge of the system.
+Produce a data type that you can trust without further validation. Every
+instance of that data type should be semantically valid, in terms of business
+logic, and no operations on it should produce invalid values.</p>
+
+<p>Last, and most crucially, <em>don&rsquo;t be afraid to create new, more specific data
+types for your specific use cases</em>. It&rsquo;s okay to represent different data, used
+for different purposes, with different data structures, and makes later
+generalization easier!</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><em>Unless someone has overwritten it</em>, the paranoid programmer ponders.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+
+<li id="fn:2"><p>I will cover <code>marshmallow</code> and <code>marshmallow-dataclass</code> in a future post.
+There is also a related project, <code>marshmallow-sqlalchemy</code>, but I don&rsquo;t
+recommend it because I think it conflates concerns.</p>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>
