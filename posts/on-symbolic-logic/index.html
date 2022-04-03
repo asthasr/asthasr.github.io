@@ -382,19 +382,23 @@ operators of symbolic logic means that we can put Python to work for us.</p>
 <span style="color:#888;font-style:italic"># This function accepts a function, `f`, that will be called with the correct number of</span>
 <span style="color:#888;font-style:italic"># arguments and have its resultant truth table generated.</span>
 <span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">truth_table</span>(f):
+    <span style="color:#888;font-style:italic"># Inspect the function argument and find the number of parameters it needs.</span>
     num_args = <span style="font-weight:bold;font-style:italic">len</span>(signature(f).parameters)
+
+    <span style="color:#888;font-style:italic"># Generate a set of 1-8 premise labels (a, b, c...)</span>
     premises = <span style="color:#666;font-style:italic">&#34; &#34;</span>.join(<span style="color:#666;font-style:italic">&#34;abcdefgh&#34;</span>[:num_args])
+
+    <span style="color:#888;font-style:italic"># Create a simple table header, labeled with premises and the function name.</span>
     header = f<span style="color:#666;font-style:italic">&#34;{premises} | {f.__name__}&#34;</span>
     <span style="font-weight:bold">print</span>(header)
     <span style="font-weight:bold">print</span>(<span style="color:#666;font-style:italic">&#34;-&#34;</span> * <span style="font-weight:bold;font-style:italic">len</span>(header))
 
+    <span style="color:#888;font-style:italic"># Generate tuples of boolean values to serve as function arguments, and loop over</span>
+    <span style="color:#888;font-style:italic"># each combination, printing the result of passing them to the function.</span>
     <span style="font-weight:bold">for</span> args <span style="font-weight:bold">in</span> product((<span style="font-weight:bold;font-style:italic">True</span>, <span style="font-weight:bold;font-style:italic">False</span>), repeat=num_args):
-        <span style="font-weight:bold">print</span>(
-            <span style="color:#666;font-style:italic">&#34;{premise_values} | {f_value}&#34;</span>.format(
-                premise_values=<span style="color:#666;font-style:italic">&#34; &#34;</span>.join(<span style="color:#666;font-style:italic">&#34;T&#34;</span> <span style="font-weight:bold">if</span> arg <span style="font-weight:bold">else</span> <span style="color:#666;font-style:italic">&#34;F&#34;</span> <span style="font-weight:bold">for</span> arg <span style="font-weight:bold">in</span> args),
-                f_value=<span style="color:#666;font-style:italic">&#34;T&#34;</span> <span style="font-weight:bold">if</span> f(*args) <span style="font-weight:bold">else</span> <span style="color:#666;font-style:italic">&#34;F&#34;</span>,
-            )
-        )</code></pre></div>
+        premise_values = <span style="color:#666;font-style:italic">&#34; &#34;</span>.join(<span style="color:#666;font-style:italic">&#34;T&#34;</span> <span style="font-weight:bold">if</span> arg <span style="font-weight:bold">else</span> <span style="color:#666;font-style:italic">&#34;F&#34;</span> <span style="font-weight:bold">for</span> arg <span style="font-weight:bold">in</span> args)
+        function_result = <span style="color:#666;font-style:italic">&#34;T&#34;</span> <span style="font-weight:bold">if</span> f(*args) <span style="font-weight:bold">else</span> <span style="color:#666;font-style:italic">&#34;F&#34;</span>
+        <span style="font-weight:bold">print</span>(f<span style="color:#666;font-style:italic">&#34;{premise_values} | {function_result}&#34;</span>)</code></pre></div>
 <p>We can define a function that looks a lot like our more complex example above,
 $(A \land B) \lor C$.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">a_and_b_or_c</span>(a, b, c):
