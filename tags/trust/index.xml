@@ -27,15 +27,14 @@ The problem with these approaches is that &amp;ldquo;simplicity&amp;rdquo; never
       <pubDate>Sun, 10 Nov 2019 14:02:05 +0700</pubDate>
       
       <guid>https://asthasr.github.io/posts/parsing-in-python/</guid>
-      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;&amp;ldquo;Parse, Don&amp;rsquo;t Validate&amp;rdquo;
-&lt;/a&gt;
-and liked it enough to share it with my coworkers and let it &lt;a href=&#34;https://lobste.rs/s/uemphs/parse_don_t_validate&#34;&gt;bring me out of
+      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;&amp;ldquo;Parse, Don&amp;rsquo;t Validate,&amp;rdquo;
+&lt;/a&gt; shared it with my
+coworkers, and let it &lt;a href=&#34;https://lobste.rs/s/uemphs/parse_don_t_validate&#34;&gt;bring me out of
 retirement&lt;/a&gt; on
-&lt;a href=&#34;https://lobste.rs/&#34;&gt;lobste.rs&lt;/a&gt;. It captures a concept that I have struggled to
-explain, leading to many cases where I couldn&amp;rsquo;t say why I thought something was
-better beyond a vague &amp;ldquo;It&amp;rsquo;s a matter of taste.&amp;rdquo; That&amp;rsquo;s not very satisfactory as
-a justification when you&amp;rsquo;re trying to explain to someone why they should rework
-a piece of code in a review.&lt;/p&gt;</description>
+&lt;a href=&#34;https://lobste.rs/&#34;&gt;lobste.rs&lt;/a&gt;. It captures a concept that I&amp;rsquo;ve struggled to explain,
+leading to cases where I couldn&amp;rsquo;t say why I thought something was better beyond a vague
+&amp;ldquo;It&amp;rsquo;s a matter of taste.&amp;rdquo; That&amp;rsquo;s not very satisfactory as a justification when you&amp;rsquo;re
+trying to explain to someone why they should rework a piece of code in a review.&lt;/p&gt;</description>
     </item>
     
   </channel>

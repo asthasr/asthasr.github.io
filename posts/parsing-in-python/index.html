@@ -175,15 +175,14 @@ div.title {
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&#34;Parsing&#34; in Python"/>
-<meta name="twitter:description" content="I recently read &ldquo;Parse, Don&rsquo;t Validate&rdquo;
-
-and liked it enough to share it with my coworkers and let it bring me out of
+<meta name="twitter:description" content="I recently read &ldquo;Parse, Don&rsquo;t Validate,&rdquo;
+ shared it with my
+coworkers, and let it bring me out of
 retirement on
-lobste.rs. It captures a concept that I have struggled to
-explain, leading to many cases where I couldn&rsquo;t say why I thought something was
-better beyond a vague &ldquo;It&rsquo;s a matter of taste.&rdquo; That&rsquo;s not very satisfactory as
-a justification when you&rsquo;re trying to explain to someone why they should rework
-a piece of code in a review."/>
+lobste.rs. It captures a concept that I&rsquo;ve struggled to explain,
+leading to cases where I couldn&rsquo;t say why I thought something was better beyond a vague
+&ldquo;It&rsquo;s a matter of taste.&rdquo; That&rsquo;s not very satisfactory as a justification when you&rsquo;re
+trying to explain to someone why they should rework a piece of code in a review."/>
 
 
   
@@ -220,17 +219,16 @@ a piece of code in a review."/>
   <div class="container">
     <article>
       <h1>&ldquo;Parsing&rdquo; in Python</h1>
-<p>I recently read <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">&ldquo;Parse, Don&rsquo;t Validate&rdquo;
-</a>
-and liked it enough to share it with my coworkers and let it <a href="https://lobste.rs/s/uemphs/parse_don_t_validate">bring me out of
+<p>I recently read <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">&ldquo;Parse, Don&rsquo;t Validate,&rdquo;
+</a> shared it with my
+coworkers, and let it <a href="https://lobste.rs/s/uemphs/parse_don_t_validate">bring me out of
 retirement</a> on
-<a href="https://lobste.rs/">lobste.rs</a>. It captures a concept that I have struggled to
-explain, leading to many cases where I couldn&rsquo;t say why I thought something was
-better beyond a vague &ldquo;It&rsquo;s a matter of taste.&rdquo; That&rsquo;s not very satisfactory as
-a justification when you&rsquo;re trying to explain to someone why they should rework
-a piece of code in a review.</p>
+<a href="https://lobste.rs/">lobste.rs</a>. It captures a concept that I&rsquo;ve struggled to explain,
+leading to cases where I couldn&rsquo;t say why I thought something was better beyond a vague
+&ldquo;It&rsquo;s a matter of taste.&rdquo; That&rsquo;s not very satisfactory as a justification when you&rsquo;re
+trying to explain to someone why they should rework a piece of code in a review.</p>
 <p>Still, as compelling as I find the explanation, it has two practical flaws:
-first, most of us aren&rsquo;t writing Haskell every day. The message is more widely
+first, most of us aren&rsquo;t writing Haskell every day; the message is more widely
 applicable than the language. I will offer explanations here with Python syntax
 and tools instead.  Second, dynamically typed languages don&rsquo;t offer static
 typechecking, so encoding facts in types is more limited. As such, I offer this
@@ -239,28 +237,27 @@ rephrasing:</p>
 <p>Any validation of data should produce an object you can trust without
 repeating that validation.</p>
 </blockquote>
-<p>Consider the basic fact of JSON parsing in a typical API project.  Your code
-receives a <code>str</code> object and, in most Python projects I have worked with,
-produces a <code>dict</code> with no further encoding of meaning.</p>
+<p>Consider the JSON parsing in a typical API project.  Your code receives a <code>str</code>
+object and, in most Python projects I&rsquo;ve worked with, produces a <code>dict</code> with no
+further encoding of meaning.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">update_handler</span>(request):
     body = json.loads(request.body)
-</code></pre></div><p>This JSON parsing produces a more constrained object than a string. After all,
-JSON at least has some concept of validity and structure, and you <em>know</em> that
-you&rsquo;ve got either Python <code>dict</code> or an exception after this parse. Do you trust
-it, though?</p>
+</code></pre></div><p>This produces a more constrained object than a string. After all, JSON at least
+has some concept of validity and structure, and you <em>know</em> that you&rsquo;ve got
+either Python <code>dict</code> or an exception after this parse. Do you trust it, though?</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">update_handler</span>(request):
     body = json.loads(request.body)
 
     <span style="font-weight:bold">if</span> new_title := body.get(<span style="color:#666;font-style:italic">&#34;title&#34;</span>) <span style="font-weight:bold">is</span> <span style="font-weight:bold;font-style:italic">None</span>:
         <span style="font-weight:bold">raise</span> HTTPBadRequest(<span style="color:#666;font-style:italic">&#34;whoopsidoodle&#34;</span>)
 </code></pre></div><p>No, you don&rsquo;t. Worse, although you&rsquo;ve <em>validated</em> the input here, you haven&rsquo;t
-encoded the meaning in any way. This validation is local: only code that
+encoded the meaning in the result. This validation is local: only code that
 directly follows it in the <code>update_handler</code> function can <em>trust</em> that this piece
-of data has been validated. Any other consumer must repeat the same check, and
-it&rsquo;s depressingly common for validations that work perfectly when they&rsquo;re
-initially written to fall through the cracks as further code is added that
-relies on the data. &ldquo;This &lsquo;get item&rsquo; syntax needs to be replaced with a call to
-<code>.get</code>&rdquo; is one of my most frequent code review comments.</p>
+of data has been validated. Other consumers must repeat the same check, and it&rsquo;s
+depressingly common for validations that work perfectly when they&rsquo;re initially
+written to fall through the cracks as more code is written. &ldquo;This &lsquo;get item&rsquo;
+syntax needs to be replaced with a call to <code>.get</code>&rdquo; is one of my most frequent
+code review comments.</p>
 <p>So what can you do? One of the first tools to reach for is just the language&rsquo;s
 &ldquo;type definition&rdquo; tools. In Python, that means classes. If you convert external
 input to an internal class, you gain control over the parsing and validation of
@@ -316,10 +313,13 @@ easier to confidently operate on. Think of booleans versus strings. Thus, if we
 can make the data types we&rsquo;re operating on &ldquo;weaker,&rdquo; we can stop worrying about
 types they can&rsquo;t represent. So let&rsquo;s back up.</p>
 <p>What is our update handler trying to accomplish?</p>
-<p>It needs to <em>accept valid updates</em> and <em>reject invalid updates</em> for a given
-model. What if we considered the <em>update</em> as our data structure instead?</p>
+<ol>
+<li>Accept valid updates for a given model.</li>
+<li>Reject invalid updates for a given model.</li>
+</ol>
+<p>What if we considered the <em>update</em> as our data structure instead?</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">@dataclass
-<span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">FieldUpdate</span>
+<span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">FieldUpdate</span>:
     field_name: <span style="font-weight:bold;font-style:italic">str</span>
     value: Any  <span style="color:#888;font-style:italic"># ``Any`` and ``Union`` are taken from the ``typing`` module.</span>
     invalid_reason: Union[FieldErrors.Unknown, FieldErrors.Immutable, <span style="font-weight:bold;font-style:italic">None</span>]
@@ -340,26 +340,27 @@ model. What if we considered the <em>update</em> as our data structure instead?<
 
         <span style="font-weight:bold">for</span> update <span style="font-weight:bold">in</span> <span style="font-weight:bold;font-style:italic">self</span>.updates:
             <span style="font-weight:bold;font-style:italic">setattr</span>(model_obj, update.field, update.value)
-</code></pre></div><p>The code is a lot more indirect (the word &ldquo;post&rdquo; doesn&rsquo;t appear anywhere in
-these classes), but calling code becomes more readable, and updates for any
-model that followed a similar pattern would be identical.</p>
+</code></pre></div><p>The code is less direct (the word &ldquo;post&rdquo; doesn&rsquo;t appear anywhere in these
+classes), but calling code becomes more readable, and updates for any model that
+followed a similar pattern would be identical.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">update_handler</span>(request):
     post = request.dbsession.query(Post).get(request.params.id)
-    ModelUpdate(Post, json.loads(request.body)).apply()
+    ModelUpdate(Post, json.loads(request.body)).apply(post)
 </code></pre></div><p>In the real world, of course, validations at the edge of your system are more
 complex. We wouldn&rsquo;t pass in raw JSON input to a class like <code>ModelUpdate</code>.
 Instead, we could use tools like
 <a href="https://marshmallow.readthedocs.io/en/stable/"><code>marshmallow</code></a> and
 <a href="https://pypi.org/project/marshmallow-dataclass/"><code>marshmallow-dataclass</code></a> to
 centralize logic around deserialization.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
-<p>Boiling it down to a few rules: put validation at the edge of the system.
-Produce a data type that you can trust without further validation. Every
-instance of that data type should be semantically valid, in terms of business
-logic, and no operations on it should produce invalid values.</p>
-<p>Last, and most crucially, <em>don&rsquo;t be afraid to create new, more specific data
-types for your specific use cases</em>. It&rsquo;s okay to represent different data, used
-for different purposes, with different data structures, and makes later
-generalization easier!</p>
+<p>Boiling it down to a few rules:</p>
+<ol>
+<li>Put validation at the edge of the system.</li>
+<li>Produce a data type that you can trust without further validation.</li>
+<li>Every instance of that data type should be semantically valid, in terms of
+business logic, and no operations on it should produce invalid values.</li>
+<li>Last, <em>don&rsquo;t be afraid to create new, more specific data types for your use
+cases</em>. It makes later generalization easier.</li>
+</ol>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
