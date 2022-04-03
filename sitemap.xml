@@ -3,17 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://asthasr.github.io/</loc>
-    <lastmod>2021-03-06T10:49:00-05:00</lastmod>
+    <loc>https://asthasr.github.io/categories/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://asthasr.github.io/posts/how-blockchains-work/</loc>
-    <lastmod>2021-03-06T10:49:00-05:00</lastmod>
+    <loc>https://asthasr.github.io/tags/concepts/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/tags/exercises/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://asthasr.github.io/posts/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/categories/programming/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/tags/programming/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/tags/rust/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/tags/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/posts/understanding-strategy-pattern/</loc>
+    <lastmod>2022-04-03T08:47:10-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://asthasr.github.io/posts/how-blockchains-work/</loc>
     <lastmod>2021-03-06T10:49:00-05:00</lastmod>
   </url>
   
@@ -23,32 +63,7 @@
   </url>
   
   <url>
-    <loc>https://asthasr.github.io/categories/</loc>
-    <lastmod>2020-10-14T06:29:48-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/categories/programming/</loc>
-    <lastmod>2020-10-14T06:29:48-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/tags/programming/</loc>
-    <lastmod>2020-10-14T06:29:48-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/tags/rust/</loc>
-    <lastmod>2020-10-14T06:29:48-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://asthasr.github.io/posts/rust-needs-metaphors-2/</loc>
-    <lastmod>2020-10-14T06:29:48-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/tags/</loc>
     <lastmod>2020-10-14T06:29:48-04:00</lastmod>
   </url>
   
@@ -60,16 +75,6 @@
   <url>
     <loc>https://asthasr.github.io/posts/under-the-rug/</loc>
     <lastmod>2020-04-23T08:16:06-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/tags/concepts/</loc>
-    <lastmod>2019-12-22T08:27:13+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://asthasr.github.io/tags/exercises/</loc>
-    <lastmod>2019-12-22T08:27:13+07:00</lastmod>
   </url>
   
   <url>
