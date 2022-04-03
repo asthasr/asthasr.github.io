@@ -6,10 +6,19 @@
     <description>Recent content in programming on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Dec 2019 15:46:58 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 08:27:13 +0700</lastBuildDate>
     
 	<atom:link href="https://asthasr.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Loops and Recursion</title>
+      <link>https://asthasr.github.io/posts/loops-and-recursion/</link>
+      <pubDate>Sun, 22 Dec 2019 08:27:13 +0700</pubDate>
+      
+      <guid>https://asthasr.github.io/posts/loops-and-recursion/</guid>
+      <description>Recursion was a concept that took me a long time to understand. It wasn&amp;rsquo;t until years after I&amp;rsquo;d started programming that I felt I really understood it, and it wasn&amp;rsquo;t until years after that that I felt confident reaching for it as a tool. Like almost everyone, the first way that I learned to think of iteration was with loops. If you wanted to add something together, for example, you would create a &amp;ldquo;bookkeeping&amp;rdquo; variable and modify it inside the loop.</description>
+    </item>
     
     <item>
       <title>The M-Word: The Culture of Programming</title>

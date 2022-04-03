@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>concepts on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
-    <link>https://asthasr.github.io/tags/concepts/</link>
-    <description>Recent content in concepts on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
+    <title>exercises on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+    <link>https://asthasr.github.io/tags/exercises/</link>
+    <description>Recent content in exercises on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Dec 2019 08:27:13 +0700</lastBuildDate>
     
-	<atom:link href="https://asthasr.github.io/tags/concepts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://asthasr.github.io/tags/exercises/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
