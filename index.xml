@@ -17,7 +17,7 @@
       <pubDate>Fri, 26 Feb 2021 20:47:38 -0500</pubDate>
       
       <guid>https://asthasr.github.io/posts/abstraction-is-okay/</guid>
-      <description>You could encounter a crusty old-timer who will tell you how great programming was in a past era: the computer just did what you told it. Languages were simple and easy to understand. In awe, you might ask: &amp;ldquo;Did you write FORTRAN? or assembly?&amp;rdquo; The old-timer might laugh: he&amp;rsquo;s not that old. He started with C!
+      <description>You encounter a crusty old-timer who tells you how great programming used to be: the computer just did what you told it. Languages were simple and easy to understand. In awe, you ask: &amp;ldquo;Did you write FORTRAN? or assembly?&amp;rdquo; The old-timer laughs: he&amp;rsquo;s not that old. He started with C!
 It&amp;rsquo;s common to think of C and other &amp;ldquo;old&amp;rdquo; languages as being &amp;ldquo;close to the machine,&amp;rdquo; but that&amp;rsquo;s because the Unix abstractions have become so ubiquitous that we no longer think of them as abstractions.</description>
     </item>
     
