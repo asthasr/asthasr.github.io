@@ -171,6 +171,7 @@ div.title {
     background-color: #294656;
     color: #f8fafc;
 }
+
 </style>
 
   <meta name="twitter:card" content="summary"/>
@@ -188,6 +189,13 @@ div.title {
 
   gtag('config', 'G-ZEELKPFTWV');
   </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </head>
 
 
@@ -236,14 +244,45 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 \end{aligned}
 \end{equation*}</p>
 <p>The following function, implemented in Rust, will perform the steps above and counts the number of steps until the sequence terminates at one:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">count_hailstone_numbers</span>(<span style="font-weight:bold">mut</span> n: <span style="color:#666;font-weight:bold;font-style:italic">u128</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">u128</span> {
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-tivqczpborfgxhduamyjkwnesl" data-toggle="tab" href="#tivqczpborfgxhduamyjkwnesl"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-qprojandstwhbmficexgyvuzkl" data-toggle="tab" href="#qprojandstwhbmficexgyvuzkl"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="tivqczpborfgxhduamyjkwnesl" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">count_hailstone_numbers</span>(<span style="font-weight:bold">mut</span> n: <span style="color:#666;font-weight:bold;font-style:italic">u128</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">u128</span> {
     <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> count = 0;
 
-    <span style="font-weight:bold">loop</span> {
-        <span style="font-weight:bold">if</span> n == 1 {
-            <span style="font-weight:bold">return</span> count;
-        }
-
+    <span style="font-weight:bold">while</span> (n &gt; 1) {
         <span style="font-weight:bold">if</span> n % 2 == 0 {
             n = n / 2
         } <span style="font-weight:bold">else</span> {
@@ -255,14 +294,83 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
     count
 }
-</code></pre></div><p>Its procedural approach is straightforward and, for most programmers, is the first style of code they encounter. It&rsquo;s easy to read, like a flow chart or a recipe. It does have a weakness, though: it isn&rsquo;t very extensible. For example, what if we want to be able to record the hailstone numbers in different ways? Right now we&rsquo;re just counting them. We might instead want to:</p>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="qprojandstwhbmficexgyvuzkl" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold;font-style:italic">function</span> countHailstoneNumbers(n: <span style="font-weight:bold">number</span>): <span style="font-weight:bold">number</span> {
+  <span style="font-weight:bold;font-style:italic">var</span> count = 0;
+
+  <span style="font-weight:bold">while</span> (n &gt; 1) {
+    <span style="font-weight:bold">if</span> (n % 2 === 0) {
+      n = n / 2;
+    } <span style="font-weight:bold">else</span> {
+      n = 3 * n + 1;
+    }
+
+    count = count + 1;
+  }
+
+  <span style="font-weight:bold">return</span> count;
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<p>Its procedural approach is straightforward and, for most programmers, is the first style of code they encounter. It&rsquo;s easy to read, like a flow chart or a recipe. It does have a weakness, though: it isn&rsquo;t very extensible. For example, what if we want to be able to record the hailstone numbers in different ways? Right now we&rsquo;re just counting them. We might instead want to:</p>
 <ul>
 <li>Find the highest number reached in the hailstone sequence,</li>
 <li>record each of the numbers in the sequence,</li>
 <li>&hellip;<em>and</em> count them.</li>
 </ul>
 <p>A first pass at adding this functionality might look like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HailstoneResult</span> {
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-pgdrunsaltezxqywikjbmcovhf" data-toggle="tab" href="#pgdrunsaltezxqywikjbmcovhf"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-bruevgqstwxpzhmfidokalnyjc" data-toggle="tab" href="#bruevgqstwxpzhmfidokalnyjc"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="pgdrunsaltezxqywikjbmcovhf" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HailstoneResult</span> {
     count: <span style="color:#666;font-weight:bold;font-style:italic">u128</span>,
     max: <span style="color:#666;font-weight:bold;font-style:italic">u128</span>,
     numbers: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;u128&gt;,
@@ -282,28 +390,277 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
     HailstoneResult { count, max, numbers }
 }
-</code></pre></div><p>As we add more functionality, we add complexity to the function and its result type. Worse, we can&rsquo;t mix and match. If we were only interested in finding the longest sequence below a billion, for example, we wouldn&rsquo;t want to allocate and discard vectors for each number in turn.</p>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="bruevgqstwxpzhmfidokalnyjc" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">interface</span> HailstoneResult {
+  count: number;
+  max: number;
+  numbers: number[];
+}
+
+<span style="font-weight:bold;font-style:italic">function</span> generateHailstoneNumbers(n: number): HailstoneResult {
+  <span style="font-weight:bold;font-style:italic">var</span> count = 0;
+  <span style="font-weight:bold;font-style:italic">var</span> max = 0;
+  <span style="font-weight:bold;font-style:italic">var</span> numbers = [];
+
+  <span style="font-weight:bold">while</span> (n &gt; 1) {
+    n = n % 2 === 0 ? n / 2 : 3 * n + 1;
+    count++;
+    max = <span style="font-weight:bold;font-style:italic">Math</span>.max(max, n);
+    numbers.push(n);
+  }
+
+  <span style="font-weight:bold">return</span> { count, max, numbers };
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<p>As we add more functionality, we add complexity to the function and its result type. Worse, we can&rsquo;t mix and match. If we were only interested in finding the longest sequence below a billion, for example, we wouldn&rsquo;t want to allocate and discard vectors for each number in turn.</p>
 <h2 id="a-standard-interface">A Standard Interface</h2>
 <p>We first need to define a base type that will govern the interface that we want to use. Let&rsquo;s write the &ldquo;consumer&rdquo; of this interface first so that we can see what we need to do.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record_hailstone_numbers</span>&lt;&#39;a&gt;(recorder: <span style="font-weight:bold">&amp;</span>&#39;a <span style="font-weight:bold">mut</span> <span style="font-weight:bold">impl</span> Record, <span style="font-weight:bold">mut</span> n: <span style="color:#666;font-weight:bold;font-style:italic">u128</span>) {
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-pojxinwadgktqerzuhbvfcslym" data-toggle="tab" href="#pojxinwadgktqerzuhbvfcslym"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-elridnvpuschkwqbgtjmyofzxa" data-toggle="tab" href="#elridnvpuschkwqbgtjmyofzxa"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="pojxinwadgktqerzuhbvfcslym" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-style:italic">// In Rust, we know that we want to mutate the recorder (that is, assign it data), but
+</span><span style="color:#888;font-style:italic">// we don&#39;t want to take ownership of it--it&#39;ll outlive this function. Thus, it will
+</span><span style="color:#888;font-style:italic">// be a mutable (mut) reference (&amp;) to an implementor of our Record trait (impl Record).
+</span><span style="color:#888;font-style:italic"></span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record_hailstone_numbers</span>(recorder: <span style="font-weight:bold">&amp;</span><span style="color:#666;font-weight:bold;font-style:italic">mut</span> <span style="font-weight:bold">impl</span> Record, <span style="font-weight:bold">mut</span> n: <span style="color:#666;font-weight:bold;font-style:italic">u128</span>) {
     <span style="font-weight:bold">while</span> n &gt; 1 {
         n = <span style="font-weight:bold">if</span> n % 2 == 0 { n / 2 } <span style="font-weight:bold">else</span> { 3 * n + 1 };
         recorder.record(&amp;n);
     }
 }
-</code></pre></div><p>That seems straightforward enough: it accepts a mutable reference to a recorder and sends it each hailstone number. This version of the function doesn&rsquo;t have a return value, although it could&mdash;it&rsquo;s independent of the <code>recorder</code>.</p>
-<p>Let&rsquo;s define a trait that can provide this interface..</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Record {
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="elridnvpuschkwqbgtjmyofzxa" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold;font-style:italic">function</span> recordHailstoneNumbers(recorder: <span style="font-weight:bold">Recorder</span>, n: <span style="font-weight:bold">number</span>) {
+  <span style="font-weight:bold">while</span> (n &gt; 1) {
+    n = n % 2 === 0 ? n / 2 : <span style="font-weight:bold">3</span> * n + 1;
+    recorder.record(n);
+  }
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<p>That seems straightforward enough: it accepts a recorder and sends it each hailstone number. This version of the function doesn&rsquo;t have a return value, although it could&mdash;it&rsquo;s independent of the <code>recorder</code>.</p>
+<p>Let&rsquo;s define a trait that can provide this interface.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-lyfqwrguzetjihbakcndpvxmos" data-toggle="tab" href="#lyfqwrguzetjihbakcndpvxmos"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-ckrhnugxldzpsevqwfmtbaojiy" data-toggle="tab" href="#ckrhnugxldzpsevqwfmtbaojiy"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="lyfqwrguzetjihbakcndpvxmos" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Record {
     <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="color:#666;font-weight:bold;font-style:italic">u128</span>);
 }
-</code></pre></div><p>Next, we&rsquo;ll need a way to get data out of each strategy. Depending on which strategy we&rsquo;re using, the data that we receive will vary, so this will need to be generic. Keeping it separate from the <code>Record</code> trait allows us to avoid making <code>record_hailstone_numbers</code> generic as well.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Report&lt;T&gt; {
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+<div class="tab-pane fade show " id="ckrhnugxldzpsevqwfmtbaojiy" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">interface</span> Recorder {
+  record(n: <span style="font-weight:bold">number</span>): <span style="font-weight:bold">void</span>;
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<p>Next, we&rsquo;ll need a way to get data out of each strategy. Depending on which strategy we&rsquo;re using, the data that we receive will vary, so this will need to be generic. Keeping it separate from the <code>Record</code> trait allows us to avoid making <code>record_hailstone_numbers</code> generic as well.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-lmrbiehjgoxvkzytqcuwpfnsad" data-toggle="tab" href="#lmrbiehjgoxvkzytqcuwpfnsad"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-irxmhtnlkfojqzadcywsbvegup" data-toggle="tab" href="#irxmhtnlkfojqzadcywsbvegup"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="lmrbiehjgoxvkzytqcuwpfnsad" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Report&lt;T&gt; {
     <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">T</span>;
 }
-</code></pre></div><h2 id="implementing-the-strategies">Implementing the Strategies</h2>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+<div class="tab-pane fade show " id="irxmhtnlkfojqzadcywsbvegup" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">interface</span> Reporter&lt;T&gt; {
+  report(): T;
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<h2 id="implementing-the-strategies">Implementing the Strategies</h2>
 <h3 id="counting">Counting</h3>
 <p>We&rsquo;ll implement the counting functionality using our new trait first. Notice that the argument to <code>record</code> is unused&mdash;we&rsquo;re really just recording the call to <code>HsCounter::record</code> for this strategy.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-fucjqyhodmkeixtgzvwblpasrn" data-toggle="tab" href="#fucjqyhodmkeixtgzvwblpasrn"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-hgjcbqtnuedzimoavpxwlkfrsy" data-toggle="tab" href="#hgjcbqtnuedzimoavpxwlkfrsy"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="fucjqyhodmkeixtgzvwblpasrn" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
 <span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsCounter</span> {
     state: <span style="color:#666;font-weight:bold;font-style:italic">u128</span>,
 }
@@ -319,9 +676,78 @@ C(2) &amp; = 2 \div 2       &amp; = 1
         <span style="font-weight:bold;font-style:italic">self</span>.state
     }
 }
-</code></pre></div><h3 id="collecting">Collecting</h3>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="hgjcbqtnuedzimoavpxwlkfrsy" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">class</span> HsCounter <span style="font-weight:bold">implements</span> Recorder, Reporter&lt;<span style="font-weight:bold">number</span>&gt; {
+  state: <span style="font-weight:bold">number</span>;
+
+  <span style="font-weight:bold">constructor</span>() {
+    <span style="font-weight:bold">this</span>.state = 0;
+  }
+
+  record(_: <span style="font-weight:bold">number</span>) {
+    <span style="font-weight:bold">this</span>.state++;
+  }
+
+  report(): <span style="font-weight:bold">number</span> {
+    <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.state;
+  }
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<h3 id="collecting">Collecting</h3>
 <p>Next, the &ldquo;List&rdquo; recorder will collect all of the hailstone numbers generated as part of the sequence.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-efpdxutqijgbszrhkywlmnoacv" data-toggle="tab" href="#efpdxutqijgbszrhkywlmnoacv"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-yuktbqoglinrzmhajpsxdvfecw" data-toggle="tab" href="#yuktbqoglinrzmhajpsxdvfecw"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="efpdxutqijgbszrhkywlmnoacv" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
 <span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsList</span> {
     state: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;u128&gt;,
 }
@@ -337,9 +763,78 @@ C(2) &amp; = 2 \div 2       &amp; = 1
         <span style="font-weight:bold;font-style:italic">self</span>.state.clone()
     }
 }
-</code></pre></div><h3 id="finding-the-maximum">Finding the Maximum</h3>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="yuktbqoglinrzmhajpsxdvfecw" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">class</span> HsList <span style="font-weight:bold">implements</span> Recorder, Reporter&lt;<span style="font-weight:bold">number</span>[]&gt; {
+  state: <span style="font-weight:bold">number</span>[];
+
+  <span style="font-weight:bold">constructor</span>() {
+    <span style="font-weight:bold">this</span>.state = [];
+  }
+
+  record(n: <span style="font-weight:bold">number</span>) {
+    <span style="font-weight:bold">this</span>.state.push(n);
+  }
+
+  report(): <span style="font-weight:bold">number</span>[] {
+    <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.state;
+  }
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<h3 id="finding-the-maximum">Finding the Maximum</h3>
 <p>Last, we&rsquo;ll keep track of the highest number generated as part of the hailstone sequence. Note that the starting value might be the largest, so we need to add a constructor for this strategy that accepts the starting value as a &ldquo;seed.&rdquo;</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-uintkofvhzmegqxlcjbaswdpyr" data-toggle="tab" href="#uintkofvhzmegqxlcjbaswdpyr"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-lvrhbjmifnqwexskctgzodyuap" data-toggle="tab" href="#lvrhbjmifnqwexskctgzodyuap"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="uintkofvhzmegqxlcjbaswdpyr" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
 <span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsMax</span> {
     state: <span style="color:#666;font-weight:bold;font-style:italic">u128</span>,
 }
@@ -361,9 +856,78 @@ C(2) &amp; = 2 \div 2       &amp; = 1
         <span style="font-weight:bold;font-style:italic">self</span>.state
     }
 }
-</code></pre></div><h2 id="using-the-strategies">Using the Strategies</h2>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="lvrhbjmifnqwexskctgzodyuap" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">class</span> HsMax <span style="font-weight:bold">implements</span> Recorder, Reporter&lt;<span style="font-weight:bold">number</span>&gt; {
+  state: <span style="font-weight:bold">number</span>;
+
+  <span style="font-weight:bold">constructor</span>(init: <span style="font-weight:bold">number</span> = 0) {
+    <span style="font-weight:bold">this</span>.state = init;
+  }
+
+  record(n: <span style="font-weight:bold">number</span>) {
+    <span style="font-weight:bold">this</span>.state = <span style="font-weight:bold;font-style:italic">Math</span>.max(<span style="font-weight:bold">this</span>.state, n);
+  }
+
+  report(): <span style="font-weight:bold">number</span> {
+    <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.state;
+  }
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<h2 id="using-the-strategies">Using the Strategies</h2>
 <p>We can then use our new recorders by passing them to <code>record_hailstone_numbers</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() -&gt; <span style="color:#666;font-weight:bold;font-style:italic">result</span>::<span style="font-weight:bold;font-style:italic">Result</span>&lt;(), <span style="font-weight:bold;font-style:italic">Box</span>&lt;dyn error::Error&gt;&gt; {
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-toxzaybrjeniqdfvkgwhpmucsl" data-toggle="tab" href="#toxzaybrjeniqdfvkgwhpmucsl"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-oakrcnmvupgsjfzwilbdyqtexh" data-toggle="tab" href="#oakrcnmvupgsjfzwilbdyqtexh"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="toxzaybrjeniqdfvkgwhpmucsl" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() -&gt; <span style="color:#666;font-weight:bold;font-style:italic">result</span>::<span style="font-weight:bold;font-style:italic">Result</span>&lt;(), <span style="font-weight:bold;font-style:italic">Box</span>&lt;dyn error::Error&gt;&gt; {
     <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> counter = HsCounter::default();
     <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> max = HsMax::default();
     <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> list = HsList::default();
@@ -381,22 +945,156 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
     <span style="font-weight:bold;font-style:italic">Ok</span>(())
 }
-</code></pre></div><p>The output is:</p>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="oakrcnmvupgsjfzwilbdyqtexh" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold;font-style:italic">function</span> main() {
+  <span style="font-weight:bold;font-style:italic">let</span> counter = <span style="font-weight:bold">new</span> HsCounter();
+  <span style="font-weight:bold;font-style:italic">let</span> max = <span style="font-weight:bold">new</span> HsMax();
+  <span style="font-weight:bold;font-style:italic">let</span> list = <span style="font-weight:bold">new</span> HsList();
+
+  recordHailstoneNumbers(counter, 5);
+  recordHailstoneNumbers(max, 5);
+  recordHailstoneNumbers(list, 5);
+
+  console.log(
+    <span style="color:#666;font-style:italic">`counter: </span><span style="color:#666;font-style:italic">${</span>counter.report()<span style="color:#666;font-style:italic">}</span><span style="">\</span><span style="color:#666;font-style:italic">nmax: </span><span style="color:#666;font-style:italic">${</span>max.report()<span style="color:#666;font-style:italic">}</span><span style="">\</span><span style="color:#666;font-style:italic">nlist: </span><span style="color:#666;font-style:italic">${</span>list.report()<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">`</span>
+  );
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<p>The output is:</p>
 <pre><code>counter: 5
 max: 16
 list: [16, 8, 4, 2, 1]
 </code></pre><h2 id="efficiency-concerns">Efficiency Concerns</h2>
 <p>There&rsquo;s a serious flaw in this approach compared to the procedural example, though: for each strategy we want to use, we&rsquo;re calling <code>record_hailstone_numbers</code> again. That&rsquo;s not a catastrophe here, but if the function called an external service, stored data in the database, or required heavier computation, there would be a serious performance penalty each time we added a strategy. As long as we maintain our <code>Record</code> interface, though, we can create a strategy that composes several others.</p>
 <p>We can&rsquo;t implement the <code>Report&lt;T&gt;</code> trait here, because the entries in the vector could have different <code>T</code> parameters. <code>main</code> will still need to own the strategies and call <code>report()</code> on each individually.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">impl</span>&lt;&#39;a&gt; Record <span style="font-weight:bold">for</span> <span style="font-weight:bold;font-style:italic">Vec</span>&lt;&amp;&#39;a <span style="font-weight:bold">mut</span> dyn Record&gt; {
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-zwnugyrqsvxkodbmalpihtjfec" data-toggle="tab" href="#zwnugyrqsvxkodbmalpihtjfec"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-fbyapwhctvzrxkjledgnsoiumq" data-toggle="tab" href="#fbyapwhctvzrxkjledgnsoiumq"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="zwnugyrqsvxkodbmalpihtjfec" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> <span style="font-weight:bold;font-style:italic">Vec</span>&lt;&amp;<span style="font-weight:bold">mut</span> dyn Record&gt; {
     <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="color:#666;font-weight:bold;font-style:italic">u128</span>) {
         <span style="font-weight:bold">for</span> record <span style="font-weight:bold">in</span> <span style="font-weight:bold;font-style:italic">self</span> {
             record.record(n)
         }
     }
 }
-</code></pre></div><p>Even though <code>Vec&lt;T&gt;</code> is a foreign type&mdash;that is, it&rsquo;s defined in the standard library instead of our program&mdash;this <code>impl</code> means that we can build a list of references to our recorders, then pass it to <code>record_hailstone_numbers</code> once.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() -&gt; <span style="color:#666;font-weight:bold;font-style:italic">result</span>::<span style="font-weight:bold;font-style:italic">Result</span>&lt;(), <span style="font-weight:bold;font-style:italic">Box</span>&lt;dyn error::Error&gt;&gt; {
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="fbyapwhctvzrxkjledgnsoiumq" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#888;font-style:italic">// TypeScript doesn&#39;t offer a way to implement an interface on a foreign type (e.g.
+</span><span style="color:#888;font-style:italic">// Recorder[]) equivalent to Rust&#39;s, so we instead define a new wrapper class.
+</span><span style="color:#888;font-style:italic"></span><span style="font-weight:bold">class</span> HsComposedRecorder <span style="font-weight:bold">implements</span> Recorder {
+  state: <span style="font-weight:bold">Recorder</span>[];
+
+  <span style="font-weight:bold">constructor</span>(...recorders: <span style="font-weight:bold">Recorder</span>[]) {
+    <span style="font-weight:bold">this</span>.state = recorders;
+  }
+
+  record(n: <span style="font-weight:bold">number</span>) {
+    <span style="font-weight:bold">this</span>.state.forEach((r) =&gt; r.record(n));
+  }
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<p>Even though <code>Vec&lt;T&gt;</code> is a foreign type&mdash;that is, it&rsquo;s defined in the standard library instead of our program&mdash;this <code>impl</code> means that we can build a list of references to our recorders, then pass it to <code>record_hailstone_numbers</code> once.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-ylhiqunakgpewxmsbvdzcjortf" data-toggle="tab" href="#ylhiqunakgpewxmsbvdzcjortf"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-orefmjcqgawhsvbxlytdnzukip" data-toggle="tab" href="#orefmjcqgawhsvbxlytdnzukip"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="ylhiqunakgpewxmsbvdzcjortf" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() -&gt; <span style="color:#666;font-weight:bold;font-style:italic">result</span>::<span style="font-weight:bold;font-style:italic">Result</span>&lt;(), <span style="font-weight:bold;font-style:italic">Box</span>&lt;dyn error::Error&gt;&gt; {
     <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> counter = HsCounter::default();
     <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> max = HsMax::default();
     <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> list = HsList::default();
@@ -410,9 +1108,75 @@ list: [16, 8, 4, 2, 1]
         max.report(),
         list.report()
     );
-</code></pre></div><h2 id="side-effects">Side Effects</h2>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="orefmjcqgawhsvbxlytdnzukip" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold;font-style:italic">function</span> main() {
+  <span style="font-weight:bold;font-style:italic">let</span> counter = <span style="font-weight:bold">new</span> HsCounter();
+  <span style="font-weight:bold;font-style:italic">let</span> max = <span style="font-weight:bold">new</span> HsMax();
+  <span style="font-weight:bold;font-style:italic">let</span> list = <span style="font-weight:bold">new</span> HsList();
+
+  <span style="font-weight:bold;font-style:italic">let</span> recorders = <span style="font-weight:bold">new</span> HsComposedRecorder(counter, max, list);
+  recordHailstoneNumbers(recorders, 5);
+
+  console.log(
+    <span style="color:#666;font-style:italic">`counter: </span><span style="color:#666;font-style:italic">${</span>counter.report()<span style="color:#666;font-style:italic">}</span><span style="">\</span><span style="color:#666;font-style:italic">nmax: </span><span style="color:#666;font-style:italic">${</span>max.report()<span style="color:#666;font-style:italic">}</span><span style="">\</span><span style="color:#666;font-style:italic">nlist: </span><span style="color:#666;font-style:italic">${</span>list.report()<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">`</span>
+  );
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<h2 id="side-effects">Side Effects</h2>
 <p>All of these strategy implementations have one thing in common: they&rsquo;re all self-contained. The strategy pattern can also be used for side effects, like writing to a log stream or retrieving data from the database. In our case, let&rsquo;s display a &ldquo;progress bar&rdquo; as we generate hailstone numbers. This strategy doesn&rsquo;t require us to implement the <code>Report</code> trait, either.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-grmtjiluoskpzcwafhxqbneydv" data-toggle="tab" href="#grmtjiluoskpzcwafhxqbneydv"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-uhvtmacprynzeqlxkgsbjfwdoi" data-toggle="tab" href="#uhvtmacprynzeqlxkgsbjfwdoi"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="grmtjiluoskpzcwafhxqbneydv" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
 <span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsProgressBar</span> {}
 
 <span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsProgressBar {
@@ -426,9 +1190,69 @@ list: [16, 8, 4, 2, 1]
         }
     }
 }
-</code></pre></div><h2 id="testing">Testing</h2>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="uhvtmacprynzeqlxkgsbjfwdoi" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">class</span> HsProgressBar <span style="font-weight:bold">implements</span> Recorder {
+  record(n: <span style="font-weight:bold">number</span>) {
+    <span style="font-weight:bold;font-style:italic">let</span> dot = n === 1 ? <span style="color:#666;font-style:italic">&#34;.\n&#34;</span> : <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
+    process.stdout.write(dot);
+  }
+}
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<h2 id="testing">Testing</h2>
 <p>Don&rsquo;t overlook the usefulness of the strategy pattern for testing! In a real application, you might want to vary the data source that a method is using, or mock responses from an external service. In our case, we&rsquo;re modeling a well-known mathematical problem; shouldn&rsquo;t we be able to check our implementation against expected sequences?</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[cfg(test)]</span>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link  active "
+		   id="nav-uyinpcvhbmtfxseqjakrgozdlw" data-toggle="tab" href="#uyinpcvhbmtfxseqjakrgozdlw"
+		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
+
+		
+
+		<a class="nav-item nav-link "
+		   id="nav-duztaqvneikxplcfsgbwhoyjrm" data-toggle="tab" href="#duztaqvneikxplcfsgbwhoyjrm"
+		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	
+
+
+
+
+
+<div class="tab-pane fade show active " id="uyinpcvhbmtfxseqjakrgozdlw" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[cfg(test)]</span>
 <span style="font-weight:bold">mod</span> <span style="color:#666;font-weight:bold;font-style:italic">tests</span> {
     <span style="font-weight:bold">use</span> <span style="font-weight:bold">super</span>::*;
 
@@ -463,7 +1287,55 @@ list: [16, 8, 4, 2, 1]
         assert!(expected.is_empty())
     }
 }
-</code></pre></div><h2 id="wrapping-it-up">Wrapping it Up</h2>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+<div class="tab-pane fade show " id="duztaqvneikxplcfsgbwhoyjrm" role="tabpanel" aria-labelledby="nav-1">
+
+	<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">import</span> { Recorder } from <span style="color:#666;font-style:italic">&#34;./hailstone&#34;</span>;
+<span style="font-weight:bold">import</span> { recordHailstoneNumbers } from <span style="color:#666;font-style:italic">&#34;./hailstone&#34;</span>;
+
+<span style="font-weight:bold">class</span> HsTest <span style="font-weight:bold">implements</span> Recorder {
+  expectedNumbers: <span style="font-weight:bold">number</span>[];
+
+  <span style="font-weight:bold">constructor</span>(expectedNumbers: <span style="font-weight:bold">number</span>[]) {
+    expectedNumbers.reverse();
+    <span style="font-weight:bold">this</span>.expectedNumbers = expectedNumbers;
+  }
+
+  record(n: <span style="font-weight:bold">number</span>) {
+    expect(<span style="font-weight:bold">this</span>.expectedNumbers.length).toBeGreaterThan(0);
+    <span style="font-weight:bold;font-style:italic">let</span> expected = <span style="font-weight:bold">this</span>.expectedNumbers.pop();
+    expect(n).toEqual(expected);
+  }
+
+  isEmpty(): <span style="font-weight:bold">boolean</span> {
+    <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.expectedNumbers.length == 0;
+  }
+}
+
+describe(<span style="color:#666;font-style:italic">&#34;recordHailstoneNumbers&#34;</span>, () =&gt; {
+  it(<span style="color:#666;font-style:italic">&#34;calculates the hailstone numbers for 5 properly&#34;</span>, () =&gt; {
+    <span style="font-weight:bold;font-style:italic">let</span> expected = <span style="font-weight:bold">new</span> HsTest([16, 8, 4, 2, 1]);
+    recordHailstoneNumbers(expected, 5);
+    expect(expected.isEmpty()).toBeTruthy();
+  });
+});
+</code></pre></div>
+
+</div>
+
+
+
+</div>
+<h2 id="wrapping-it-up">Wrapping it Up</h2>
 <p>The number of more specific patterns that boil down to an application of the strategy pattern is striking:</p>
 <ul>
 <li>In &ldquo;domain-driven design,&rdquo; the &ldquo;repository pattern&rdquo; usually includes an application of the strategy pattern to data sources.</li>
