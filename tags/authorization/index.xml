@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>authorization on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+    <link>https://asthasr.github.io/tags/authorization/</link>
+    <description>Recent content in authorization on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 30 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://asthasr.github.io/tags/authorization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Who goes there?</title>
+      <link>https://asthasr.github.io/posts/authorization/</link>
+      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://asthasr.github.io/posts/authorization/</guid>
+      <description>Working with most web frameworks, you could be forgiven for believing that the framework itself &amp;ldquo;owns&amp;rdquo; the concept of authorization. They offer a suite of access control lists (ACLs) and plugins that encourage you to tie your business logic to the request lifecycle. When that&amp;rsquo;s not enough for asynchronous exports or customer API access, the same database queries and clauses that power the requests are ready to hand. As your software&amp;rsquo;s feature set grows, those queries and SQL clauses metastasize, curling their tendrils around every data access in your system, until they&amp;rsquo;re nearly impossible to understand.</description>
+    </item>
+    
+  </channel>
+</rss>

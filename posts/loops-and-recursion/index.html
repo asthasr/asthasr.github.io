@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -226,14 +226,14 @@ years after <em>that</em> that I felt confident reaching for it as a tool. Like 
 everyone, the first way that I learned to think of iteration was with loops. If you
 wanted to add something together, for example, you would create a &ldquo;bookkeeping&rdquo; variable
 and modify it inside the loop.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">add_range</span>(start: <span style="font-weight:bold;font-style:italic">int</span>, end: <span style="font-weight:bold;font-style:italic">int</span>) -&gt; <span style="font-weight:bold;font-style:italic">int</span>:
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">add_range</span>(start: <span style="font-weight:bold;font-style:italic">int</span>, end: <span style="font-weight:bold;font-style:italic">int</span>) -&gt; <span style="font-weight:bold;font-style:italic">int</span>:
     total = 0
     <span style="font-weight:bold">for</span> n <span style="font-weight:bold">in</span> <span style="font-weight:bold;font-style:italic">range</span>(start, end + 1):
         total += n
     <span style="font-weight:bold">return</span> total
 </code></pre></div><p>It&rsquo;s like writing down a number, looking at the next one, erasing the previous one, and
 writing down the new one. Recursion comes less naturally.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">add_range_rec</span>(start: <span style="font-weight:bold;font-style:italic">int</span>, end: <span style="font-weight:bold;font-style:italic">int</span>) -&gt; <span style="font-weight:bold;font-style:italic">int</span>:
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">add_range_rec</span>(start: <span style="font-weight:bold;font-style:italic">int</span>, end: <span style="font-weight:bold;font-style:italic">int</span>) -&gt; <span style="font-weight:bold;font-style:italic">int</span>:
     <span style="font-weight:bold">if</span> start == end:
         <span style="font-weight:bold">return</span> start
     <span style="font-weight:bold">else</span>:
@@ -241,15 +241,15 @@ writing down the new one. Recursion comes less naturally.</p>
 </code></pre></div><p>Thinking recursively is more like saying &ldquo;First, if I&rsquo;ve reached this state,
 stop.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> Otherwise, add the current number to the sum of all the other numbers.&rdquo;
 Next, consider a simple linked list:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">@dataclass
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">@dataclass
 <span style="font-weight:bold">class</span> <span style="color:#666;font-weight:bold;font-style:italic">Node</span>:
     elem: Any
-    rest: Optional[<span style="color:#666;font-style:italic">&#34;Node&#34;</span>] = <span style="font-weight:bold;font-style:italic">None</span>
+    rest: Optional[<span style="color:#666;font-style:italic">&#34;Node&#34;</span>] = <span style="font-weight:bold">None</span>
 
     <span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">push</span>(<span style="font-weight:bold;font-style:italic">self</span>, elem):
         <span style="font-weight:bold">return</span> Node(elem, rest=<span style="font-weight:bold;font-style:italic">self</span>)
 </code></pre></div><p>We can construct the list using our <code>push</code> method:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">xs = Node(5).push(10).push(15)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">xs = Node(5).push(10).push(15)
 <span style="color:#888;font-style:italic"># Node(elem=15, rest=Node(elem=10, rest=Node(elem=5, rest=None)))</span>
 </code></pre></div><p>This is a simple &ldquo;recursive data structure,&rdquo; referring to itself as the type of one of
 its own properties (<code>rest</code>). The <code>push</code> method isn&rsquo;t recursive or iterative, though,
@@ -257,16 +257,16 @@ because it doesn&rsquo;t need to be: pushing a value onto the head of a linked l
 question of creating a new element with its <code>rest</code> pointing to the previously-existing
 list. If we wanted to find the last element, though, we have a choice. We can implement
 <code>last</code> iteratively, keeping track of which node we&rsquo;re looking at,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">last</span>(<span style="font-weight:bold;font-style:italic">self</span>):
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">last</span>(<span style="font-weight:bold;font-style:italic">self</span>):
     target = <span style="font-weight:bold;font-style:italic">self</span>.rest
 
-    <span style="font-weight:bold">while</span> target.rest <span style="font-weight:bold">is</span> <span style="font-weight:bold">not</span> <span style="font-weight:bold;font-style:italic">None</span>:
+    <span style="font-weight:bold">while</span> target.rest <span style="font-weight:bold">is</span> <span style="font-weight:bold">not</span> <span style="font-weight:bold">None</span>:
         target = target.rest
 
     <span style="font-weight:bold">return</span> target.elem
 </code></pre></div><p>or we can ask each node in turn for its last element.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">last_rec</span>(<span style="font-weight:bold;font-style:italic">self</span>):
-    <span style="font-weight:bold">if</span> <span style="font-weight:bold;font-style:italic">self</span>.rest <span style="font-weight:bold">is</span> <span style="font-weight:bold;font-style:italic">None</span>:
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">last_rec</span>(<span style="font-weight:bold;font-style:italic">self</span>):
+    <span style="font-weight:bold">if</span> <span style="font-weight:bold;font-style:italic">self</span>.rest <span style="font-weight:bold">is</span> <span style="font-weight:bold">None</span>:
         <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">self</span>.elem
     <span style="font-weight:bold">else</span>:
         <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">self</span>.rest.last_rec()
@@ -290,7 +290,7 @@ as a series of subproblems, it&rsquo;s actually relatively straightforward:</p>
 </ol>
 <p>This continues until you have counted each subproblem and totaled them up to the top
 level.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">COINS = [50, 25, 10, 5, 1]
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">COINS = [50, 25, 10, 5, 1]
 
 <span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">make_change</span>(amt, last=COINS[0]):
     <span style="font-weight:bold">if</span> amt == 0:  <span style="color:#888;font-style:italic"># If the target amount is zero, count this as one path.</span>
@@ -303,7 +303,7 @@ level.</p>
 The best way is to use a stack; this is a common technique for translating recursive
 algorithms to iterative implementations. In essence, it trades function calls for a
 collection of actions to be taken, which is then handled with some manual bookkeeping.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">make_change_stack</span>(amt):
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">make_change_stack</span>(amt):
     total = 0
     stack = [(amt, COINS[0])]
 
@@ -324,9 +324,9 @@ remains, to this day, the single most incomprehensible talk I have ever attended
 Eventually, I figured out that the general idea is &ldquo;recursion with caching.&rdquo; It&rsquo;s
 extremely difficult to implement this in Python, as you must add an import statement and
 a decorator.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">functools</span> <span style="font-weight:bold">import</span> lru_cache
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">functools</span> <span style="font-weight:bold">import</span> lru_cache
 
-@lru_cache(maxsize=<span style="font-weight:bold;font-style:italic">None</span>)
+@lru_cache(maxsize=<span style="font-weight:bold">None</span>)
 <span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">make_change</span>(amt, last=COINS[0]):
     <span style="font-weight:bold">if</span> amt == 0:
         <span style="font-weight:bold">return</span> 1
@@ -359,10 +359,10 @@ differences do you note between the functions?</li>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>This is called the &ldquo;termination condition,&rdquo; and every recursive function must have one. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>This is called the &ldquo;termination condition,&rdquo; and every recursive function must have one.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>In formal terms, they are &ldquo;isomorphic.&rdquo; <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>In formal terms, they are &ldquo;isomorphic.&rdquo;&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

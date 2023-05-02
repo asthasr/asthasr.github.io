@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -282,7 +282,7 @@ implied by &ldquo;but.&rdquo; Other constructs can be represented as well:</p>
 </table>
 <p>By now, even if you haven&rsquo;t learned symbolic logic before, you are probably starting to
 think this feels a little familiar. Haven&rsquo;t we seen them somewhere before?</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">neither = <span style="font-weight:bold">not</span> (a <span style="font-weight:bold">or</span> b)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">neither = <span style="font-weight:bold">not</span> (a <span style="font-weight:bold">or</span> b)
 xor = a ^ b
 xnor = <span style="font-weight:bold">not</span> (a ^ b)
 </code></pre></div><h2 id="comprehension">Comprehension</h2>
@@ -352,7 +352,7 @@ necessary for a statement this simple.</p>
 </table>
 <p>I once argued with a colleague for over an hour because he had written a feature with
 contradictory conditionals, something equivalent to $A \land \lnot A$.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">feature</span>(a, b):
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">feature</span>(a, b):
     <span style="font-weight:bold">if</span> a:
         do_something()
 
@@ -368,7 +368,7 @@ function call was reached&mdash;a stealth truth table.<sup id="fnref:2"><a href=
 of propositions in your statement. The columns grow as you add more operators. Happily,
 the congruence between boolean logic in programming languages and the more formal
 operators of symbolic logic means that we can put Python to work for us.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic"># We will use `product`, from the `itertools` package, to generate arguments to our</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic"># We will use `product`, from the `itertools` package, to generate arguments to our</span>
 <span style="color:#888;font-style:italic"># functions.</span>
 <span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">itertools</span> <span style="font-weight:bold">import</span> product
 
@@ -387,19 +387,19 @@ operators of symbolic logic means that we can put Python to work for us.</p>
     premises = <span style="color:#666;font-style:italic">&#34; &#34;</span>.join(<span style="color:#666;font-style:italic">&#34;abcdefgh&#34;</span>[:num_args])
 
     <span style="color:#888;font-style:italic"># Create a simple table header, labeled with premises and the function name.</span>
-    header = f<span style="color:#666;font-style:italic">&#34;{premises} | {f.__name__}&#34;</span>
-    <span style="font-weight:bold">print</span>(header)
-    <span style="font-weight:bold">print</span>(<span style="color:#666;font-style:italic">&#34;-&#34;</span> * <span style="font-weight:bold;font-style:italic">len</span>(header))
+    header = <span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{</span>premises<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic"> | </span><span style="color:#666;font-style:italic">{</span>f.__name__<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">&#34;</span>
+    <span style="font-weight:bold;font-style:italic">print</span>(header)
+    <span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">&#34;-&#34;</span> * <span style="font-weight:bold;font-style:italic">len</span>(header))
 
     <span style="color:#888;font-style:italic"># Generate tuples of boolean values to serve as function arguments, and loop over</span>
     <span style="color:#888;font-style:italic"># each combination, printing the result of passing them to the function.</span>
-    <span style="font-weight:bold">for</span> args <span style="font-weight:bold">in</span> product((<span style="font-weight:bold;font-style:italic">True</span>, <span style="font-weight:bold;font-style:italic">False</span>), repeat=num_args):
+    <span style="font-weight:bold">for</span> args <span style="font-weight:bold">in</span> product((<span style="font-weight:bold">True</span>, <span style="font-weight:bold">False</span>), repeat=num_args):
         premise_values = <span style="color:#666;font-style:italic">&#34; &#34;</span>.join(<span style="color:#666;font-style:italic">&#34;T&#34;</span> <span style="font-weight:bold">if</span> arg <span style="font-weight:bold">else</span> <span style="color:#666;font-style:italic">&#34;F&#34;</span> <span style="font-weight:bold">for</span> arg <span style="font-weight:bold">in</span> args)
         function_result = <span style="color:#666;font-style:italic">&#34;T&#34;</span> <span style="font-weight:bold">if</span> f(*args) <span style="font-weight:bold">else</span> <span style="color:#666;font-style:italic">&#34;F&#34;</span>
-        <span style="font-weight:bold">print</span>(f<span style="color:#666;font-style:italic">&#34;{premise_values} | {function_result}&#34;</span>)
+        <span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{</span>premise_values<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic"> | </span><span style="color:#666;font-style:italic">{</span>function_result<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">&#34;</span>)
 </code></pre></div><p>We can define a function that looks a lot like our more complex example above,
 $(A \land B) \lor C$.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">a_and_b_or_c</span>(a, b, c):
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">a_and_b_or_c</span>(a, b, c):
     <span style="font-weight:bold">return</span> (a <span style="font-weight:bold">and</span> b) <span style="font-weight:bold">or</span> c
 </code></pre></div><p>Calling <code>truth_table(a_and_b_or_c)</code> produces a beautiful ASCII rendition of a truth
 table. Try it out!</p>
@@ -420,7 +420,7 @@ for all of the &ldquo;substatements,&rdquo; as illustrated in the manually-built
 above.  Implement an alternative that can. (It doesn&rsquo;t need to accept arbitrary
 functions, though.)</li>
 <li>The concept of &ldquo;validity&rdquo; enters the picture emerges if there is a statement like
-$A \Rightarrow B$ (&ldquo;$A$ implies $B$&rdquo;), but $A$ is true and $B$ is false. Using your
+$A \Rightarrow B$ (&quot;$A$ implies $B$&quot;), but $A$ is true and $B$ is false. Using your
 improved generator from exercise two, report when a given row of a truth table is
 invalid.</li>
 </ol>
@@ -429,13 +429,13 @@ invalid.</li>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>There, the challenge is usually judging whether the premises are true, rather than whether the argument is sound. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>There, the challenge is usually judging whether the premises are true, rather than whether the argument is sound.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>I found it hard to have empathy. It was a heated discussion. Over the years, though, I&rsquo;ve learned that all of us have gaps. I hope I helped him fill one of his. I wish I could&rsquo;ve been more patient at that time. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>I found it hard to have empathy. It was a heated discussion. Over the years, though, I&rsquo;ve learned that all of us have gaps. I hope I helped him fill one of his. I wish I could&rsquo;ve been more patient at that time.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p>The <a href="https://docs.python.org/3/library/operator.html">documentation</a> is comprehensive. Note that some functions, like <code>and_</code> and <code>or_</code>, are suffixed with an underscore to avoid collision with Python syntax. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>The <a href="https://docs.python.org/3/library/operator.html">documentation</a> is comprehensive. Note that some functions, like <code>and_</code> and <code>or_</code>, are suffixed with an underscore to avoid collision with Python syntax.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

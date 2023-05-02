@@ -1,150 +1,92 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://asthasr.github.io/categories/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/concepts/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/exercises/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/categories/programming/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/programming/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/rust/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/understanding-strategy-pattern/</loc>
     <lastmod>2022-04-03T08:47:10-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/how-blockchains-work/</loc>
     <lastmod>2021-03-06T10:49:00-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/abstraction-is-okay/</loc>
     <lastmod>2021-02-26T20:47:38-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/rust-needs-metaphors-2/</loc>
     <lastmod>2020-10-14T06:29:48-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/rust-needs-metaphors-1/</loc>
     <lastmod>2020-09-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/under-the-rug/</loc>
     <lastmod>2020-04-23T08:16:06-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/loops-and-recursion/</loc>
     <lastmod>2019-12-22T08:27:13+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/learning/</loc>
     <lastmod>2019-12-14T15:46:58+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/teams/</loc>
     <lastmod>2019-12-14T15:46:58+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/the-m-word/</loc>
     <lastmod>2019-12-14T15:46:58+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/mind-the-gaps/</loc>
     <lastmod>2019-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/logic/</loc>
     <lastmod>2019-11-20T14:51:10+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/math/</loc>
     <lastmod>2019-11-20T14:51:10+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/on-symbolic-logic/</loc>
     <lastmod>2019-11-20T14:51:10+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/simplicity/</loc>
     <lastmod>2019-11-16T09:05:35+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/danger-of-simplicity/</loc>
     <lastmod>2019-11-16T09:05:35+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/trust/</loc>
     <lastmod>2019-11-16T09:05:35+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/posts/parsing-in-python/</loc>
     <lastmod>2019-11-10T14:02:05+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/python/</loc>
     <lastmod>2019-11-10T14:02:05+07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://asthasr.github.io/tags/types/</loc>
     <lastmod>2019-11-10T14:02:05+07:00</lastmod>
   </url>
-  
 </urlset>

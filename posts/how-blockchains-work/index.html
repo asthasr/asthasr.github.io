@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -231,7 +231,7 @@ it works.</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-n
 unpredictable string of a fixed length, called a <strong>digest</strong>.</p>
 <p><img src="/blockchain_dia1.svg" alt="A diagram illustrating that a hash algorithm produces a digest from a string."></p>
 <p>Here&rsquo;s a small Python program to demonstrate:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic">#!/usr/bin/env python3</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic">#!/usr/bin/env python3</span>
 <span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">argparse</span> <span style="font-weight:bold">import</span> ArgumentParser
 <span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">hashlib</span> <span style="font-weight:bold">import</span> md5
 
@@ -246,10 +246,10 @@ unpredictable string of a fixed length, called a <strong>digest</strong>.</p>
     parser = ArgumentParser()
     parser.add_argument(<span style="color:#666;font-style:italic">&#34;STRING&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The string to be hashed&#34;</span>)
     args = parser.parse_args()
-    <span style="font-weight:bold">print</span>(hash_string(args.STRING))
+    <span style="font-weight:bold;font-style:italic">print</span>(hash_string(args.STRING))
 </code></pre></div><p>Running this with different string arguments will give you digests of
 the arguments:</p>
-<pre><code>$ ./hash ninja
+<pre tabindex="0"><code>$ ./hash ninja
 3899dcbab79f92af727c2190bbd8abc5
 
 $ ./hash samurai
@@ -261,7 +261,7 @@ over time. Hashes can help with that by protecting the ordering and
 contents of messages.</p>
 <p><img src="/blockchain_dia2.svg" alt="A diagram illustrating that blockchains capture the previous digest and the current message to produce a digest."></p>
 <p>Here&rsquo;s a brief implementation:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_ledger_entry</span>(string, previous_digest=<span style="font-weight:bold;font-style:italic">None</span>):
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_ledger_entry</span>(string, previous_digest=<span style="font-weight:bold">None</span>):
     <span style="color:#666;font-style:italic">&#34;&#34;&#34;Hashes a string with the hash of previous entries in the ledger, if any.&#34;&#34;&#34;</span>
     <span style="font-weight:bold;font-style:italic">hash</span> = md5(string.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
 
@@ -273,7 +273,7 @@ contents of messages.</p>
 
 <span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">generate_ledger</span>(*strings):
     <span style="color:#666;font-style:italic">&#34;&#34;&#34;Generates the entries in a ledger consisting of a set of strings.&#34;&#34;&#34;</span>
-    digest = <span style="font-weight:bold;font-style:italic">None</span>
+    digest = <span style="font-weight:bold">None</span>
 
     <span style="font-weight:bold">for</span> string <span style="font-weight:bold">in</span> strings:
         digest = hash_ledger_entry(string, digest)
@@ -286,22 +286,22 @@ contents of messages.</p>
     args = parser.parse_args()
 
     <span style="font-weight:bold">for</span> digest, string <span style="font-weight:bold">in</span> generate_ledger(*args.STRINGS):
-        <span style="font-weight:bold">print</span>(f<span style="color:#666;font-style:italic">&#34;{digest}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{string}&#34;</span>)
+        <span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{</span>digest<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>string<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">&#34;</span>)
 </code></pre></div><p>With this script, providing a set of strings will generate a unique and
 ordered ledger:</p>
-<pre><code>$ ./hash ninja samurai
+<pre tabindex="0"><code>$ ./hash ninja samurai
 3899dcbab79f92af727c2190bbd8abc5	ninja
 6bf8d2cadde40af53d7f0fef95d4ec2c	samurai
 </code></pre><p>These hash ledgers are tamper-resistant because the digests of later
 entries depend on the earlier entries. Modifying or adding entries will
 change the digest of later entries.</p>
-<pre><code>$ ./hash ninja pirate samurai
+<pre tabindex="0"><code>$ ./hash ninja pirate samurai
 3899dcbab79f92af727c2190bbd8abc5	ninja
 7ec21dcf528e12036b04774754ecc4e0	pirate
 636730d86709d03fed9ba64f84fc9be6	samurai
 </code></pre><p>We can also add a known ending entry to the ledger to protect the last
 entry from tampering:</p>
-<pre><code>$ ./hash ninja pirate samurai
+<pre tabindex="0"><code>$ ./hash ninja pirate samurai
 3899dcbab79f92af727c2190bbd8abc5	ninja
 7ec21dcf528e12036b04774754ecc4e0	pirate
 636730d86709d03fed9ba64f84fc9be6	samurai
@@ -309,16 +309,16 @@ b233d566fe677d394aafb5eaf149e453	END
 </code></pre><h2 id="validation">Validation</h2>
 <p>To validate a ledger, you can replay the transactions and make sure that
 you get the same hashes at each step:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">our_digest = <span style="font-weight:bold;font-style:italic">None</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">our_digest = <span style="font-weight:bold">None</span>
 
 <span style="font-weight:bold">for</span> line <span style="font-weight:bold">in</span> fileinput.input():
     file_digest, word = line.strip().split(<span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">&#34;</span>)
     our_digest = hash_ledger_entry(word, our_digest)
 
     <span style="font-weight:bold">if</span> our_digest != file_digest:
-        sys.exit(f<span style="color:#666;font-style:italic">&#34;The digest for {word} does not match.&#34;</span>)
+        sys.exit(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;The digest for </span><span style="color:#666;font-style:italic">{</span>word<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic"> does not match.&#34;</span>)
 
-<span style="font-weight:bold">print</span>(<span style="color:#666;font-style:italic">&#34;All entries match.&#34;</span>)
+<span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">&#34;All entries match.&#34;</span>)
 </code></pre></div><p>With a tamper-resistant ledger where each entry depends on the previous
 entries, we&rsquo;ve effectively implemented a very simple blockchain. This is
 not the same as <em>the</em> blockchain, though; for that we need&hellip;</p>
@@ -329,11 +329,11 @@ This is what enthusiasts mean when they say that the blockchain is
 compete to successfully write a new message to the blockchain.  They do
 this by means of a <strong>proof-of-work algorithm</strong>, which we can implement
 in our ledger as well.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic"># Add this to your imports.</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic"># Add this to your imports.</span>
 <span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">secrets</span> <span style="font-weight:bold">import</span> token_bytes
 
 
-<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_ledger_entry_with_salt</span>(salt, string, previous_digest=<span style="font-weight:bold;font-style:italic">None</span>):
+<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_ledger_entry_with_salt</span>(salt, string, previous_digest=<span style="font-weight:bold">None</span>):
     <span style="color:#666;font-style:italic">&#34;&#34;&#34;Hashes a string with the hash of previous entries in the ledger, if any.&#34;&#34;&#34;</span>
     <span style="font-weight:bold;font-style:italic">hash</span> = md5(string.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
     <span style="font-weight:bold;font-style:italic">hash</span>.update(salt)
@@ -348,13 +348,13 @@ in our ledger as well.</p>
     <span style="color:#888;font-style:italic"># Difficulty determines how many zeroes we require at the beginning of a digest.</span>
     prefix = <span style="color:#666;font-style:italic">&#34;0&#34;</span> * difficulty
 
-    digest = <span style="font-weight:bold;font-style:italic">None</span>
-    previous_digest = <span style="font-weight:bold;font-style:italic">None</span>
+    digest = <span style="font-weight:bold">None</span>
+    previous_digest = <span style="font-weight:bold">None</span>
 
     <span style="font-weight:bold">for</span> string <span style="font-weight:bold">in</span> strings:
         <span style="color:#888;font-style:italic"># We re-hash a string over and over, with random salts, until it matches the</span>
         <span style="color:#888;font-style:italic"># prefix determined by our difficulty.</span>
-        <span style="font-weight:bold">while</span> digest <span style="font-weight:bold">is</span> <span style="font-weight:bold;font-style:italic">None</span> <span style="font-weight:bold">or</span> <span style="font-weight:bold">not</span> digest.startswith(prefix):
+        <span style="font-weight:bold">while</span> digest <span style="font-weight:bold">is</span> <span style="font-weight:bold">None</span> <span style="font-weight:bold">or</span> <span style="font-weight:bold">not</span> digest.startswith(prefix):
             salt = token_bytes(16)
             digest = hash_ledger_entry_with_salt(salt, string, previous_digest)
 
@@ -362,7 +362,7 @@ in our ledger as well.</p>
         <span style="color:#888;font-style:italic"># Without that, we can&#39;t replay the entries and verify them.</span>
         <span style="font-weight:bold">yield</span> digest, salt.hex(), string
         previous_digest = digest
-        digest = <span style="font-weight:bold;font-style:italic">None</span>
+        digest = <span style="font-weight:bold">None</span>
 
     <span style="font-weight:bold">yield</span> hash_ledger_entry_with_salt(salt, <span style="color:#666;font-style:italic">&#34;END&#34;</span>, previous_digest), salt, <span style="color:#666;font-style:italic">&#34;END&#34;</span>
 
@@ -376,11 +376,11 @@ in our ledger as well.</p>
     args = parser.parse_args()
 
     <span style="font-weight:bold">for</span> digest, salt, string <span style="font-weight:bold">in</span> generate_ledger(args.DIFFICULTY, *args.STRINGS):
-        <span style="font-weight:bold">print</span>(f<span style="color:#666;font-style:italic">&#34;{digest}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{salt}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{string}&#34;</span>)
+        <span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{</span>digest<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>salt<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>string<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">&#34;</span>)
 </code></pre></div><p>The new utility accepts an additional argument, <em>difficulty</em>, and tries
 to generate a salt value that generates a hash which matches the
 expected number of zeroes:</p>
-<pre><code>$ ./hash 5 ninja pirate samurai
+<pre tabindex="0"><code>$ ./hash 5 ninja pirate samurai
 00000ad72553509e6c197e45ab7fa436	af0dce7ac4c87c2b9d9eafb6561c09f4	ninja
 000000f556426cfa894ba2ce57383b1d	b9d51e0e8ea977ba004e7c30be757144	pirate
 000006373b2b336d6dac403a5fa90a73	dd9c6ad89f5014a0901bcb142e04e28b	samurai
@@ -395,12 +395,12 @@ mining consumes <a href="https://www.bbc.com/news/technology-56012952">more elec
 <ol>
 <li id="fn:1" role="doc-endnote">
 <p>If you want to read about the bubble, I recommend <a href="https://davidgerard.co.uk/blockchain/">David
-Gerard</a>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+Gerard</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
 <p>Note that <code>md5</code> should <em>not</em> be used for this purpose in real
 applications. I chose it here for the brevity of its digests, but it
-isn&rsquo;t secure. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+isn&rsquo;t secure.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

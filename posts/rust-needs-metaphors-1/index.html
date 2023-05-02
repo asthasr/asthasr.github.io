@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -271,7 +271,7 @@ associating the value with the scope in which the <code>let</code> occurs, where
 function in a chained statement (particularly if you&rsquo;re using lambdas) may lead to a
 value being bound to a scope that gets dropped before you expect.</p>
 <p>Consider the following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
     <span style="font-weight:bold;font-style:italic">let</span> x = <span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string().as_mut_str();
     x.make_ascii_uppercase();
     println!(<span style="color:#666;font-style:italic">&#34;{}&#34;</span>, x);
@@ -279,7 +279,7 @@ value being bound to a scope that gets dropped before you expect.</p>
 </code></pre></div><p>Here, the compiler will raise an error because <code>&quot;foo&quot;</code> is converted to a <code>String</code>, but
 the next call creates a mutable reference to it that actually lasts longer than the
 string itself. This error can be fixed by making sure that the string lives long enough:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
     <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> foo = <span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string();
     <span style="font-weight:bold;font-style:italic">let</span> x = foo.as_mut_str();
     x.make_ascii_uppercase();
@@ -296,13 +296,13 @@ its management or eventual demise.</p>
 <p>If we applied this logic to the erroneous code above, you can see that the reference
 (produced by <code>as_mut_str</code>) is referring to data that we haven&rsquo;t pulled &ldquo;up&rdquo; to the outer
 scope:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
     <span style="font-weight:bold;font-style:italic">let</span> x = (<span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string()).as_mut_str();
     println!(<span style="color:#666;font-style:italic">&#34;{}&#34;</span>, x);
 }
 </code></pre></div><p>Similar issues arise when you attempt to return a reference from a function, although
 the error message is more friendly:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">get_int</span>&lt;&#39;a&gt;() -&gt; <span style="font-weight:bold">&amp;</span>&#39;a <span style="font-weight:bold">u8</span> {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">get_int</span>&lt;&#39;a&gt;() -&gt; <span style="font-weight:bold">&amp;</span>&#39;a <span style="font-weight:bold">u8</span> {
     <span style="font-weight:bold;font-style:italic">let</span> x = 3;
     &amp;x
 }
@@ -312,7 +312,7 @@ is bound ends. The reference to it, which is being returned from the function, w
 <p>Things like shared configuration must be treated similarly. Traditional languages often
 use module-level variables and singletons to contain these sorts of things; Rust
 typically doesn&rsquo;t.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
     <span style="font-weight:bold;font-style:italic">let</span> config = get_config();  <span style="color:#888;font-style:italic">// returns a config object.
 </span><span style="color:#888;font-style:italic"></span>    first(config);
     second(config); <span style="color:#888;font-style:italic">// this will raise an error!

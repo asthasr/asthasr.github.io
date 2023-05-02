@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -176,7 +176,7 @@ div.title {
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The M-Word: The Culture of Programming"/>
-<meta name="twitter:description" content="In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&quot;&mdash;you lose the ability to explain it to anybody. &mdash; Doug Crockford.
+<meta name="twitter:description" content="In addition to [the monad] being useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&quot;&mdash;you lose the ability to explain it to anybody. &mdash; Doug Crockford.
  I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&rsquo;ve probably used."/>
 
 
@@ -222,15 +222,16 @@ div.title {
     <article>
       <h1>The M-Word: The Culture of Programming</h1>
 <blockquote>
-<p>In addition to it begin useful, it is also cursed and the curse of the monad is that
-once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&quot;&mdash;you lose
-the ability to explain it to anybody. &mdash; <em>Doug Crockford.</em></p>
+<p>In addition to [the monad] being useful, it is also cursed and the curse of
+the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s
+what it is!&quot;&mdash;you lose the ability to explain it to anybody. &mdash; <em>Doug
+Crockford.</em></p>
 </blockquote>
 <p>I had a problem, once. I was working on a Rails application which generated integration
 files to be consumed by external partners. They were generated every night in a dozen
 formats and shipped around the Internet to populate sites you&rsquo;ve probably used.  Since
 it was a typical Rails application, the code used the Rails ORM directly:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
     xml.Widget <span style="font-weight:bold">do</span> |xw|
         xw.Title db_widget.title.titlecase
         xw.Description db_widget.description.truncate(120)
@@ -246,7 +247,7 @@ direct accesses to the database. This would allow me to control those pesky
 <code>NoMethodError</code>s that were causing our integrations to fail every few days, and as a
 side effect reduce queries to the database. After the change, the code looked something
 like this:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
     xml.Widget <span style="font-weight:bold">do</span> |xw|
         xw.Title shim.widget.title.titlecase.or_else <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>
         xw.Description shim.widget.description.truncate(120).or_else <span style="color:#666;font-style:italic">&#34;&#34;</span>
@@ -295,7 +296,7 @@ integration problem above&mdash;do so in an <em>idiomatic</em> way. If I had ref
 as a <code>DatabaseCache</code> and used methods like <code>fetch</code> and <code>has?</code> instead of the library&rsquo;s
 <code>or_else</code> and <code>map</code>, I think that the familiar language would&rsquo;ve solved the social
 problem, despite an uglier API.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
     xml.Widget <span style="font-weight:bold">do</span> |xw|
         xw.Title db_cache.widget.fetch(<span style="color:#666;font-style:italic">:title</span>, <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>).titlecase
         xw.Description db_cache.widget.fetch(<span style="color:#666;font-style:italic">:description</span>, <span style="color:#666;font-style:italic">&#34;&#34;</span>).truncate(120)

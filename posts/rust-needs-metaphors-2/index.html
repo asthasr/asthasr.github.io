@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.92.2" />
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -229,7 +229,7 @@ in the ecosystem.</p>
 <p>At heart, traits <em>are</em> very similar to interfaces in Java or C♯. They describe the
 methods that must be implemented for a type in order to treat it as being bound by the
 contract. For example, if we use the classic example of animals that can make a sound:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Speaker {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Speaker {
     <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt;;
 }
 
@@ -273,13 +273,13 @@ but if you don&rsquo;t pull the trait into scope you can&rsquo;t use its methods
 example, I think, is the <a href="https://www.rusoto.org/">Rusoto</a> ecosystem of AWS SDKs. It&rsquo;s divided into crates for
 each service, and each service in turn is implemented as a client type and a service
 trait:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">use</span> rusoto_core::Region;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">use</span> rusoto_core::Region;
 <span style="font-weight:bold">use</span> rusoto_s3::{S3Client, S3};
 
 <span style="color:#888;font-weight:bold">#[tokio::main]</span>
-async <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+<span style="font-weight:bold">async</span> <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
     <span style="font-weight:bold;font-style:italic">let</span> client = S3Client::new(Region::UsEast1);
-    println!(<span style="color:#666;font-style:italic">&#34;{:?}&#34;</span>, client.list_buckets().await)
+    println!(<span style="color:#666;font-style:italic">&#34;{:?}&#34;</span>, client.list_buckets().<span style="font-weight:bold">await</span>)
 }
 </code></pre></div><p>In this example, <code>S3Client</code> is a struct and <code>S3</code> is a trait. Almost all of the API
 functionality (like <code>list_buckets</code> here) is implemented as items on that trait. If you
