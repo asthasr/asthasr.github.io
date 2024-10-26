@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.121.2">
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>Generative AI and the Programmer | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+
+</style>
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Generative AI and the Programmer"/>
+<meta name="twitter:description" content="If you&rsquo;re one of my loyal readers(?), you&rsquo;ve probably noticed that I don&rsquo;t write much anymore. It&rsquo;s a common fate for blogs, but in this case I can point to a specific cause that has impacted my willingness to write: large language models (LLMs). Since ChatGPT burst onto the scene and illustrated the capabilities of generative AI, I&rsquo;ve found it impossible to finish drafts because I hesitate to throw more information into the datavore."/>
+
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZEELKPFTWV"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZEELKPFTWV');
+  </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>Generative AI and the Programmer</h1>
+<p>If you&rsquo;re one of my loyal readers(?), you&rsquo;ve probably noticed that I don&rsquo;t write
+much anymore. It&rsquo;s a common fate for blogs, but in this case I can point to a
+specific cause that has impacted my willingness to write: large language models
+(LLMs). Since ChatGPT burst onto the scene and illustrated the capabilities of
+generative AI, I&rsquo;ve found it impossible to finish drafts because I hesitate to
+throw more information into the datavore. A sense of dread accompanies the sense
+that all of my creativity will simply feed the beast.</p>
+<p>That&rsquo;s not an idle fear, either. Generative AI relies on consuming human
+creativity in order to recombine it into fundamentally uncreative output.
+Without new human creativity, tools like ChatGPT and MidJourney will gradually
+experience a phenomenon known as &ldquo;model collapse&rdquo; because they recursively feed
+on their own output. Another term for this is a &ldquo;degenerative quality cascade.&rdquo;</p>
+<p>There&rsquo;s no putting the genie back in the bottle, though, and we have to live
+within the world as it is, so here I am, faced with the same question that all
+writers, artists, musicians—and programmers—are facing. Since the
+last of those identities pays my bills and is presumably the primary reason
+anyone reads this blog, I&rsquo;ll offer my current perspective here (from a more
+personal point of view than I usually use) and accept its digestion into the
+machine as a <em>fait accompli:</em></p>
+<ol>
+<li>LLMs as they currently exist cannot make programmers obsolete. Even the
+simplest of software systems exceed their current capabilities in terms of
+context capacity and analysis. I am confident in this prediction: without a
+serious change in approach, not just scaling, programmers are here to stay.</li>
+<li>Generative AI is a valuable tool for enhancing programming work. It should
+not be used to generate full systems, or even subsystems and modules.</li>
+<li>Current LLMs cannot be trusted as a learning aid or a replacement for search
+engines. This misunderstanding, and its impact on the talent pipeline,
+represents the most imminent threat to the industry from AI tools.</li>
+</ol>
+<p>Let&rsquo;s examine each of these points in detail.</p>
+<h2 id="programmers-are-here-to-stay">Programmers are Here to Stay</h2>
+<p>There&rsquo;s hype around the idea that you can &ldquo;just ask&rdquo; an LLM to generate a
+program for you, and it will produce something that resembles a working program.
+The first examples that I saw of this phenomenon were pong games, where ChatGPT
+produced Python code that could run and, in fact, could display &ldquo;paddles&rdquo; and a
+&ldquo;ball.&rdquo; If programming is under no threat, why did that work, and why were
+people so quick to jump on them as evidence of our forthcoming obsoletion?</p>
+<p>Those examples, along with &ldquo;create a web app to add numbers together&rdquo; and other
+such trivia, are prominent among tutorials and learning materials that AI has
+already digested. Furthermore, they are the first things that non-programmers
+tend to think about when considering an &ldquo;app.&rdquo; They&rsquo;re interactive, visual, and
+self-contained.</p>
+<p>As a proportion of <em>all the software written</em>, though, almost nothing
+significant is &ldquo;interactive, visual, and self-contained.&rdquo; Most of the software
+that makes the world work is buried somewhere deep on the back end, visualized
+only through user interfaces that interact with it indirectly, and functioning
+as a cog in the vast machine of our technome. As frustrating and uninspiring as
+that may be, sometimes, it&rsquo;s a moat. It takes human cognition to comprehend the
+things we build.</p>
+<p>Nothing makes this clearer than trying to use generative AI tools to expand upon
+the examples that it so deftly disgorges. Yes, it can create a calculator web
+app, but asking it add the capability to graph a function that the user provides
+won&rsquo;t work: it&rsquo;ll try to re-emit the app from first principles, with new
+opportunities for error at every token. If you find an error and tell the tool
+to correct itself, it will say: &ldquo;I&rsquo;m sorry! I will fix the problem&rdquo; and
+immediately re-emit the entire thing again, sometimes with new errors or even
+with the same error untouched.</p>
+<p>This occurs at the simplest levels beyond example code.</p>
+<h2 id="generative-ai-is-still-valuable">Generative AI is Still Valuable</h2>
+<p>We don&rsquo;t say hammers are useless because you can&rsquo;t use them to saw a plank in
+half, and the inability of current AI technology to completely replace
+programmers doesn&rsquo;t mean that it&rsquo;s useless. Instead, we should apply the tool in
+a way that plays to its strengths. It can&rsquo;t understand complete modules, let
+alone systems, so using a tool like GitHub Copilot is a strong middle ground.
+When configured correctly, this tool can digest your own code and provide
+generative suggestions in short bursts, allowing you to avoid the tedium of
+writing things like guard clauses or switch statements with clear patterns.</p>
+<p>To make this effective, it&rsquo;s absolutely necessary that you understand the tools
+you&rsquo;re using separate from the AI. Set up your editor so that the generative
+output is presented as an autocompletion option, and make sure that you have to
+explicitly &ldquo;accept&rdquo; the completion. Don&rsquo;t allow it to fully replace your
+editor&rsquo;s existing autocompletion, because sometimes Copilot will misunderstand
+your intent and generate nonsense. Make sure that accepting a suggestion does
+not break your editor&rsquo;s &ldquo;undo&rdquo; feature.</p>
+<p>Furthermore, you must always read the generated code fully, preferably before
+accepting the suggestion at all. Treat it as the output of a junior developer
+who you don&rsquo;t trust.</p>
+<p>With this approach, I estimate that I have improved the speed with which I can
+implement clearly defined features by around 30%. That&rsquo;s nothing close to what
+the &ldquo;10X your productivity&rdquo; marketing trumpets, but it&rsquo;s not insignificant,
+either. I think that if you&rsquo;re getting much more of a boost than that, you need
+to reexamine your use of the tool and make sure that you&rsquo;re rigorously vetting
+its output, or you need to step back and improve your core system design skills;
+it&rsquo;s likely that you are producing architectures with too much boilerplate,
+which generative AI can tirelessly extrude. Its tirelessness can provide the
+illusion of productivity and cause you to miss core improvements that would
+simplify the code. Of course, your learning environment isn&rsquo;t free from the
+influence of AI, either.</p>
+<h2 id="ai-learning-and-the-talent-pipeline">AI, Learning, and the &ldquo;Talent Pipeline&rdquo;</h2>
+<p>The danger of learning in an era of LLMs is that it&rsquo;s easy to conflate their
+functions with Internet technologies that emerged earlier. They can provide
+verbiage that looks like books and essays. They claim to know about resources
+like a search engine. They will answer questions like a forum or Stack Overflow.
+They are none of these things, and you <em>must</em> understand their relationship with
+truth and reality if you are going to use them effectively.</p>
+<p>I have found the best pattern for me is to explain something to the chatbot and
+ask it to critique my understanding. It is usually decent at this, and this mode
+of operation dovetails with what the LLM is actually doing. It can tell you how
+close you are to the consensus understanding of a topic and areas that might be
+of interest. It can also give you &ldquo;related terms&rdquo; or &ldquo;alternate terms&rdquo; that
+might yield better results on search engines or allow you to read more deeply on
+a subject.</p>
+<p>You cannot trust it to fully explain a topic to you, though, and it&rsquo;s likely to
+invent resources if you ask it for citations. Code that it generates for a
+specific library is <em>always</em> riddled with errors unless that library is so old
+and stable that it has digested a large corpus of examples.</p>
+<p>The best paper that I&rsquo;ve seen discussing these phenomena is called <a href="bs">&ldquo;ChatGPT is
+Bullshit&rdquo;</a>. I won&rsquo;t reiterate all of its points here—it&rsquo;s free to read, so
+I suggest that you do so—but its key insight is that LLMs aren&rsquo;t &ldquo;lying&rdquo;
+to you, and they aren&rsquo;t &ldquo;hallucinating.&rdquo; Their output has <em>no relationship</em> to
+objective truth. Instead, it is producing &ldquo;stuff&rdquo; that looks plausible in
+relation to its digested corpus.</p>
+<p>The &ldquo;bullshit nature&rdquo; of LLM output is where the largest threat to the
+technology industry lies. Using LLMs as tools for programming and learning, as
+I&rsquo;ve outlined above, is effective. Both contexts require deep knowledge of the
+subject matter in order to fact check the output, though, and that means that
+they are unsuited to beginners and outsiders. LLMs are giving you information
+that seems plausible in relation to their corpus. As a human user, you are
+responsible for judging its plausibility in relation to reality. How can a
+beginner provide that service?</p>
+<p>In other words, as LLMs become more prominent and produce larger proportions of
+available technical content, the ability of new programmers to bootstrap
+themselves into competence diminishes because they lack the context necessary to
+judge the content that they are reading. In effect, only content that is free of
+LLM influence is suitable for beginner use.</p>
+<p>How many aspiring programmers will possess the caution and insight necessary to
+realize that, and the humility required to accept that older resources might be
+preferable?</p>
+<p>The answer to that question will determine the fate of the industry.</p>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -174,10 +174,9 @@ div.title {
 
 </style>
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Understanding the Strategy Pattern"/>
-<meta name="twitter:description" content="Conditionals (if, switch, and match statements) are usually the first tool programmers reach for when we need to vary the execution of a function. They&rsquo;re easy to understand and convenient to use, as long as the variations are simple. As software grows, though, extensibility and comprehensibility begin to require that we create ways to &ldquo;hook&rdquo; new functionality into our functions. The strategy pattern offers a method to accomplish that:
- Define a family of algorithms, encapsulate each one, and make them interchangeable."/>
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Understanding the Strategy Pattern"/>
+<meta name="twitter:description" content="Conditionals (if, switch, and match statements) are usually the first programmers reach for when we need to vary the execution of a function. They&rsquo;re easy to understand and convenient to use, as long as the variations are simple. As software grows, though, extensibility and comprehensibility begin to require that we create ways to &ldquo;hook&rdquo; new functionality into our functions. The strategy pattern offers a method to accomplish that:
+Define a family of algorithms, encapsulate each one, and make them interchangeable."/>
 
 
   
@@ -221,7 +220,7 @@ div.title {
   <div class="container">
     <article>
       <h1>Understanding the Strategy Pattern</h1>
-<p>Conditionals (<code>if</code>, <code>switch</code>, and <code>match</code> statements) are usually the first tool programmers reach for when we need to vary the execution of a function. They&rsquo;re easy to understand and convenient to use, as long as the variations are simple. As software grows, though, extensibility and comprehensibility begin to require that we create ways to &ldquo;hook&rdquo; new functionality into our functions. The strategy pattern offers a method to accomplish that:</p>
+<p>Conditionals (<code>if</code>, <code>switch</code>, and <code>match</code> statements) are usually the first programmers reach for when we need to vary the execution of a function. They&rsquo;re easy to understand and convenient to use, as long as the variations are simple. As software grows, though, extensibility and comprehensibility begin to require that we create ways to &ldquo;hook&rdquo; new functionality into our functions. The strategy pattern offers a method to accomplish that:</p>
 <blockquote>
 <p>Define a family of algorithms, encapsulate each one, and make them interchangeable. [The strategy pattern] lets the algorithm vary independently from clients that use it. <br/>&mdash; &ldquo;Strategy Pattern&rdquo; from the c2.com wiki.</p>
 </blockquote>
@@ -255,14 +254,14 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 		
 
 		<a class="nav-item nav-link  active "
-		   id="nav-vjlgaqibtnsdrxmkocwfhyzupe" data-toggle="tab" href="#vjlgaqibtnsdrxmkocwfhyzupe"
+		   id="nav-fadebc" data-toggle="tab" href="#fadebc"
 		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
 
 		
 
 		<a class="nav-item nav-link "
-		   id="nav-ghyismclnjfvatoxekqbzrpdwu" data-toggle="tab" href="#ghyismclnjfvatoxekqbzrpdwu"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+		   id="nav-abecdf" data-toggle="tab" href="#abecdf"
+		   role="tab" aria-controls="nav-home" aria-selected="true">JavaScript</a>
 
 		
 
@@ -277,24 +276,24 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show active " id="vjlgaqibtnsdrxmkocwfhyzupe" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show active " id="fadebc" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">count_hailstone_numbers</span>(<span style="font-weight:bold">mut</span> n: <span style="font-weight:bold">u128</span>) -&gt; <span style="font-weight:bold">u128</span> {
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> count = 0;
-
-    <span style="font-weight:bold">while</span> (n &gt; 1) {
-        <span style="font-weight:bold">if</span> n % 2 == 0 {
-            n = n / 2
-        } <span style="font-weight:bold">else</span> {
-            n = 3 * n + 1
-        }
-
-        count = count + 1
-    }
-
-    count
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">count_hailstone_numbers</span>(<span style="font-weight:bold">mut</span> n: <span style="font-weight:bold">u128</span>) -&gt; <span style="font-weight:bold">u128</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> count = 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span> (n &gt; 1) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> n % 2 == 0 {
+</span></span><span style="display:flex;"><span>            n = n / 2
+</span></span><span style="display:flex;"><span>        } <span style="font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            n = 3 * n + 1
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        count = count + 1
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    count
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -304,24 +303,24 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show " id="ghyismclnjfvatoxekqbzrpdwu" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show " id="abecdf" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold;font-style:italic">function</span> countHailstoneNumbers(n: <span style="font-weight:bold">number</span>): <span style="font-weight:bold">number</span> {
-  <span style="font-weight:bold;font-style:italic">var</span> count = 0;
-
-  <span style="font-weight:bold">while</span> (n &gt; 1) {
-    <span style="font-weight:bold">if</span> (n % 2 === 0) {
-      n = n / 2;
-    } <span style="font-weight:bold">else</span> {
-      n = 3 * n + 1;
-    }
-
-    count = count + 1;
-  }
-
-  <span style="font-weight:bold">return</span> count;
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic">function</span> countHailstoneNumbers(n) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">var</span> count = 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span> (n &gt; 1) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> (n % 2 === 0) {
+</span></span><span style="display:flex;"><span>            n = n / 2;
+</span></span><span style="display:flex;"><span>        } <span style="font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>            n = 3 * n + 1;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        count = count + 1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> count;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -346,14 +345,14 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 		
 
 		<a class="nav-item nav-link  active "
-		   id="nav-vhqezcfaougkpslxdbjytniwrm" data-toggle="tab" href="#vhqezcfaougkpslxdbjytniwrm"
+		   id="nav-dbfcae" data-toggle="tab" href="#dbfcae"
 		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
 
 		
 
 		<a class="nav-item nav-link "
-		   id="nav-lrpgcivjhkmbxstuqdfaenyozw" data-toggle="tab" href="#lrpgcivjhkmbxstuqdfaenyozw"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+		   id="nav-facdbe" data-toggle="tab" href="#facdbe"
+		   role="tab" aria-controls="nav-home" aria-selected="true">JavaScript</a>
 
 		
 
@@ -368,29 +367,29 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show active " id="vhqezcfaougkpslxdbjytniwrm" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show active " id="dbfcae" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HailstoneResult</span> {
-    count: <span style="font-weight:bold">u128</span>,
-    max: <span style="font-weight:bold">u128</span>,
-    numbers: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;,
-}
-
-<span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">generate_hailstone_numbers</span>(<span style="font-weight:bold">mut</span> n: <span style="font-weight:bold">u128</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">HailstoneResult</span> {
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> count = 0;
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> max = n;
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> numbers = <span style="font-weight:bold;font-style:italic">Vec</span>::new();
-
-    <span style="font-weight:bold">while</span> n &gt; 1 {
-        n = <span style="font-weight:bold">if</span> n % 2 == 0 { n / 2 } <span style="font-weight:bold">else</span> { 3 * n + 1 };
-        count = count + 1;
-        max = std::cmp::max(max, n);
-        numbers.push(n);        
-    }
-
-    HailstoneResult { count, max, numbers }
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HailstoneResult</span> {
+</span></span><span style="display:flex;"><span>    count: <span style="font-weight:bold">u128</span>,
+</span></span><span style="display:flex;"><span>    max: <span style="font-weight:bold">u128</span>,
+</span></span><span style="display:flex;"><span>    numbers: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">generate_hailstone_numbers</span>(<span style="font-weight:bold">mut</span> n: <span style="font-weight:bold">u128</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">HailstoneResult</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> count = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> max = n;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> numbers = <span style="font-weight:bold;font-style:italic">Vec</span>::new();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span> n &gt; 1 {
+</span></span><span style="display:flex;"><span>        n = <span style="font-weight:bold">if</span> n % 2 == 0 { n / 2 } <span style="font-weight:bold">else</span> { 3 * n + 1 };
+</span></span><span style="display:flex;"><span>        count = count + 1;
+</span></span><span style="display:flex;"><span>        max = std::cmp::max(max, n);
+</span></span><span style="display:flex;"><span>        numbers.push(n);        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    HailstoneResult { count, max, numbers }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -400,29 +399,23 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show " id="lrpgcivjhkmbxstuqdfaenyozw" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show " id="facdbe" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="font-weight:bold">interface</span> HailstoneResult {
-  count: number;
-  max: number;
-  numbers: number[];
-}
-
-<span style="font-weight:bold;font-style:italic">function</span> generateHailstoneNumbers(n: number): HailstoneResult {
-  <span style="font-weight:bold;font-style:italic">var</span> count = 0;
-  <span style="font-weight:bold;font-style:italic">var</span> max = 0;
-  <span style="font-weight:bold;font-style:italic">var</span> numbers = [];
-
-  <span style="font-weight:bold">while</span> (n &gt; 1) {
-    n = n % 2 === 0 ? n / 2 : 3 * n + 1;
-    count++;
-    max = <span style="font-weight:bold;font-style:italic">Math</span>.max(max, n);
-    numbers.push(n);
-  }
-
-  <span style="font-weight:bold">return</span> { count, max, numbers };
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic">function</span> generateHailstoneNumbers(n) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">var</span> count = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">var</span> max = 0;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">var</span> numbers = [];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span> (n &gt; 1) {
+</span></span><span style="display:flex;"><span>        n = n % 2 === 0 ? n / 2 : 3 * n + 1;
+</span></span><span style="display:flex;"><span>        count++;
+</span></span><span style="display:flex;"><span>        max = <span style="font-weight:bold;font-style:italic">Math</span>.max(max, n);
+</span></span><span style="display:flex;"><span>        numbers.push(n);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> { count, max, numbers }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -443,14 +436,14 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 		
 
 		<a class="nav-item nav-link  active "
-		   id="nav-gywsljkvpfcdntxrozmubhiqea" data-toggle="tab" href="#gywsljkvpfcdntxrozmubhiqea"
+		   id="nav-ecfabd" data-toggle="tab" href="#ecfabd"
 		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
 
 		
 
 		<a class="nav-item nav-link "
-		   id="nav-diwfhcskrupqzejogambxtlvyn" data-toggle="tab" href="#diwfhcskrupqzejogambxtlvyn"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+		   id="nav-ebfcda" data-toggle="tab" href="#ebfcda"
+		   role="tab" aria-controls="nav-home" aria-selected="true">JavaScript</a>
 
 		
 
@@ -465,18 +458,15 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show active " id="gywsljkvpfcdntxrozmubhiqea" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show active " id="ecfabd" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-style:italic">// In Rust, we know that we want to mutate the recorder (that is, assign it data), but
-</span><span style="color:#888;font-style:italic">// we don&#39;t want to take ownership of it--it&#39;ll outlive this function. Thus, it will
-</span><span style="color:#888;font-style:italic">// be a mutable (mut) reference (&amp;) to an implementor of our Record trait (impl Record).
-</span><span style="color:#888;font-style:italic"></span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record_hailstone_numbers</span>(recorder: <span style="font-weight:bold">&amp;</span><span style="color:#666;font-weight:bold;font-style:italic">mut</span> <span style="font-weight:bold">impl</span> Record, <span style="font-weight:bold">mut</span> n: <span style="font-weight:bold">u128</span>) {
-    <span style="font-weight:bold">while</span> n &gt; 1 {
-        n = <span style="font-weight:bold">if</span> n % 2 == 0 { n / 2 } <span style="font-weight:bold">else</span> { 3 * n + 1 };
-        recorder.record(&amp;n);
-    }
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record_hailstone_numbers</span>&lt;&#39;a&gt;(recorder: <span style="font-weight:bold">&amp;</span>&#39;a <span style="color:#666;font-weight:bold;font-style:italic">mut</span> <span style="font-weight:bold">impl</span> Record, <span style="font-weight:bold">mut</span> n: <span style="font-weight:bold">u128</span>) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span> n &gt; 1 {
+</span></span><span style="display:flex;"><span>        n = <span style="font-weight:bold">if</span> n % 2 == 0 { n / 2 } <span style="font-weight:bold">else</span> { 3 * n + 1 };
+</span></span><span style="display:flex;"><span>        recorder.record(&amp;n);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -486,23 +476,23 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show " id="diwfhcskrupqzejogambxtlvyn" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show " id="ebfcda" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold;font-style:italic">function</span> recordHailstoneNumbers(recorder: <span style="font-weight:bold">Recorder</span>, n: <span style="font-weight:bold">number</span>) {
-  <span style="font-weight:bold">while</span> (n &gt; 1) {
-    n = n % 2 === 0 ? n / 2 : <span style="font-weight:bold">3</span> * n + 1;
-    recorder.record(n);
-  }
-}
-</code></pre></div>
-
-</div>
-
-
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic">function</span> recordHailstoneNumbers(recorder, n) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">while</span> (n &gt; 1) {
+</span></span><span style="display:flex;"><span>        n = n % 2 === 0 ? n / 2 : 3 * n + 1;
+</span></span><span style="display:flex;"><span>        recorder.record(n)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
-<p>That seems straightforward enough: it accepts a recorder and sends it each hailstone number. This version of the function doesn&rsquo;t have a return value, although it could&mdash;it&rsquo;s independent of the <code>recorder</code>.</p>
-<p>Let&rsquo;s define a trait that can provide this interface.</p>
+
+
+
+</div>
+<p>That seems straightforward enough: it accepts a mutable reference to a recorder and sends it each hailstone number. This version of the function doesn&rsquo;t have a return value, although it could&mdash;it&rsquo;s independent of the <code>recorder</code>.</p>
+<p>Let&rsquo;s define a trait that can provide this interface. Note that there are no traits or equivalents in JavaScript, so we&rsquo;ll use a superclass instead.</p>
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
 
@@ -514,14 +504,14 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 		
 
 		<a class="nav-item nav-link  active "
-		   id="nav-dnqtcybkvfrxihloagempwszju" data-toggle="tab" href="#dnqtcybkvfrxihloagempwszju"
+		   id="nav-fbdeca" data-toggle="tab" href="#fbdeca"
 		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
 
 		
 
 		<a class="nav-item nav-link "
-		   id="nav-ipajmxwztodchrefsvuqgyknbl" data-toggle="tab" href="#ipajmxwztodchrefsvuqgyknbl"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+		   id="nav-febdca" data-toggle="tab" href="#febdca"
+		   role="tab" aria-controls="nav-home" aria-selected="true">JavaScript</a>
 
 		
 
@@ -536,12 +526,12 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show active " id="dnqtcybkvfrxihloagempwszju" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show active " id="fbdeca" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Record {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>);
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">trait</span> Record {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -550,12 +540,22 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show " id="ipajmxwztodchrefsvuqgyknbl" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show " id="febdca" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">interface</span> Recorder {
-  record(n: <span style="font-weight:bold">number</span>): <span style="font-weight:bold">void</span>;
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">class</span> BaseRecorder {
+</span></span><span style="display:flex;"><span>    constructor() {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">this</span>.state = <span style="font-weight:bold">this</span>.initialValue()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    initialValue() {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">throw</span> <span style="color:#666;font-style:italic">&#39;Not implemented&#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    record(n) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">throw</span> <span style="color:#666;font-style:italic">&#39;Not implemented&#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -574,14 +574,14 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 		
 
 		<a class="nav-item nav-link  active "
-		   id="nav-aifvylrmecobqdzhwnkxutgpsj" data-toggle="tab" href="#aifvylrmecobqdzhwnkxutgpsj"
+		   id="nav-bdacfe" data-toggle="tab" href="#bdacfe"
 		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
 
 		
 
 		<a class="nav-item nav-link "
-		   id="nav-seyaoukdptignmfxhqrwcvlzbj" data-toggle="tab" href="#seyaoukdptignmfxhqrwcvlzbj"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+		   id="nav-bfdace" data-toggle="tab" href="#bfdace"
+		   role="tab" aria-controls="nav-home" aria-selected="true">JavaScript</a>
 
 		
 
@@ -596,12 +596,12 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show active " id="aifvylrmecobqdzhwnkxutgpsj" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show active " id="bdacfe" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Report&lt;T&gt; {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">T</span>;
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">trait</span> Report&lt;T&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">T</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -610,12 +610,22 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show " id="seyaoukdptignmfxhqrwcvlzbj" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show " id="bfdace" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">interface</span> Reporter&lt;T&gt; {
-  report(): T;
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">class</span> BaseRecorder {
+</span></span><span style="display:flex;"><span>    initialValue() {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">throw</span> <span style="color:#666;font-style:italic">&#39;Not implemented&#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    record(n) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">throw</span> <span style="color:#666;font-style:italic">&#39;Not implemented&#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    report() {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.state;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -636,14 +646,14 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 		
 
 		<a class="nav-item nav-link  active "
-		   id="nav-xcbzmjnatvupiofkyedgwshqrl" data-toggle="tab" href="#xcbzmjnatvupiofkyedgwshqrl"
+		   id="nav-badcfe" data-toggle="tab" href="#badcfe"
 		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
 
 		
 
 		<a class="nav-item nav-link "
-		   id="nav-qifzyaurbmpehondgstwkvjcxl" data-toggle="tab" href="#qifzyaurbmpehondgstwkvjcxl"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+		   id="nav-edfbac" data-toggle="tab" href="#edfbac"
+		   role="tab" aria-controls="nav-home" aria-selected="true">JavaScript</a>
 
 		
 
@@ -658,25 +668,25 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show active " id="xcbzmjnatvupiofkyedgwshqrl" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show active " id="badcfe" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
-<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsCounter</span> {
-    state: <span style="font-weight:bold">u128</span>,
-}
-
-<span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsCounter {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, _: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
-        <span style="font-weight:bold;font-style:italic">self</span>.state = <span style="font-weight:bold;font-style:italic">self</span>.state + 1
-    }
-}
-
-<span style="font-weight:bold">impl</span> Report&lt;<span style="font-weight:bold">u128</span>&gt; <span style="font-weight:bold">for</span> HsCounter {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="font-weight:bold">u128</span> {
-        <span style="font-weight:bold;font-style:italic">self</span>.state
-    }
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsCounter</span> {
+</span></span><span style="display:flex;"><span>    state: <span style="font-weight:bold">u128</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsCounter {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, _: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">self</span>.state = <span style="font-weight:bold;font-style:italic">self</span>.state + 1
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Report&lt;<span style="font-weight:bold">u128</span>&gt; <span style="font-weight:bold">for</span> HsCounter {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="font-weight:bold">u128</span> {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">self</span>.state
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -686,24 +696,18 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show " id="qifzyaurbmpehondgstwkvjcxl" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show " id="edfbac" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">class</span> HsCounter <span style="font-weight:bold">implements</span> Recorder, Reporter&lt;number&gt; {
-  state: <span style="font-weight:bold">number</span>;
-
-  <span style="font-weight:bold">constructor</span>() {
-    <span style="font-weight:bold">this</span>.state = 0;
-  }
-
-  record(_: <span style="font-weight:bold">number</span>) {
-    <span style="font-weight:bold">this</span>.state++;
-  }
-
-  report(): <span style="font-weight:bold">number</span> {
-    <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.state;
-  }
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">class</span> HsCounter <span style="font-weight:bold">extends</span> BaseRecorder {
+</span></span><span style="display:flex;"><span>    initialValue {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> 0;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    record(_) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">this</span>.count++;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -723,14 +727,14 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 		
 
 		<a class="nav-item nav-link  active "
-		   id="nav-abslqzfhgetkcnwmixdjurpyov" data-toggle="tab" href="#abslqzfhgetkcnwmixdjurpyov"
+		   id="nav-fabced" data-toggle="tab" href="#fabced"
 		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
 
 		
 
 		<a class="nav-item nav-link "
-		   id="nav-yncjedarhpxqukoizglwftvmbs" data-toggle="tab" href="#yncjedarhpxqukoizglwftvmbs"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+		   id="nav-baedcf" data-toggle="tab" href="#baedcf"
+		   role="tab" aria-controls="nav-home" aria-selected="true">JavaScript</a>
 
 		
 
@@ -745,25 +749,25 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show active " id="abslqzfhgetkcnwmixdjurpyov" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show active " id="fabced" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
-<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsList</span> {
-    state: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;,
-}
-
-<span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsList {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
-        <span style="font-weight:bold;font-style:italic">self</span>.state.push(*n)
-    }
-}
-
-<span style="font-weight:bold">impl</span> Report&lt;<span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;&gt; <span style="font-weight:bold">for</span> HsList {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt; {
-        <span style="font-weight:bold;font-style:italic">self</span>.state.clone()
-    }
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsList</span> {
+</span></span><span style="display:flex;"><span>    state: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsList {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">self</span>.state.push(*n)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Report&lt;<span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;&gt; <span style="font-weight:bold">for</span> HsList {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt; {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">self</span>.state.clone()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -773,24 +777,22 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show " id="yncjedarhpxqukoizglwftvmbs" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show " id="baedcf" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">class</span> HsList <span style="font-weight:bold">implements</span> Recorder, Reporter&lt;number<span style="">[]</span>&gt; {
-  state: <span style="font-weight:bold">number</span>[];
-
-  <span style="font-weight:bold">constructor</span>() {
-    <span style="font-weight:bold">this</span>.state = [];
-  }
-
-  record(n: <span style="font-weight:bold">number</span>) {
-    <span style="font-weight:bold">this</span>.state.push(n);
-  }
-
-  report(): <span style="font-weight:bold">number</span>[] {
-    <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.state;
-  }
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">class</span> HsList {
+</span></span><span style="display:flex;"><span>    initialValue() {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> [];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    record(n) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">this</span>.state.push(n);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    report() {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.state;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -810,14 +812,14 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 		
 
 		<a class="nav-item nav-link  active "
-		   id="nav-obukrsiwztefgdjpcnyaqxvmlh" data-toggle="tab" href="#obukrsiwztefgdjpcnyaqxvmlh"
+		   id="nav-adfebc" data-toggle="tab" href="#adfebc"
 		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
 
 		
 
 		<a class="nav-item nav-link "
-		   id="nav-nbwroauilhmfksxdzjqtgcvepy" data-toggle="tab" href="#nbwroauilhmfksxdzjqtgcvepy"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
+		   id="nav-dacefb" data-toggle="tab" href="#dacefb"
+		   role="tab" aria-controls="nav-home" aria-selected="true">JavaScript</a>
 
 		
 
@@ -832,31 +834,31 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show active " id="obukrsiwztefgdjpcnyaqxvmlh" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show active " id="adfebc" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
-<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsMax</span> {
-    state: <span style="font-weight:bold">u128</span>,
-}
-
-<span style="font-weight:bold">impl</span> HsMax {    
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">new</span>(state: <span style="font-weight:bold">u128</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">Self</span> {
-        <span style="font-weight:bold;font-style:italic">Self</span> { state }
-    }
-}
-
-<span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsMax {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
-        <span style="font-weight:bold;font-style:italic">self</span>.state = std::cmp::max(<span style="font-weight:bold;font-style:italic">self</span>.state, *n)
-    }
-}
-
-<span style="font-weight:bold">impl</span> Report&lt;<span style="font-weight:bold">u128</span>&gt; <span style="font-weight:bold">for</span> HsMax {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="font-weight:bold">u128</span> {
-        <span style="font-weight:bold;font-style:italic">self</span>.state
-    }
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsMax</span> {
+</span></span><span style="display:flex;"><span>    state: <span style="font-weight:bold">u128</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> HsMax {    
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">new</span>(state: <span style="font-weight:bold">u128</span>) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">Self</span> {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">Self</span> { state }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsMax {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">self</span>.state = std::cmp::max(<span style="font-weight:bold;font-style:italic">self</span>.state, *n)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Report&lt;<span style="font-weight:bold">u128</span>&gt; <span style="font-weight:bold">for</span> HsMax {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">report</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="font-weight:bold">u128</span> {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">self</span>.state
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -866,24 +868,12 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 
 
 
-<div class="tab-pane fade show " id="nbwroauilhmfksxdzjqtgcvepy" role="tabpanel" aria-labelledby="nav-1">
+<div class="tab-pane fade show " id="dacefb" role="tabpanel" aria-labelledby="nav-1">
 
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">class</span> HsMax <span style="font-weight:bold">implements</span> Recorder, Reporter&lt;number&gt; {
-  state: <span style="font-weight:bold">number</span>;
-
-  <span style="font-weight:bold">constructor</span>(init: <span style="font-weight:bold">number</span> = 0) {
-    <span style="font-weight:bold">this</span>.state = init;
-  }
-
-  record(n: <span style="font-weight:bold">number</span>) {
-    <span style="font-weight:bold">this</span>.state = <span style="font-weight:bold;font-style:italic">Math</span>.max(<span style="font-weight:bold">this</span>.state, n);
-  }
-
-  report(): <span style="font-weight:bold">number</span> {
-    <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.state;
-  }
-}
-</code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="font-weight:bold">class</span> HsMax {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
 </div>
 
@@ -892,450 +882,107 @@ C(2) &amp; = 2 \div 2       &amp; = 1
 </div>
 <h2 id="using-the-strategies">Using the Strategies</h2>
 <p>We can then use our new recorders by passing them to <code>record_hailstone_numbers</code>:</p>
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-		
-		
-		
-		
-
-		
-
-		<a class="nav-item nav-link  active "
-		   id="nav-gpdutlmfoxbqcsnvywjkiehzra" data-toggle="tab" href="#gpdutlmfoxbqcsnvywjkiehzra"
-		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
-
-		
-
-		<a class="nav-item nav-link "
-		   id="nav-dbgozsluxeytaqjnphmrckvfiw" data-toggle="tab" href="#dbgozsluxeytaqjnphmrckvfiw"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
-
-		
-
-	</div>
-</nav>
-
-<div class="tab-content" id="nav-tab-content">
-
-	
-
-
-
-
-
-<div class="tab-pane fade show active " id="gpdutlmfoxbqcsnvywjkiehzra" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() -&gt; <span style="color:#666;font-weight:bold;font-style:italic">result</span>::<span style="font-weight:bold;font-style:italic">Result</span>&lt;(), <span style="font-weight:bold;font-style:italic">Box</span>&lt;<span style="font-weight:bold">dyn</span> error::Error&gt;&gt; {
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> counter = HsCounter::default();
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> max = HsMax::default();
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> list = HsList::default();
-
-    record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> counter, 5);
-    record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> max, 5);
-    record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> list, 5);
-
-    println!(
-        <span style="color:#666;font-style:italic">&#34;counter: {}\nmax: {}\nlist: {:?}&#34;</span>,
-        counter.report(),
-        max.report(),
-        list.report(),
-    );
-
-    <span style="font-weight:bold;font-style:italic">Ok</span>(())
-}
-</code></pre></div>
-
-</div>
-
-
-
-
-
-
-
-<div class="tab-pane fade show " id="dbgozsluxeytaqjnphmrckvfiw" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold;font-style:italic">function</span> main() {
-  <span style="font-weight:bold;font-style:italic">let</span> counter = <span style="font-weight:bold">new</span> HsCounter();
-  <span style="font-weight:bold;font-style:italic">let</span> max = <span style="font-weight:bold">new</span> HsMax();
-  <span style="font-weight:bold;font-style:italic">let</span> list = <span style="font-weight:bold">new</span> HsList();
-
-  recordHailstoneNumbers(counter, 5);
-  recordHailstoneNumbers(max, 5);
-  recordHailstoneNumbers(list, 5);
-
-  console.log(
-    <span style="color:#666;font-style:italic">`counter: </span><span style="color:#666;font-style:italic">${</span>counter.report()<span style="color:#666;font-style:italic">}</span><span style="">\</span><span style="color:#666;font-style:italic">nmax: </span><span style="color:#666;font-style:italic">${</span>max.report()<span style="color:#666;font-style:italic">}</span><span style="">\</span><span style="color:#666;font-style:italic">nlist: </span><span style="color:#666;font-style:italic">${</span>list.report()<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">`</span>
-  );
-}
-</code></pre></div>
-
-</div>
-
-
-
-</div>
-<p>The output is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() -&gt; <span style="color:#666;font-weight:bold;font-style:italic">result</span>::<span style="font-weight:bold;font-style:italic">Result</span>&lt;(), <span style="font-weight:bold;font-style:italic">Box</span>&lt;<span style="font-weight:bold">dyn</span> error::Error&gt;&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> counter = HsCounter::default();
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> max = HsMax::default();
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> list = HsList::default();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> counter, 5);
+</span></span><span style="display:flex;"><span>    record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> max, 5);
+</span></span><span style="display:flex;"><span>    record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> list, 5);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    println!(
+</span></span><span style="display:flex;"><span>        <span style="color:#666;font-style:italic">&#34;counter: </span><span style="color:#666;font-style:italic">{}</span><span style="color:#666;font-style:italic">\n</span><span style="color:#666;font-style:italic">max: </span><span style="color:#666;font-style:italic">{}</span><span style="color:#666;font-style:italic">\n</span><span style="color:#666;font-style:italic">list: </span><span style="color:#666;font-style:italic">{:?}</span><span style="color:#666;font-style:italic">&#34;</span>,
+</span></span><span style="display:flex;"><span>        counter.report(),
+</span></span><span style="display:flex;"><span>        max.report(),
+</span></span><span style="display:flex;"><span>        list.report(),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">Ok</span>(())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The output is:</p>
 <pre tabindex="0"><code>counter: 5
 max: 16
 list: [16, 8, 4, 2, 1]
 </code></pre><h2 id="efficiency-concerns">Efficiency Concerns</h2>
 <p>There&rsquo;s a serious flaw in this approach compared to the procedural example, though: for each strategy we want to use, we&rsquo;re calling <code>record_hailstone_numbers</code> again. That&rsquo;s not a catastrophe here, but if the function called an external service, stored data in the database, or required heavier computation, there would be a serious performance penalty each time we added a strategy. As long as we maintain our <code>Record</code> interface, though, we can create a strategy that composes several others.</p>
 <p>We can&rsquo;t implement the <code>Report&lt;T&gt;</code> trait here, because the entries in the vector could have different <code>T</code> parameters. <code>main</code> will still need to own the strategies and call <code>report()</code> on each individually.</p>
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-		
-		
-		
-		
-
-		
-
-		<a class="nav-item nav-link  active "
-		   id="nav-bhcqzfokntvegrimpdayslwxju" data-toggle="tab" href="#bhcqzfokntvegrimpdayslwxju"
-		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
-
-		
-
-		<a class="nav-item nav-link "
-		   id="nav-uozrdcaqxwhpbinlvmgystkejf" data-toggle="tab" href="#uozrdcaqxwhpbinlvmgystkejf"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
-
-		
-
-	</div>
-</nav>
-
-<div class="tab-content" id="nav-tab-content">
-
-	
-
-
-
-
-
-<div class="tab-pane fade show active " id="bhcqzfokntvegrimpdayslwxju" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> <span style="font-weight:bold;font-style:italic">Vec</span>&lt;&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold">dyn</span> Record&gt; {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
-        <span style="font-weight:bold">for</span> record <span style="font-weight:bold">in</span> <span style="font-weight:bold;font-style:italic">self</span> {
-            record.record(n)
-        }
-    }
-}
-</code></pre></div>
-
-</div>
-
-
-
-
-
-
-
-<div class="tab-pane fade show " id="uozrdcaqxwhpbinlvmgystkejf" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#888;font-style:italic">// TypeScript doesn&#39;t offer a way to implement an interface on a foreign type (e.g.
-</span><span style="color:#888;font-style:italic">// Recorder[]) equivalent to Rust&#39;s, so we instead define a new wrapper class.
-</span><span style="color:#888;font-style:italic"></span><span style="font-weight:bold">class</span> HsComposedRecorder <span style="font-weight:bold">implements</span> Recorder {
-  state: <span style="font-weight:bold">Recorder</span>[];
-
-  <span style="font-weight:bold">constructor</span>(...recorders: <span style="font-weight:bold">Recorder</span>[]) {
-    <span style="font-weight:bold">this</span>.state = recorders;
-  }
-
-  record(n: <span style="font-weight:bold">number</span>) {
-    <span style="font-weight:bold">this</span>.state.forEach((r) =&gt; r.record(n));
-  }
-}
-</code></pre></div>
-
-</div>
-
-
-
-</div>
-<p>Even though <code>Vec&lt;T&gt;</code> is a foreign type&mdash;that is, it&rsquo;s defined in the standard library instead of our program&mdash;this <code>impl</code> means that we can build a list of references to our recorders, then pass it to <code>record_hailstone_numbers</code> once.</p>
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-		
-		
-		
-		
-
-		
-
-		<a class="nav-item nav-link  active "
-		   id="nav-jvhrqfkwzgximudsyoaenpbctl" data-toggle="tab" href="#jvhrqfkwzgximudsyoaenpbctl"
-		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
-
-		
-
-		<a class="nav-item nav-link "
-		   id="nav-xzigokuhwfclqsarjeynbvdmpt" data-toggle="tab" href="#xzigokuhwfclqsarjeynbvdmpt"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
-
-		
-
-	</div>
-</nav>
-
-<div class="tab-content" id="nav-tab-content">
-
-	
-
-
-
-
-
-<div class="tab-pane fade show active " id="jvhrqfkwzgximudsyoaenpbctl" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() -&gt; <span style="color:#666;font-weight:bold;font-style:italic">result</span>::<span style="font-weight:bold;font-style:italic">Result</span>&lt;(), <span style="font-weight:bold;font-style:italic">Box</span>&lt;<span style="font-weight:bold">dyn</span> error::Error&gt;&gt; {
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> counter = HsCounter::default();
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> max = HsMax::default();
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> list = HsList::default();
-
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> recorders: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold">dyn</span> Record&gt; = vec![&amp;<span style="font-weight:bold">mut</span> counter, &amp;<span style="font-weight:bold">mut</span> max, &amp;<span style="font-weight:bold">mut</span> list];
-    record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> recorders, 5);
-
-    println!(
-        <span style="color:#666;font-style:italic">&#34;counter: {}\nmax: {}\nlist: {:?}&#34;</span>,
-        counter.report(),
-        max.report(),
-        list.report()
-    );
-</code></pre></div>
-
-</div>
-
-
-
-
-
-
-
-<div class="tab-pane fade show " id="xzigokuhwfclqsarjeynbvdmpt" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold;font-style:italic">function</span> main() {
-  <span style="font-weight:bold;font-style:italic">let</span> counter = <span style="font-weight:bold">new</span> HsCounter();
-  <span style="font-weight:bold;font-style:italic">let</span> max = <span style="font-weight:bold">new</span> HsMax();
-  <span style="font-weight:bold;font-style:italic">let</span> list = <span style="font-weight:bold">new</span> HsList();
-
-  <span style="font-weight:bold;font-style:italic">let</span> recorders = <span style="font-weight:bold">new</span> HsComposedRecorder(counter, max, list);
-  recordHailstoneNumbers(recorders, 5);
-
-  console.log(
-    <span style="color:#666;font-style:italic">`counter: </span><span style="color:#666;font-style:italic">${</span>counter.report()<span style="color:#666;font-style:italic">}</span><span style="">\</span><span style="color:#666;font-style:italic">nmax: </span><span style="color:#666;font-style:italic">${</span>max.report()<span style="color:#666;font-style:italic">}</span><span style="">\</span><span style="color:#666;font-style:italic">nlist: </span><span style="color:#666;font-style:italic">${</span>list.report()<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">`</span>
-  );
-}
-</code></pre></div>
-
-</div>
-
-
-
-</div>
-<h2 id="side-effects">Side Effects</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">impl</span>&lt;&#39;a&gt; Record <span style="font-weight:bold">for</span> <span style="font-weight:bold;font-style:italic">Vec</span>&lt;&amp;&#39;a <span style="font-weight:bold">mut</span> <span style="font-weight:bold">dyn</span> Record&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">for</span> record <span style="font-weight:bold">in</span> <span style="font-weight:bold;font-style:italic">self</span> {
+</span></span><span style="display:flex;"><span>            record.record(n)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Even though <code>Vec&lt;T&gt;</code> is a foreign type&mdash;that is, it&rsquo;s defined in the standard library instead of our program&mdash;this <code>impl</code> means that we can build a list of references to our recorders, then pass it to <code>record_hailstone_numbers</code> once.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() -&gt; <span style="color:#666;font-weight:bold;font-style:italic">result</span>::<span style="font-weight:bold;font-style:italic">Result</span>&lt;(), <span style="font-weight:bold;font-style:italic">Box</span>&lt;<span style="font-weight:bold">dyn</span> error::Error&gt;&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> counter = HsCounter::default();
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> max = HsMax::default();
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> list = HsList::default();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> recorders: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold">dyn</span> Record&gt; = vec![&amp;<span style="font-weight:bold">mut</span> counter, &amp;<span style="font-weight:bold">mut</span> max, &amp;<span style="font-weight:bold">mut</span> list];
+</span></span><span style="display:flex;"><span>    record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> recorders, 5);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    println!(
+</span></span><span style="display:flex;"><span>        <span style="color:#666;font-style:italic">&#34;counter: </span><span style="color:#666;font-style:italic">{}</span><span style="color:#666;font-style:italic">\n</span><span style="color:#666;font-style:italic">max: </span><span style="color:#666;font-style:italic">{}</span><span style="color:#666;font-style:italic">\n</span><span style="color:#666;font-style:italic">list: </span><span style="color:#666;font-style:italic">{:?}</span><span style="color:#666;font-style:italic">&#34;</span>,
+</span></span><span style="display:flex;"><span>        counter.report(),
+</span></span><span style="display:flex;"><span>        max.report(),
+</span></span><span style="display:flex;"><span>        list.report()
+</span></span><span style="display:flex;"><span>    );
+</span></span></code></pre></div><h2 id="side-effects">Side Effects</h2>
 <p>All of these strategy implementations have one thing in common: they&rsquo;re all self-contained. The strategy pattern can also be used for side effects, like writing to a log stream or retrieving data from the database. In our case, let&rsquo;s display a &ldquo;progress bar&rdquo; as we generate hailstone numbers. This strategy doesn&rsquo;t require us to implement the <code>Report</code> trait, either.</p>
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-		
-		
-		
-		
-
-		
-
-		<a class="nav-item nav-link  active "
-		   id="nav-gmyentbpqzwkohvifarcsjldux" data-toggle="tab" href="#gmyentbpqzwkohvifarcsjldux"
-		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
-
-		
-
-		<a class="nav-item nav-link "
-		   id="nav-bikhdsrmeutnlqzjxpcafvoygw" data-toggle="tab" href="#bikhdsrmeutnlqzjxpcafvoygw"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
-
-		
-
-	</div>
-</nav>
-
-<div class="tab-content" id="nav-tab-content">
-
-	
-
-
-
-
-
-<div class="tab-pane fade show active " id="gmyentbpqzwkohvifarcsjldux" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
-<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsProgressBar</span> {}
-
-<span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsProgressBar {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
-        <span style="font-weight:bold">match</span> n {
-            1 =&gt; println!(<span style="color:#666;font-style:italic">&#34;.&#34;</span>),
-            _ =&gt; {
-                print!(<span style="color:#666;font-style:italic">&#34;.&#34;</span>);
-                io::stdout().flush().expect(<span style="color:#666;font-style:italic">&#34;flushing stdout failed&#34;</span>);
-            }
-        }
-    }
-}
-</code></pre></div>
-
-</div>
-
-
-
-
-
-
-
-<div class="tab-pane fade show " id="bikhdsrmeutnlqzjxpcafvoygw" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">class</span> HsProgressBar <span style="font-weight:bold">implements</span> Recorder {
-  record(n: <span style="font-weight:bold">number</span>) {
-    <span style="font-weight:bold;font-style:italic">let</span> dot = n === 1 ? <span style="color:#666;font-style:italic">&#34;.\n&#34;</span> : <span style="color:#666;font-style:italic">&#34;.&#34;</span>;
-    process.stdout.write(dot);
-  }
-}
-</code></pre></div>
-
-</div>
-
-
-
-</div>
-<h2 id="testing">Testing</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#888;font-weight:bold">#[derive(Default)]</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsProgressBar</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsProgressBar {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">match</span> n {
+</span></span><span style="display:flex;"><span>            1 =&gt; println!(<span style="color:#666;font-style:italic">&#34;.&#34;</span>),
+</span></span><span style="display:flex;"><span>            _ =&gt; {
+</span></span><span style="display:flex;"><span>                print!(<span style="color:#666;font-style:italic">&#34;.&#34;</span>);
+</span></span><span style="display:flex;"><span>                io::stdout().flush().expect(<span style="color:#666;font-style:italic">&#34;flushing stdout failed&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="testing">Testing</h2>
 <p>Don&rsquo;t overlook the usefulness of the strategy pattern for testing! In a real application, you might want to vary the data source that a method is using, or mock responses from an external service. In our case, we&rsquo;re modeling a well-known mathematical problem; shouldn&rsquo;t we be able to check our implementation against expected sequences?</p>
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-		
-		
-		
-		
-
-		
-
-		<a class="nav-item nav-link  active "
-		   id="nav-ydwsorfugpljkqnxzcehtmabiv" data-toggle="tab" href="#ydwsorfugpljkqnxzcehtmabiv"
-		   role="tab" aria-controls="nav-home" aria-selected="true">Rust</a>
-
-		
-
-		<a class="nav-item nav-link "
-		   id="nav-yvsrigwcbonxeqlzufkadhjtmp" data-toggle="tab" href="#yvsrigwcbonxeqlzufkadhjtmp"
-		   role="tab" aria-controls="nav-home" aria-selected="true">TypeScript</a>
-
-		
-
-	</div>
-</nav>
-
-<div class="tab-content" id="nav-tab-content">
-
-	
-
-
-
-
-
-<div class="tab-pane fade show active " id="ydwsorfugpljkqnxzcehtmabiv" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#888;font-weight:bold">#[cfg(test)]</span>
-<span style="font-weight:bold">mod</span> <span style="color:#666;font-weight:bold;font-style:italic">tests</span> {
-    <span style="font-weight:bold">use</span> <span style="font-weight:bold">super</span>::*;
-
-    <span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsTest</span> {
-        state: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;,
-        count: <span style="font-weight:bold">u128</span>,
-    }
-
-    <span style="font-weight:bold">impl</span> HsTest {
-        <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">new</span>(<span style="font-weight:bold">mut</span> state: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">Self</span> {
-            state.reverse();
-            <span style="font-weight:bold;font-style:italic">Self</span> { state, count: 0 }
-        }
-
-        <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">is_empty</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="font-weight:bold">bool</span> {
-            <span style="font-weight:bold;font-style:italic">self</span>.state.is_empty()
-        }
-    }
-
-    <span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsTest {
-        <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
-            <span style="font-weight:bold;font-style:italic">self</span>.count = <span style="font-weight:bold;font-style:italic">self</span>.count + 1;
-            <span style="font-weight:bold;font-style:italic">let</span> ex = <span style="font-weight:bold;font-style:italic">self</span>.state.pop().expect(<span style="color:#666;font-style:italic">&#34;too many numbers generated&#34;</span>);
-            assert_eq!(*n, ex, <span style="color:#666;font-style:italic">&#34;step {}: expected {}, not {}&#34;</span>, <span style="font-weight:bold;font-style:italic">self</span>.count, ex, n)
-        }
-    }
-
-    <span style="color:#888;font-weight:bold">#[test]</span>
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">test_five</span>() {
-        <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> expected = HsTest::new(vec![16, 8, 4, 2, 1]);
-        record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> expected, 5);
-        assert!(expected.is_empty())
-    }
-}
-</code></pre></div>
-
-</div>
-
-
-
-
-
-
-
-<div class="tab-pane fade show " id="yvsrigwcbonxeqlzufkadhjtmp" role="tabpanel" aria-labelledby="nav-1">
-
-	<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="font-weight:bold">import</span> { Recorder } <span style="font-weight:bold">from</span> <span style="color:#666;font-style:italic">&#34;./hailstone&#34;</span>;
-<span style="font-weight:bold">import</span> { recordHailstoneNumbers } <span style="font-weight:bold">from</span> <span style="color:#666;font-style:italic">&#34;./hailstone&#34;</span>;
-
-<span style="font-weight:bold">class</span> HsTest <span style="font-weight:bold">implements</span> Recorder {
-  expectedNumbers: <span style="font-weight:bold">number</span>[];
-
-  <span style="font-weight:bold">constructor</span>(expectedNumbers: <span style="font-weight:bold">number</span>[]) {
-    expectedNumbers.reverse();
-    <span style="font-weight:bold">this</span>.expectedNumbers = expectedNumbers;
-  }
-
-  record(n: <span style="font-weight:bold">number</span>) {
-    expect(<span style="font-weight:bold">this</span>.expectedNumbers.length).toBeGreaterThan(0);
-    <span style="font-weight:bold;font-style:italic">let</span> expected = <span style="font-weight:bold">this</span>.expectedNumbers.pop();
-    expect(n).toEqual(expected);
-  }
-
-  isEmpty(): <span style="font-weight:bold">boolean</span> {
-    <span style="font-weight:bold">return</span> <span style="font-weight:bold">this</span>.expectedNumbers.length == 0;
-  }
-}
-
-describe(<span style="color:#666;font-style:italic">&#34;recordHailstoneNumbers&#34;</span>, () =&gt; {
-  it(<span style="color:#666;font-style:italic">&#34;calculates the hailstone numbers for 5 properly&#34;</span>, () =&gt; {
-    <span style="font-weight:bold;font-style:italic">let</span> expected = <span style="font-weight:bold">new</span> HsTest([16, 8, 4, 2, 1]);
-    recordHailstoneNumbers(expected, 5);
-    expect(expected.isEmpty()).toBeTruthy();
-  });
-});
-</code></pre></div>
-
-</div>
-
-
-
-</div>
-<h2 id="wrapping-it-up">Wrapping it Up</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#888;font-weight:bold">#[cfg(test)]</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">mod</span> <span style="color:#666;font-weight:bold;font-style:italic">tests</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">use</span> <span style="font-weight:bold">super</span>::*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">HsTest</span> {
+</span></span><span style="display:flex;"><span>        state: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;,
+</span></span><span style="display:flex;"><span>        count: <span style="font-weight:bold">u128</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">impl</span> HsTest {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">new</span>(<span style="font-weight:bold">mut</span> state: <span style="font-weight:bold;font-style:italic">Vec</span>&lt;<span style="font-weight:bold">u128</span>&gt;) -&gt; <span style="color:#666;font-weight:bold;font-style:italic">Self</span> {
+</span></span><span style="display:flex;"><span>            state.reverse();
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold;font-style:italic">Self</span> { state, count: 0 }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">is_empty</span>(&amp;<span style="font-weight:bold;font-style:italic">self</span>) -&gt; <span style="font-weight:bold">bool</span> {
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold;font-style:italic">self</span>.state.is_empty()
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">impl</span> Record <span style="font-weight:bold">for</span> HsTest {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">record</span>(&amp;<span style="font-weight:bold">mut</span> <span style="font-weight:bold;font-style:italic">self</span>, n: <span style="font-weight:bold">&amp;</span><span style="font-weight:bold">u128</span>) {
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold;font-style:italic">self</span>.count = <span style="font-weight:bold;font-style:italic">self</span>.count + 1;
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold;font-style:italic">let</span> ex = <span style="font-weight:bold;font-style:italic">self</span>.state.pop().expect(<span style="color:#666;font-style:italic">&#34;too many numbers generated&#34;</span>);
+</span></span><span style="display:flex;"><span>            assert_eq!(*n, ex, <span style="color:#666;font-style:italic">&#34;step {}: expected {}, not {}&#34;</span>, <span style="font-weight:bold;font-style:italic">self</span>.count, ex, n)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#888;font-weight:bold">#[test]</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">test_five</span>() {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> expected = HsTest::new(vec![16, 8, 4, 2, 1]);
+</span></span><span style="display:flex;"><span>        record_hailstone_numbers(&amp;<span style="font-weight:bold">mut</span> expected, 5);
+</span></span><span style="display:flex;"><span>        assert!(expected.is_empty())
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="wrapping-it-up">Wrapping it Up</h2>
 <p>The number of more specific patterns that boil down to an application of the strategy pattern is striking:</p>
 <ul>
 <li>In &ldquo;domain-driven design,&rdquo; the &ldquo;repository pattern&rdquo; usually includes an application of the strategy pattern to data sources.</li>

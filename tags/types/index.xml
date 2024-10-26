@@ -6,22 +6,14 @@
     <description>Recent content in types on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Nov 2019 14:02:05 +0700</lastBuildDate><atom:link href="https://asthasr.github.io/tags/types/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Nov 2019 14:02:05 +0700</lastBuildDate>
+    <atom:link href="https://asthasr.github.io/tags/types/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>&#34;Parsing&#34; in Python</title>
       <link>https://asthasr.github.io/posts/parsing-in-python/</link>
       <pubDate>Sun, 10 Nov 2019 14:02:05 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/parsing-in-python/</guid>
-      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;&amp;ldquo;Parse, Don&amp;rsquo;t Validate,&amp;rdquo;
-&lt;/a&gt; shared it with my
-coworkers, and let it &lt;a href=&#34;https://lobste.rs/s/uemphs/parse_don_t_validate&#34;&gt;bring me out of
-retirement&lt;/a&gt; on
-&lt;a href=&#34;https://lobste.rs/&#34;&gt;lobste.rs&lt;/a&gt;. It captures a concept that I&amp;rsquo;ve struggled to explain,
-leading to cases where I couldn&amp;rsquo;t say why I thought something was better beyond a vague
-&amp;ldquo;It&amp;rsquo;s a matter of taste.&amp;rdquo; That&amp;rsquo;s not very satisfactory as a justification when you&amp;rsquo;re
-trying to explain to someone why they should rework a piece of code in a review.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;&amp;ldquo;Parse, Don&amp;rsquo;t Validate,&amp;rdquo;&#xA;&lt;/a&gt; shared it with my&#xA;coworkers, and let it &lt;a href=&#34;https://lobste.rs/s/uemphs/parse_don_t_validate&#34;&gt;bring me out of&#xA;retirement&lt;/a&gt; on&#xA;&lt;a href=&#34;https://lobste.rs/&#34;&gt;lobste.rs&lt;/a&gt;. It captures a concept that I&amp;rsquo;ve struggled to explain,&#xA;leading to cases where I couldn&amp;rsquo;t say why I thought something was better beyond a vague&#xA;&amp;ldquo;It&amp;rsquo;s a matter of taste.&amp;rdquo; That&amp;rsquo;s not very satisfactory as a justification when you&amp;rsquo;re&#xA;trying to explain to someone why they should rework a piece of code in a review.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

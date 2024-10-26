@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -174,8 +174,7 @@ div.title {
 
 </style>
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How Blockchains Work"/>
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="How Blockchains Work"/>
 <meta name="twitter:description" content="Chances are, you know what Bitcoin is. After all, it&rsquo;s valued at over $47,000 per Bitcoin right now. This post isn&rsquo;t about the business side of things, though, or the BTC speculative bubble. I want to explain how it works.1
 Foundations: Hashes and Ledgers First, a hash algorithm is a way to convert a given string into an unpredictable string of a fixed length, called a digest.
 Here&rsquo;s a small Python program to demonstrate:"/>
@@ -231,23 +230,23 @@ it works.</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-n
 unpredictable string of a fixed length, called a <strong>digest</strong>.</p>
 <p><img src="/blockchain_dia1.svg" alt="A diagram illustrating that a hash algorithm produces a digest from a string."></p>
 <p>Here&rsquo;s a small Python program to demonstrate:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic">#!/usr/bin/env python3</span>
-<span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">argparse</span> <span style="font-weight:bold">import</span> ArgumentParser
-<span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">hashlib</span> <span style="font-weight:bold">import</span> md5
-
-
-<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_string</span>(string):
-    <span style="font-weight:bold;font-style:italic">hash</span> = md5()
-    <span style="font-weight:bold;font-style:italic">hash</span>.update(string.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
-    <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">hash</span>.hexdigest()
-
-
-<span style="font-weight:bold">if</span> __name__ == <span style="color:#666;font-style:italic">&#34;__main__&#34;</span>:
-    parser = ArgumentParser()
-    parser.add_argument(<span style="color:#666;font-style:italic">&#34;STRING&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The string to be hashed&#34;</span>)
-    args = parser.parse_args()
-    <span style="font-weight:bold;font-style:italic">print</span>(hash_string(args.STRING))
-</code></pre></div><p>Running this with different string arguments will give you digests of
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#888;font-style:italic">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">argparse</span> <span style="font-weight:bold">import</span> ArgumentParser
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">hashlib</span> <span style="font-weight:bold">import</span> md5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_string</span>(string):
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">hash</span> = md5()
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">hash</span>.update(string.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">hash</span>.hexdigest()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> __name__ == <span style="color:#666;font-style:italic">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    parser = ArgumentParser()
+</span></span><span style="display:flex;"><span>    parser.add_argument(<span style="color:#666;font-style:italic">&#34;STRING&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The string to be hashed&#34;</span>)
+</span></span><span style="display:flex;"><span>    args = parser.parse_args()
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">print</span>(hash_string(args.STRING))
+</span></span></code></pre></div><p>Running this with different string arguments will give you digests of
 the arguments:</p>
 <pre tabindex="0"><code>$ ./hash ninja
 3899dcbab79f92af727c2190bbd8abc5
@@ -261,33 +260,33 @@ over time. Hashes can help with that by protecting the ordering and
 contents of messages.</p>
 <p><img src="/blockchain_dia2.svg" alt="A diagram illustrating that blockchains capture the previous digest and the current message to produce a digest."></p>
 <p>Here&rsquo;s a brief implementation:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_ledger_entry</span>(string, previous_digest=<span style="font-weight:bold">None</span>):
-    <span style="color:#666;font-style:italic">&#34;&#34;&#34;Hashes a string with the hash of previous entries in the ledger, if any.&#34;&#34;&#34;</span>
-    <span style="font-weight:bold;font-style:italic">hash</span> = md5(string.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
-
-    <span style="font-weight:bold">if</span> previous_digest:
-        <span style="font-weight:bold;font-style:italic">hash</span>.update(previous_digest.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
-
-    <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">hash</span>.hexdigest()
-
-
-<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">generate_ledger</span>(*strings):
-    <span style="color:#666;font-style:italic">&#34;&#34;&#34;Generates the entries in a ledger consisting of a set of strings.&#34;&#34;&#34;</span>
-    digest = <span style="font-weight:bold">None</span>
-
-    <span style="font-weight:bold">for</span> string <span style="font-weight:bold">in</span> strings:
-        digest = hash_ledger_entry(string, digest)
-        <span style="font-weight:bold">yield</span> digest, string
-
-
-<span style="font-weight:bold">if</span> __name__ == <span style="color:#666;font-style:italic">&#34;__main__&#34;</span>:
-    parser = ArgumentParser()
-    parser.add_argument(<span style="color:#666;font-style:italic">&#34;STRINGS&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The ledger entries&#34;</span>, nargs=<span style="color:#666;font-style:italic">&#34;+&#34;</span>)
-    args = parser.parse_args()
-
-    <span style="font-weight:bold">for</span> digest, string <span style="font-weight:bold">in</span> generate_ledger(*args.STRINGS):
-        <span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{</span>digest<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>string<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">&#34;</span>)
-</code></pre></div><p>With this script, providing a set of strings will generate a unique and
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_ledger_entry</span>(string, previous_digest=<span style="font-weight:bold">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#666;font-style:italic">&#34;&#34;&#34;Hashes a string with the hash of previous entries in the ledger, if any.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">hash</span> = md5(string.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span> previous_digest:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">hash</span>.update(previous_digest.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">hash</span>.hexdigest()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">generate_ledger</span>(*strings):
+</span></span><span style="display:flex;"><span>    <span style="color:#666;font-style:italic">&#34;&#34;&#34;Generates the entries in a ledger consisting of a set of strings.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    digest = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> string <span style="font-weight:bold">in</span> strings:
+</span></span><span style="display:flex;"><span>        digest = hash_ledger_entry(string, digest)
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">yield</span> digest, string
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> __name__ == <span style="color:#666;font-style:italic">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    parser = ArgumentParser()
+</span></span><span style="display:flex;"><span>    parser.add_argument(<span style="color:#666;font-style:italic">&#34;STRINGS&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The ledger entries&#34;</span>, nargs=<span style="color:#666;font-style:italic">&#34;+&#34;</span>)
+</span></span><span style="display:flex;"><span>    args = parser.parse_args()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> digest, string <span style="font-weight:bold">in</span> generate_ledger(*args.STRINGS):
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{</span>digest<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>string<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">&#34;</span>)
+</span></span></code></pre></div><p>With this script, providing a set of strings will generate a unique and
 ordered ledger:</p>
 <pre tabindex="0"><code>$ ./hash ninja samurai
 3899dcbab79f92af727c2190bbd8abc5	ninja
@@ -309,17 +308,17 @@ b233d566fe677d394aafb5eaf149e453	END
 </code></pre><h2 id="validation">Validation</h2>
 <p>To validate a ledger, you can replay the transactions and make sure that
 you get the same hashes at each step:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">our_digest = <span style="font-weight:bold">None</span>
-
-<span style="font-weight:bold">for</span> line <span style="font-weight:bold">in</span> fileinput.input():
-    file_digest, word = line.strip().split(<span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">&#34;</span>)
-    our_digest = hash_ledger_entry(word, our_digest)
-
-    <span style="font-weight:bold">if</span> our_digest != file_digest:
-        sys.exit(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;The digest for </span><span style="color:#666;font-style:italic">{</span>word<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic"> does not match.&#34;</span>)
-
-<span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">&#34;All entries match.&#34;</span>)
-</code></pre></div><p>With a tamper-resistant ledger where each entry depends on the previous
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>our_digest = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">for</span> line <span style="font-weight:bold">in</span> fileinput.input():
+</span></span><span style="display:flex;"><span>    file_digest, word = line.strip().split(<span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">&#34;</span>)
+</span></span><span style="display:flex;"><span>    our_digest = hash_ledger_entry(word, our_digest)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span> our_digest != file_digest:
+</span></span><span style="display:flex;"><span>        sys.exit(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;The digest for </span><span style="color:#666;font-style:italic">{</span>word<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic"> does not match.&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">&#34;All entries match.&#34;</span>)
+</span></span></code></pre></div><p>With a tamper-resistant ledger where each entry depends on the previous
 entries, we&rsquo;ve effectively implemented a very simple blockchain. This is
 not the same as <em>the</em> blockchain, though; for that we need&hellip;</p>
 <h2 id="proofs-without-authority">Proofs without Authority</h2>
@@ -329,55 +328,55 @@ This is what enthusiasts mean when they say that the blockchain is
 compete to successfully write a new message to the blockchain.  They do
 this by means of a <strong>proof-of-work algorithm</strong>, which we can implement
 in our ledger as well.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic"># Add this to your imports.</span>
-<span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">secrets</span> <span style="font-weight:bold">import</span> token_bytes
-
-
-<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_ledger_entry_with_salt</span>(salt, string, previous_digest=<span style="font-weight:bold">None</span>):
-    <span style="color:#666;font-style:italic">&#34;&#34;&#34;Hashes a string with the hash of previous entries in the ledger, if any.&#34;&#34;&#34;</span>
-    <span style="font-weight:bold;font-style:italic">hash</span> = md5(string.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
-    <span style="font-weight:bold;font-style:italic">hash</span>.update(salt)
-
-    <span style="font-weight:bold">if</span> previous_digest:
-        <span style="font-weight:bold;font-style:italic">hash</span>.update(previous_digest.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
-
-    <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">hash</span>.hexdigest()
-
-
-<span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">generate_ledger</span>(difficulty, *strings):
-    <span style="color:#888;font-style:italic"># Difficulty determines how many zeroes we require at the beginning of a digest.</span>
-    prefix = <span style="color:#666;font-style:italic">&#34;0&#34;</span> * difficulty
-
-    digest = <span style="font-weight:bold">None</span>
-    previous_digest = <span style="font-weight:bold">None</span>
-
-    <span style="font-weight:bold">for</span> string <span style="font-weight:bold">in</span> strings:
-        <span style="color:#888;font-style:italic"># We re-hash a string over and over, with random salts, until it matches the</span>
-        <span style="color:#888;font-style:italic"># prefix determined by our difficulty.</span>
-        <span style="font-weight:bold">while</span> digest <span style="font-weight:bold">is</span> <span style="font-weight:bold">None</span> <span style="font-weight:bold">or</span> <span style="font-weight:bold">not</span> digest.startswith(prefix):
-            salt = token_bytes(16)
-            digest = hash_ledger_entry_with_salt(salt, string, previous_digest)
-
-        <span style="color:#888;font-style:italic"># We yield back the digest and entry, as before, but we need the salt, too.</span>
-        <span style="color:#888;font-style:italic"># Without that, we can&#39;t replay the entries and verify them.</span>
-        <span style="font-weight:bold">yield</span> digest, salt.hex(), string
-        previous_digest = digest
-        digest = <span style="font-weight:bold">None</span>
-
-    <span style="font-weight:bold">yield</span> hash_ledger_entry_with_salt(salt, <span style="color:#666;font-style:italic">&#34;END&#34;</span>, previous_digest), salt, <span style="color:#666;font-style:italic">&#34;END&#34;</span>
-
-
-<span style="font-weight:bold">if</span> __name__ == <span style="color:#666;font-style:italic">&#34;__main__&#34;</span>:
-    parser = ArgumentParser()
-    parser.add_argument(
-        <span style="color:#666;font-style:italic">&#34;DIFFICULTY&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The difficulty of confirming a ledger entry.&#34;</span>, <span style="font-weight:bold;font-style:italic">type</span>=<span style="font-weight:bold;font-style:italic">int</span>
-    )
-    parser.add_argument(<span style="color:#666;font-style:italic">&#34;STRINGS&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The ledger entries&#34;</span>, nargs=<span style="color:#666;font-style:italic">&#34;+&#34;</span>)
-    args = parser.parse_args()
-
-    <span style="font-weight:bold">for</span> digest, salt, string <span style="font-weight:bold">in</span> generate_ledger(args.DIFFICULTY, *args.STRINGS):
-        <span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{</span>digest<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>salt<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>string<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">&#34;</span>)
-</code></pre></div><p>The new utility accepts an additional argument, <em>difficulty</em>, and tries
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#888;font-style:italic"># Add this to your imports.</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">from</span> <span style="color:#666;font-weight:bold;font-style:italic">secrets</span> <span style="font-weight:bold">import</span> token_bytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">hash_ledger_entry_with_salt</span>(salt, string, previous_digest=<span style="font-weight:bold">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#666;font-style:italic">&#34;&#34;&#34;Hashes a string with the hash of previous entries in the ledger, if any.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">hash</span> = md5(string.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">hash</span>.update(salt)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span> previous_digest:
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">hash</span>.update(previous_digest.encode(<span style="color:#666;font-style:italic">&#34;utf-8&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> <span style="font-weight:bold;font-style:italic">hash</span>.hexdigest()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">def</span> <span style="color:#666;font-weight:bold;font-style:italic">generate_ledger</span>(difficulty, *strings):
+</span></span><span style="display:flex;"><span>    <span style="color:#888;font-style:italic"># Difficulty determines how many zeroes we require at the beginning of a digest.</span>
+</span></span><span style="display:flex;"><span>    prefix = <span style="color:#666;font-style:italic">&#34;0&#34;</span> * difficulty
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    digest = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>    previous_digest = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> string <span style="font-weight:bold">in</span> strings:
+</span></span><span style="display:flex;"><span>        <span style="color:#888;font-style:italic"># We re-hash a string over and over, with random salts, until it matches the</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#888;font-style:italic"># prefix determined by our difficulty.</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">while</span> digest <span style="font-weight:bold">is</span> <span style="font-weight:bold">None</span> <span style="font-weight:bold">or</span> <span style="font-weight:bold">not</span> digest.startswith(prefix):
+</span></span><span style="display:flex;"><span>            salt = token_bytes(16)
+</span></span><span style="display:flex;"><span>            digest = hash_ledger_entry_with_salt(salt, string, previous_digest)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#888;font-style:italic"># We yield back the digest and entry, as before, but we need the salt, too.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#888;font-style:italic"># Without that, we can&#39;t replay the entries and verify them.</span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">yield</span> digest, salt.hex(), string
+</span></span><span style="display:flex;"><span>        previous_digest = digest
+</span></span><span style="display:flex;"><span>        digest = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">yield</span> hash_ledger_entry_with_salt(salt, <span style="color:#666;font-style:italic">&#34;END&#34;</span>, previous_digest), salt, <span style="color:#666;font-style:italic">&#34;END&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> __name__ == <span style="color:#666;font-style:italic">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    parser = ArgumentParser()
+</span></span><span style="display:flex;"><span>    parser.add_argument(
+</span></span><span style="display:flex;"><span>        <span style="color:#666;font-style:italic">&#34;DIFFICULTY&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The difficulty of confirming a ledger entry.&#34;</span>, <span style="font-weight:bold;font-style:italic">type</span>=<span style="font-weight:bold;font-style:italic">int</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    parser.add_argument(<span style="color:#666;font-style:italic">&#34;STRINGS&#34;</span>, help=<span style="color:#666;font-style:italic">&#34;The ledger entries&#34;</span>, nargs=<span style="color:#666;font-style:italic">&#34;+&#34;</span>)
+</span></span><span style="display:flex;"><span>    args = parser.parse_args()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">for</span> digest, salt, string <span style="font-weight:bold">in</span> generate_ledger(args.DIFFICULTY, *args.STRINGS):
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">print</span>(<span style="color:#666;font-style:italic">f</span><span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{</span>digest<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>salt<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">\t</span><span style="color:#666;font-style:italic">{</span>string<span style="color:#666;font-style:italic">}</span><span style="color:#666;font-style:italic">&#34;</span>)
+</span></span></code></pre></div><p>The new utility accepts an additional argument, <em>difficulty</em>, and tries
 to generate a salt value that generates a hash which matches the
 expected number of zeroes:</p>
 <pre tabindex="0"><code>$ ./hash 5 ninja pirate samurai
@@ -390,20 +389,20 @@ required, on average, around 2.5 million attempts. That&rsquo;s why Bitcoin
 mining consumes <a href="https://www.bbc.com/news/technology-56012952">more electricity than many countries</a>: on the
 &ldquo;real&rdquo; blockchain, miners are calculating and recalculating
 <em>quadrillions</em> of hashes per bitcoin mined.</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>If you want to read about the bubble, I recommend <a href="https://davidgerard.co.uk/blockchain/">David
 Gerard</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>Note that <code>md5</code> should <em>not</em> be used for this purpose in real
 applications. I chose it here for the brevity of its digests, but it
 isn&rsquo;t secure.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
     </article>
   </div>

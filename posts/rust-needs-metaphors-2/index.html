@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -174,8 +174,7 @@ div.title {
 
 </style>
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Rust Needs Metaphors, Part 2: Traits"/>
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Rust Needs Metaphors, Part 2: Traits"/>
 <meta name="twitter:description" content="When I began learning Haskell, typeclasses were confusing to me: at first, because I didn&rsquo;t fully understand why they were needed, and later, because I didn&rsquo;t understand the advantages they offered over Java&rsquo;s interfaces. If you&rsquo;re new to Rust but haven&rsquo;t used Haskell before, you&rsquo;ll likely be in the same boat, but moreso; traits are pervasive in the ecosystem.
 At heart, traits are very similar to interfaces in Java or C♯."/>
 
@@ -229,34 +228,34 @@ in the ecosystem.</p>
 <p>At heart, traits <em>are</em> very similar to interfaces in Java or C♯. They describe the
 methods that must be implemented for a type in order to treat it as being bound by the
 contract. For example, if we use the classic example of animals that can make a sound:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">trait</span> Speaker {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt;;
-}
-
-<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Dog</span> {}
-
-<span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Dog {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
-        <span style="font-weight:bold;font-style:italic">Some</span>(<span style="color:#666;font-style:italic">&#34;Woof!&#34;</span>.to_string())
-    }
-}
-
-<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Cat</span> {}
-
-<span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Cat {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
-        <span style="font-weight:bold;font-style:italic">Some</span>(<span style="color:#666;font-style:italic">&#34;Meow!&#34;</span>.to_string())
-    }
-}
-
-<span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Fox</span> {}
-
-<span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Fox {
-    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
-        <span style="font-weight:bold;font-style:italic">None</span>
-    }
-}
-</code></pre></div><p>The crucial difference between traits and Java or C♯ interfaces is that the
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">trait</span> Speaker {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt;;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Dog</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Dog {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">Some</span>(<span style="color:#666;font-style:italic">&#34;Woof!&#34;</span>.to_string())
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Cat</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Cat {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">Some</span>(<span style="color:#666;font-style:italic">&#34;Meow!&#34;</span>.to_string())
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Fox</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">impl</span> Speaker <span style="font-weight:bold">for</span> Fox {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">speak</span>() -&gt; <span style="font-weight:bold;font-style:italic">Option</span>&lt;<span style="font-weight:bold;font-style:italic">String</span>&gt; {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;font-style:italic">None</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The crucial difference between traits and Java or C♯ interfaces is that the
 implementation of traits is not tied to the declaration of the type. You can implement
 your own trait for a foreign type, or a foreign trait for your own type, modifying a
 type&rsquo;s behavior after the type was originally defined. That brings us to the first rule,
@@ -273,15 +272,15 @@ but if you don&rsquo;t pull the trait into scope you can&rsquo;t use its methods
 example, I think, is the <a href="https://www.rusoto.org/">Rusoto</a> ecosystem of AWS SDKs. It&rsquo;s divided into crates for
 each service, and each service in turn is implemented as a client type and a service
 trait:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">use</span> rusoto_core::Region;
-<span style="font-weight:bold">use</span> rusoto_s3::{S3Client, S3};
-
-<span style="color:#888;font-weight:bold">#[tokio::main]</span>
-<span style="font-weight:bold">async</span> <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
-    <span style="font-weight:bold;font-style:italic">let</span> client = S3Client::new(Region::UsEast1);
-    println!(<span style="color:#666;font-style:italic">&#34;{:?}&#34;</span>, client.list_buckets().<span style="font-weight:bold">await</span>)
-}
-</code></pre></div><p>In this example, <code>S3Client</code> is a struct and <code>S3</code> is a trait. Almost all of the API
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">use</span> rusoto_core::Region;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">use</span> rusoto_s3::{S3Client, S3};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#888;font-weight:bold">#[tokio::main]</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">async</span> <span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> client = S3Client::new(Region::UsEast1);
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{:?}</span><span style="color:#666;font-style:italic">&#34;</span>, client.list_buckets().<span style="font-weight:bold">await</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this example, <code>S3Client</code> is a struct and <code>S3</code> is a trait. Almost all of the API
 functionality (like <code>list_buckets</code> here) is implemented as items on that trait. If you
 don&rsquo;t import <code>S3</code> alongside the concrete type, you can&rsquo;t use them.</p>
 <p>Last, for people coming from Haskell, it&rsquo;s important to realize that <strong>you can&rsquo;t believe

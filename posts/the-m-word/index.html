@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -174,10 +174,9 @@ div.title {
 
 </style>
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="The M-Word: The Culture of Programming"/>
-<meta name="twitter:description" content="In addition to [the monad] being useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&quot;&mdash;you lose the ability to explain it to anybody. &mdash; Doug Crockford.
- I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&rsquo;ve probably used."/>
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="The M-Word: The Culture of Programming"/>
+<meta name="twitter:description" content="In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&rdquo;&mdash;you lose the ability to explain it to anybody. &mdash; Doug Crockford.
+I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&rsquo;ve probably used."/>
 
 
   
@@ -222,23 +221,22 @@ div.title {
     <article>
       <h1>The M-Word: The Culture of Programming</h1>
 <blockquote>
-<p>In addition to [the monad] being useful, it is also cursed and the curse of
-the monad is that once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s
-what it is!&quot;&mdash;you lose the ability to explain it to anybody. &mdash; <em>Doug
-Crockford.</em></p>
+<p>In addition to it begin useful, it is also cursed and the curse of the monad is that
+once you get the epiphany, once you understand&mdash;&ldquo;Oh, that&rsquo;s what it is!&rdquo;&mdash;you lose
+the ability to explain it to anybody. &mdash; <em>Doug Crockford.</em></p>
 </blockquote>
 <p>I had a problem, once. I was working on a Rails application which generated integration
 files to be consumed by external partners. They were generated every night in a dozen
 formats and shipped around the Internet to populate sites you&rsquo;ve probably used.  Since
 it was a typical Rails application, the code used the Rails ORM directly:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
-    xml.Widget <span style="font-weight:bold">do</span> |xw|
-        xw.Title db_widget.title.titlecase
-        xw.Description db_widget.description.truncate(120)
-        xw.Color db_widget.color.name <span style="font-weight:bold">unless</span> db_widget.color.nil?
-    <span style="font-weight:bold">end</span>
-<span style="font-weight:bold">end</span>
-</code></pre></div><p>All of the builders were in different formats and made different assumptions about the
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+</span></span><span style="display:flex;"><span>    xml.Widget <span style="font-weight:bold">do</span> |xw|
+</span></span><span style="display:flex;"><span>        xw.Title db_widget.title.titlecase
+</span></span><span style="display:flex;"><span>        xw.Description db_widget.description.truncate(120)
+</span></span><span style="display:flex;"><span>        xw.Color db_widget.color.name <span style="font-weight:bold">unless</span> db_widget.color.nil?
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">end</span>
+</span></span></code></pre></div><p>All of the builders were in different formats and made different assumptions about the
 data, and almost all of the fields were nullable in the database. Any generator that
 omitted a <code>.nil?</code> check anywhere could suddenly break. My solution was relatively
 straightforward. Since all of these integrations were built on the same data structure,
@@ -247,14 +245,14 @@ direct accesses to the database. This would allow me to control those pesky
 <code>NoMethodError</code>s that were causing our integrations to fail every few days, and as a
 side effect reduce queries to the database. After the change, the code looked something
 like this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
-    xml.Widget <span style="font-weight:bold">do</span> |xw|
-        xw.Title shim.widget.title.titlecase.or_else <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>
-        xw.Description shim.widget.description.truncate(120).or_else <span style="color:#666;font-style:italic">&#34;&#34;</span>
-        db_widget.color.map { |color| xw.Color color.name }
-    <span style="font-weight:bold">end</span>
-<span style="font-weight:bold">end</span>
-</code></pre></div><p>Two problems solved, right? Performance improved because the shim could query once and
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+</span></span><span style="display:flex;"><span>    xml.Widget <span style="font-weight:bold">do</span> |xw|
+</span></span><span style="display:flex;"><span>        xw.Title shim.widget.title.titlecase.or_else <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>
+</span></span><span style="display:flex;"><span>        xw.Description shim.widget.description.truncate(120).or_else <span style="color:#666;font-style:italic">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        db_widget.color.map { |color| xw.Color color.name }
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">end</span>
+</span></span></code></pre></div><p>Two problems solved, right? Performance improved because the shim could query once and
 cache the result for many different exports. Data-related failures were all but
 eliminated, because a failure to explicitly unwrap the shim value showed up during
 testing instead of in production. Easy-peasy.</p>
@@ -280,7 +278,7 @@ policy on adding new libraries). In this hypothetical timeline, I would never ha
 uttered &ldquo;the M-word&rdquo; at that company at all.</p>
 <h2 id="when-in-rome">When In Rome</h2>
 <p>Every language has its culture. In my previous article, <a href="/posts/danger-of-simplicity">&ldquo;The Danger of
-&lsquo;Simplicity,'&quot;</a> I contrasted the different choices that Go
+&lsquo;Simplicity,&rsquo;&rdquo;</a> I contrasted the different choices that Go
 and Rust have made in terms of <em>what to simplify.</em> Those choices pervade the
 communities: the Go community debates whether new language features will have too large
 of an impact on compilation time. The Rust community debates the compiled size of the
@@ -296,14 +294,14 @@ integration problem above&mdash;do so in an <em>idiomatic</em> way. If I had ref
 as a <code>DatabaseCache</code> and used methods like <code>fetch</code> and <code>has?</code> instead of the library&rsquo;s
 <code>or_else</code> and <code>map</code>, I think that the familiar language would&rsquo;ve solved the social
 problem, despite an uglier API.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
-    xml.Widget <span style="font-weight:bold">do</span> |xw|
-        xw.Title db_cache.widget.fetch(<span style="color:#666;font-style:italic">:title</span>, <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>).titlecase
-        xw.Description db_cache.widget.fetch(<span style="color:#666;font-style:italic">:description</span>, <span style="color:#666;font-style:italic">&#34;&#34;</span>).truncate(120)
-        xw.Color db_cache.widget.fetch(<span style="color:#666;font-style:italic">:color</span>).fetch(<span style="color:#666;font-style:italic">:name</span>) <span style="font-weight:bold">if</span> db_cache.widget.has?(<span style="color:#666;font-style:italic">:color</span>)
-    <span style="font-weight:bold">end</span>
-<span style="font-weight:bold">end</span>
-</code></pre></div><p>Such compromises eliminate theoretical explanations of what&rsquo;s happening. They reduce the
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>builder = <span style="color:#666;font-weight:bold;font-style:italic">Nokogiri</span>::<span style="color:#666;font-weight:bold;font-style:italic">XML</span>::<span style="color:#666;font-weight:bold;font-style:italic">Builder</span>.new <span style="font-weight:bold">do</span> |xml|
+</span></span><span style="display:flex;"><span>    xml.Widget <span style="font-weight:bold">do</span> |xw|
+</span></span><span style="display:flex;"><span>        xw.Title db_cache.widget.fetch(<span style="color:#666;font-style:italic">:title</span>, <span style="color:#666;font-style:italic">&#34;Untitled&#34;</span>).titlecase
+</span></span><span style="display:flex;"><span>        xw.Description db_cache.widget.fetch(<span style="color:#666;font-style:italic">:description</span>, <span style="color:#666;font-style:italic">&#34;&#34;</span>).truncate(120)
+</span></span><span style="display:flex;"><span>        xw.Color db_cache.widget.fetch(<span style="color:#666;font-style:italic">:color</span>).fetch(<span style="color:#666;font-style:italic">:name</span>) <span style="font-weight:bold">if</span> db_cache.widget.has?(<span style="color:#666;font-style:italic">:color</span>)
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">end</span>
+</span></span></code></pre></div><p>Such compromises eliminate theoretical explanations of what&rsquo;s happening. They reduce the
 problem of unfamiliarity when new team members need to read or review your code. Most
 importantly, if you design your software with a concept in mind, you can achieve many of
 its benefits even without explaining to your colleagues the reason that you conceived

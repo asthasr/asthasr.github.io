@@ -6,16 +6,14 @@
     <description>Recent content in math on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Nov 2019 14:51:10 +0700</lastBuildDate><atom:link href="https://asthasr.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Nov 2019 14:51:10 +0700</lastBuildDate>
+    <atom:link href="https://asthasr.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>On Symbolic Logic</title>
       <link>https://asthasr.github.io/posts/on-symbolic-logic/</link>
       <pubDate>Wed, 20 Nov 2019 14:51:10 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/on-symbolic-logic/</guid>
-      <description>I went to public school in the United States, and I was always &amp;ldquo;bad at math.&amp;rdquo; I hated homework and tests, and it never got better: as I went through the grades, the problems got longer and more intricate, and I inevitably would make a calculation error&amp;mdash;misplacing a decimal or flubbing an easy sum&amp;mdash;halfway through. I got used to seeing $\color{red}{-\frac{1}{2}}$ on my papers. Those add up!
-In college, the first thing I did when planning my path through general education was look for a way to avoid Calculus.</description>
+      <description>I went to public school in the United States, and I was always &amp;ldquo;bad at math.&amp;rdquo; I hated homework and tests, and it never got better: as I went through the grades, the problems got longer and more intricate, and I inevitably would make a calculation error&amp;mdash;misplacing a decimal or flubbing an easy sum&amp;mdash;halfway through. I got used to seeing $\color{red}{-\frac{1}{2}}$ on my papers. Those add up!&#xA;In college, the first thing I did when planning my path through general education was look for a way to avoid Calculus.</description>
     </item>
-    
   </channel>
 </rss>

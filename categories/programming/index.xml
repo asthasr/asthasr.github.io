@@ -6,85 +6,63 @@
     <description>Recent content in Programming on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Apr 2022 08:47:10 -0400</lastBuildDate><atom:link href="https://asthasr.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Apr 2022 08:47:10 -0400</lastBuildDate>
+    <atom:link href="https://asthasr.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding the Strategy Pattern</title>
       <link>https://asthasr.github.io/posts/understanding-strategy-pattern/</link>
       <pubDate>Sun, 03 Apr 2022 08:47:10 -0400</pubDate>
-      
       <guid>https://asthasr.github.io/posts/understanding-strategy-pattern/</guid>
-      <description>Conditionals (if, switch, and match statements) are usually the first tool programmers reach for when we need to vary the execution of a function. They&amp;rsquo;re easy to understand and convenient to use, as long as the variations are simple. As software grows, though, extensibility and comprehensibility begin to require that we create ways to &amp;ldquo;hook&amp;rdquo; new functionality into our functions. The strategy pattern offers a method to accomplish that:
- Define a family of algorithms, encapsulate each one, and make them interchangeable.</description>
+      <description>Conditionals (if, switch, and match statements) are usually the first programmers reach for when we need to vary the execution of a function. They&amp;rsquo;re easy to understand and convenient to use, as long as the variations are simple. As software grows, though, extensibility and comprehensibility begin to require that we create ways to &amp;ldquo;hook&amp;rdquo; new functionality into our functions. The strategy pattern offers a method to accomplish that:&#xA;Define a family of algorithms, encapsulate each one, and make them interchangeable.</description>
     </item>
-    
     <item>
       <title>Rust Needs Metaphors, Part 2: Traits</title>
       <link>https://asthasr.github.io/posts/rust-needs-metaphors-2/</link>
       <pubDate>Wed, 14 Oct 2020 06:29:48 -0400</pubDate>
-      
       <guid>https://asthasr.github.io/posts/rust-needs-metaphors-2/</guid>
-      <description>When I began learning Haskell, typeclasses were confusing to me: at first, because I didn&amp;rsquo;t fully understand why they were needed, and later, because I didn&amp;rsquo;t understand the advantages they offered over Java&amp;rsquo;s interfaces. If you&amp;rsquo;re new to Rust but haven&amp;rsquo;t used Haskell before, you&amp;rsquo;ll likely be in the same boat, but moreso; traits are pervasive in the ecosystem.
-At heart, traits are very similar to interfaces in Java or C♯.</description>
+      <description>When I began learning Haskell, typeclasses were confusing to me: at first, because I didn&amp;rsquo;t fully understand why they were needed, and later, because I didn&amp;rsquo;t understand the advantages they offered over Java&amp;rsquo;s interfaces. If you&amp;rsquo;re new to Rust but haven&amp;rsquo;t used Haskell before, you&amp;rsquo;ll likely be in the same boat, but moreso; traits are pervasive in the ecosystem.&#xA;At heart, traits are very similar to interfaces in Java or C♯.</description>
     </item>
-    
     <item>
       <title>Rust Needs Metaphors, Part 1: Lifetimes</title>
       <link>https://asthasr.github.io/posts/rust-needs-metaphors-1/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://asthasr.github.io/posts/rust-needs-metaphors-1/</guid>
-      <description>I recently had a conversation with a friend who said: &amp;ldquo;I don&amp;rsquo;t trust most of what I hear about Rust, because it sounds like agitprop from the Rust Evangelism Strike Force, but people like you whom I trust and respect seem to like it. Can you help me understand why?&amp;rdquo;
-I tried to. I said things that make sense, in the abstract: it offers a very powerful type system, it allows me to feel more confident about my code in surprising ways, and so on.</description>
+      <description>I recently had a conversation with a friend who said: &amp;ldquo;I don&amp;rsquo;t trust most of what I hear about Rust, because it sounds like agitprop from the Rust Evangelism Strike Force, but people like you whom I trust and respect seem to like it. Can you help me understand why?&amp;rdquo;&#xA;I tried to. I said things that make sense, in the abstract: it offers a very powerful type system, it allows me to feel more confident about my code in surprising ways, and so on.</description>
     </item>
-    
     <item>
       <title>Loops and Recursion</title>
       <link>https://asthasr.github.io/posts/loops-and-recursion/</link>
       <pubDate>Sun, 22 Dec 2019 08:27:13 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/loops-and-recursion/</guid>
       <description>Recursion was a concept that took me a long time to understand. It wasn&amp;rsquo;t until years after I&amp;rsquo;d started programming that I felt I really understood it, and it wasn&amp;rsquo;t until years after that that I felt confident reaching for it as a tool. Like almost everyone, the first way that I learned to think of iteration was with loops. If you wanted to add something together, for example, you would create a &amp;ldquo;bookkeeping&amp;rdquo; variable and modify it inside the loop.</description>
     </item>
-    
     <item>
       <title>The M-Word: The Culture of Programming</title>
       <link>https://asthasr.github.io/posts/the-m-word/</link>
       <pubDate>Sat, 14 Dec 2019 15:46:58 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/the-m-word/</guid>
-      <description>In addition to [the monad] being useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&amp;mdash;&amp;ldquo;Oh, that&amp;rsquo;s what it is!&amp;quot;&amp;mdash;you lose the ability to explain it to anybody. &amp;mdash; Doug Crockford.
- I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&amp;rsquo;ve probably used.</description>
+      <description>In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&amp;mdash;&amp;ldquo;Oh, that&amp;rsquo;s what it is!&amp;rdquo;&amp;mdash;you lose the ability to explain it to anybody. &amp;mdash; Doug Crockford.&#xA;I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&amp;rsquo;ve probably used.</description>
     </item>
-    
     <item>
       <title>Mind the Gaps</title>
       <link>https://asthasr.github.io/posts/mind-the-gaps/</link>
       <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://asthasr.github.io/posts/mind-the-gaps/</guid>
-      <description>&amp;ldquo;If you truly accumulate effort for a long time, then you will advance.&amp;rdquo; Xunzi.
- It&amp;rsquo;s no secret that many programmers are self-taught. Some of us, myself included, lack formal credentials related to computer science. I&amp;rsquo;ve worked with good programmers who didn&amp;rsquo;t graduate high school. It&amp;rsquo;s a strange profession, with the skills often acquired simply as a side effect of tinkering. You don&amp;rsquo;t hear about many civil engineers or corporate attorneys who do what they do because they enjoyed playing Zork on their dad&amp;rsquo;s office computer.</description>
+      <description>&amp;ldquo;If you truly accumulate effort for a long time, then you will advance.&amp;rdquo; Xunzi.&#xA;It&amp;rsquo;s no secret that many programmers are self-taught. Some of us, myself included, lack formal credentials related to computer science. I&amp;rsquo;ve worked with good programmers who didn&amp;rsquo;t graduate high school. It&amp;rsquo;s a strange profession, with the skills often acquired simply as a side effect of tinkering. You don&amp;rsquo;t hear about many civil engineers or corporate attorneys who do what they do because they enjoyed playing Zork on their dad&amp;rsquo;s office computer.</description>
     </item>
-    
     <item>
       <title>On Symbolic Logic</title>
       <link>https://asthasr.github.io/posts/on-symbolic-logic/</link>
       <pubDate>Wed, 20 Nov 2019 14:51:10 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/on-symbolic-logic/</guid>
-      <description>I went to public school in the United States, and I was always &amp;ldquo;bad at math.&amp;rdquo; I hated homework and tests, and it never got better: as I went through the grades, the problems got longer and more intricate, and I inevitably would make a calculation error&amp;mdash;misplacing a decimal or flubbing an easy sum&amp;mdash;halfway through. I got used to seeing $\color{red}{-\frac{1}{2}}$ on my papers. Those add up!
-In college, the first thing I did when planning my path through general education was look for a way to avoid Calculus.</description>
+      <description>I went to public school in the United States, and I was always &amp;ldquo;bad at math.&amp;rdquo; I hated homework and tests, and it never got better: as I went through the grades, the problems got longer and more intricate, and I inevitably would make a calculation error&amp;mdash;misplacing a decimal or flubbing an easy sum&amp;mdash;halfway through. I got used to seeing $\color{red}{-\frac{1}{2}}$ on my papers. Those add up!&#xA;In college, the first thing I did when planning my path through general education was look for a way to avoid Calculus.</description>
     </item>
-    
     <item>
       <title>The Danger of &#34;Simplicity&#34;</title>
       <link>https://asthasr.github.io/posts/danger-of-simplicity/</link>
       <pubDate>Sat, 16 Nov 2019 09:05:35 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/danger-of-simplicity/</guid>
-      <description>There are a few tendencies among programmers that involve the totem of &amp;ldquo;simplicity.&amp;rdquo; There&amp;rsquo;s the ancient concept of KISS, of course, but there&amp;rsquo;s also the much-abused YAGNI, the insistence that we &amp;ldquo;Choose Boring Technology,&amp;quot; entire languages that base their elevator pitch around the idea that they&amp;rsquo;re &amp;ldquo;simple,&amp;rdquo; and the concept in object-oriented design that &amp;ldquo;every class should have a single responsibility.&amp;rdquo;
-The problem with these approaches is that &amp;ldquo;simplicity&amp;rdquo; never gets a rigorous definition.</description>
+      <description>There are a few tendencies among programmers that involve the totem of &amp;ldquo;simplicity.&amp;rdquo; There&amp;rsquo;s the ancient concept of KISS, of course, but there&amp;rsquo;s also the much-abused YAGNI, the insistence that we &amp;ldquo;Choose Boring Technology,&amp;rdquo; entire languages that base their elevator pitch around the idea that they&amp;rsquo;re &amp;ldquo;simple,&amp;rdquo; and the concept in object-oriented design that &amp;ldquo;every class should have a single responsibility.&amp;rdquo;&#xA;The problem with these approaches is that &amp;ldquo;simplicity&amp;rdquo; never gets a rigorous definition.</description>
     </item>
-    
   </channel>
 </rss>

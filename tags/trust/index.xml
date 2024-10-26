@@ -6,32 +6,21 @@
     <description>Recent content in trust on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Nov 2019 09:05:35 +0700</lastBuildDate><atom:link href="https://asthasr.github.io/tags/trust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Nov 2019 09:05:35 +0700</lastBuildDate>
+    <atom:link href="https://asthasr.github.io/tags/trust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Danger of &#34;Simplicity&#34;</title>
       <link>https://asthasr.github.io/posts/danger-of-simplicity/</link>
       <pubDate>Sat, 16 Nov 2019 09:05:35 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/danger-of-simplicity/</guid>
-      <description>There are a few tendencies among programmers that involve the totem of &amp;ldquo;simplicity.&amp;rdquo; There&amp;rsquo;s the ancient concept of KISS, of course, but there&amp;rsquo;s also the much-abused YAGNI, the insistence that we &amp;ldquo;Choose Boring Technology,&amp;quot; entire languages that base their elevator pitch around the idea that they&amp;rsquo;re &amp;ldquo;simple,&amp;rdquo; and the concept in object-oriented design that &amp;ldquo;every class should have a single responsibility.&amp;rdquo;
-The problem with these approaches is that &amp;ldquo;simplicity&amp;rdquo; never gets a rigorous definition.</description>
+      <description>There are a few tendencies among programmers that involve the totem of &amp;ldquo;simplicity.&amp;rdquo; There&amp;rsquo;s the ancient concept of KISS, of course, but there&amp;rsquo;s also the much-abused YAGNI, the insistence that we &amp;ldquo;Choose Boring Technology,&amp;rdquo; entire languages that base their elevator pitch around the idea that they&amp;rsquo;re &amp;ldquo;simple,&amp;rdquo; and the concept in object-oriented design that &amp;ldquo;every class should have a single responsibility.&amp;rdquo;&#xA;The problem with these approaches is that &amp;ldquo;simplicity&amp;rdquo; never gets a rigorous definition.</description>
     </item>
-    
     <item>
       <title>&#34;Parsing&#34; in Python</title>
       <link>https://asthasr.github.io/posts/parsing-in-python/</link>
       <pubDate>Sun, 10 Nov 2019 14:02:05 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/parsing-in-python/</guid>
-      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;&amp;ldquo;Parse, Don&amp;rsquo;t Validate,&amp;rdquo;
-&lt;/a&gt; shared it with my
-coworkers, and let it &lt;a href=&#34;https://lobste.rs/s/uemphs/parse_don_t_validate&#34;&gt;bring me out of
-retirement&lt;/a&gt; on
-&lt;a href=&#34;https://lobste.rs/&#34;&gt;lobste.rs&lt;/a&gt;. It captures a concept that I&amp;rsquo;ve struggled to explain,
-leading to cases where I couldn&amp;rsquo;t say why I thought something was better beyond a vague
-&amp;ldquo;It&amp;rsquo;s a matter of taste.&amp;rdquo; That&amp;rsquo;s not very satisfactory as a justification when you&amp;rsquo;re
-trying to explain to someone why they should rework a piece of code in a review.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;&amp;ldquo;Parse, Don&amp;rsquo;t Validate,&amp;rdquo;&#xA;&lt;/a&gt; shared it with my&#xA;coworkers, and let it &lt;a href=&#34;https://lobste.rs/s/uemphs/parse_don_t_validate&#34;&gt;bring me out of&#xA;retirement&lt;/a&gt; on&#xA;&lt;a href=&#34;https://lobste.rs/&#34;&gt;lobste.rs&lt;/a&gt;. It captures a concept that I&amp;rsquo;ve struggled to explain,&#xA;leading to cases where I couldn&amp;rsquo;t say why I thought something was better beyond a vague&#xA;&amp;ldquo;It&amp;rsquo;s a matter of taste.&amp;rdquo; That&amp;rsquo;s not very satisfactory as a justification when you&amp;rsquo;re&#xA;trying to explain to someone why they should rework a piece of code in a review.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

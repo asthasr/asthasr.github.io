@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -174,8 +174,7 @@ div.title {
 
 </style>
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Under the Rug: Hidden (but Essential) Complexity"/>
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Under the Rug: Hidden (but Essential) Complexity"/>
 <meta name="twitter:description" content="I don&rsquo;t like docopt. That makes me an outlier; most people I&rsquo;ve talked to seem to think it makes command-line applications &ldquo;easy.&rdquo; They like its premise that, by writing documentation, you&rsquo;re writing code. When you make a command-line application with docopt, you&rsquo;ve automatically got the help text written and the module documented properly, right? Why bother with something verbose and object-oriented like argparse?
 My objection is that you aren&rsquo;t writing code, but you&rsquo;re also not writing documentation, despite the name of the package."/>
 
@@ -250,23 +249,23 @@ that privileges the &ldquo;happy path&rdquo; and can&rsquo;t cope with changes w
 Their &ldquo;prettiness&rdquo; falls apart when they meet use cases that weren&rsquo;t considered in their
 design.  For example, if you look at any code that uses <code>docopt</code>, you&rsquo;ll see a lot of
 type handling after arguments have already been &ldquo;parsed&rdquo;:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888;font-style:italic"># Among other declarations of options.</span>
-<span style="color:#666;font-style:italic">&#34;&#34;&#34;
-</span><span style="color:#666;font-style:italic">  --count    The number of times to do something.
-</span><span style="color:#666;font-style:italic">&#34;&#34;&#34;</span>
-
-<span style="color:#888;font-style:italic"># Within the application code.</span>
-count = arguments[<span style="color:#666;font-style:italic">&#34;--count&#34;</span>]
-
-<span style="font-weight:bold">if</span> count:
-    count = <span style="font-weight:bold;font-style:italic">int</span>(count)
-<span style="font-weight:bold">else</span>:
-    os.exit(<span style="color:#666;font-style:italic">&#34;You must supply a count!&#34;</span>)
-</code></pre></div><p>These stem from gaps in the design of the language: how do you specify the type of data
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#888;font-style:italic"># Among other declarations of options.</span>
+</span></span><span style="display:flex;"><span><span style="color:#666;font-style:italic">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#666;font-style:italic">  --count    The number of times to do something.
+</span></span></span><span style="display:flex;"><span><span style="color:#666;font-style:italic">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"># Within the application code.</span>
+</span></span><span style="display:flex;"><span>count = arguments[<span style="color:#666;font-style:italic">&#34;--count&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">if</span> count:
+</span></span><span style="display:flex;"><span>    count = <span style="font-weight:bold;font-style:italic">int</span>(count)
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>    os.exit(<span style="color:#666;font-style:italic">&#34;You must supply a count!&#34;</span>)
+</span></span></code></pre></div><p>These stem from gaps in the design of the language: how do you specify the type of data
 provided to an argument? How do you specify that an argument is required? How do you
 specify a group of arguments are related? How do you specify defaults for positional
 arguments? How can you tell which part of your &ldquo;docstring&rdquo; is causing your arguments to
-parse incorrectly? (The answer to all of these is simply &ldquo;you can&rsquo;t.&quot;)</p>
+parse incorrectly? (The answer to all of these is simply &ldquo;you can&rsquo;t.&rdquo;)</p>
 <p>Another example is the <a href="https://cucumber.io/docs/gherkin/">Gherkin</a> language for writing behavioral tests. Its marketing
 pitch is simplicity in expressing tests:</p>
 <pre tabindex="0"><code>Feature: Guess the word
@@ -276,8 +275,8 @@ pitch is simplicity in expressing tests:</p>
     Then the Maker waits for a Breaker to join
 
   Scenario: Breaker joins a game
-    Given the Maker has started a game with the word &quot;silky&quot;
-    When the Breaker joins the Maker's game
+    Given the Maker has started a game with the word &#34;silky&#34;
+    When the Breaker joins the Maker&#39;s game
     Then the Breaker must guess a word with 5 characters
 </code></pre><p>The language, as defined in the &ldquo;brochure,&rdquo; consists largely of a few keywords:
 <code>Feature</code>, <code>Scenario</code>, <code>Given</code>, <code>When</code>, <code>Then</code>, and <code>Background</code>. In reality, though,
@@ -285,13 +284,13 @@ the code behind real Cucumber features is a regular expression (that matches aga
 &ldquo;English&rdquo; sentence in the feature file) combined with a block of actual application code
 that performs the work. Here&rsquo;s a more realistic example:</p>
 <pre tabindex="0"><code>Scenario: Simple data from environment
-    Given I use a fixture named &quot;environment_plugin&quot;
+    Given I use a fixture named &#34;environment_plugin&#34;
     Given I set the environment variables exactly to:
       | variable    | value           |
       | test        | Hello, World!   |
     When I successfully run `tiller -b . -v -n`
-    Then a file named &quot;test.txt&quot; should exist
-    And the file &quot;test.txt&quot; should contain &quot;Hello, World!&quot;
+    Then a file named &#34;test.txt&#34; should exist
+    And the file &#34;test.txt&#34; should contain &#34;Hello, World!&#34;
 </code></pre><p>Can you find the definition of the <code>I use a fixture named</code> function? What about
 <code>I set the environment variables exactly to</code>? <code>I successfully run</code>? How are file
 existence and contents comparison being handled? Make no mistake: these &ldquo;step

@@ -6,132 +6,98 @@
     <description>Recent content on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Apr 2022 08:47:10 -0400</lastBuildDate><atom:link href="https://asthasr.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://asthasr.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generative AI and the Programmer</title>
+      <link>https://asthasr.github.io/posts/generative-ai/</link>
+      <pubDate>Sat, 26 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://asthasr.github.io/posts/generative-ai/</guid>
+      <description>If you&amp;rsquo;re one of my loyal readers(?), you&amp;rsquo;ve probably noticed that I don&amp;rsquo;t write much anymore. It&amp;rsquo;s a common fate for blogs, but in this case I can point to a specific cause that has impacted my willingness to write: large language models (LLMs). Since ChatGPT burst onto the scene and illustrated the capabilities of generative AI, I&amp;rsquo;ve found it impossible to finish drafts because I hesitate to throw more information into the datavore.</description>
+    </item>
     <item>
       <title>Understanding the Strategy Pattern</title>
       <link>https://asthasr.github.io/posts/understanding-strategy-pattern/</link>
       <pubDate>Sun, 03 Apr 2022 08:47:10 -0400</pubDate>
-      
       <guid>https://asthasr.github.io/posts/understanding-strategy-pattern/</guid>
-      <description>Conditionals (if, switch, and match statements) are usually the first tool programmers reach for when we need to vary the execution of a function. They&amp;rsquo;re easy to understand and convenient to use, as long as the variations are simple. As software grows, though, extensibility and comprehensibility begin to require that we create ways to &amp;ldquo;hook&amp;rdquo; new functionality into our functions. The strategy pattern offers a method to accomplish that:
- Define a family of algorithms, encapsulate each one, and make them interchangeable.</description>
+      <description>Conditionals (if, switch, and match statements) are usually the first programmers reach for when we need to vary the execution of a function. They&amp;rsquo;re easy to understand and convenient to use, as long as the variations are simple. As software grows, though, extensibility and comprehensibility begin to require that we create ways to &amp;ldquo;hook&amp;rdquo; new functionality into our functions. The strategy pattern offers a method to accomplish that:&#xA;Define a family of algorithms, encapsulate each one, and make them interchangeable.</description>
     </item>
-    
     <item>
       <title>How Blockchains Work</title>
       <link>https://asthasr.github.io/posts/how-blockchains-work/</link>
       <pubDate>Sat, 06 Mar 2021 10:49:00 -0500</pubDate>
-      
       <guid>https://asthasr.github.io/posts/how-blockchains-work/</guid>
-      <description>Chances are, you know what Bitcoin is. After all, it&amp;rsquo;s valued at over $47,000 per Bitcoin right now. This post isn&amp;rsquo;t about the business side of things, though, or the BTC speculative bubble. I want to explain how it works.1
-Foundations: Hashes and Ledgers First, a hash algorithm is a way to convert a given string into an unpredictable string of a fixed length, called a digest.
-Here&amp;rsquo;s a small Python program to demonstrate:</description>
+      <description>Chances are, you know what Bitcoin is. After all, it&amp;rsquo;s valued at over $47,000 per Bitcoin right now. This post isn&amp;rsquo;t about the business side of things, though, or the BTC speculative bubble. I want to explain how it works.1&#xA;Foundations: Hashes and Ledgers First, a hash algorithm is a way to convert a given string into an unpredictable string of a fixed length, called a digest.&#xA;Here&amp;rsquo;s a small Python program to demonstrate:</description>
     </item>
-    
     <item>
       <title>Abstraction is Okay, Magic is Not</title>
       <link>https://asthasr.github.io/posts/abstraction-is-okay/</link>
       <pubDate>Fri, 26 Feb 2021 20:47:38 -0500</pubDate>
-      
       <guid>https://asthasr.github.io/posts/abstraction-is-okay/</guid>
-      <description>You encounter a crusty old-timer who tells you how great programming used to be: the computer just did what you told it. Languages were simple and easy to understand. In awe, you ask: &amp;ldquo;Did you write FORTRAN? or assembly?&amp;rdquo; The old-timer laughs: he&amp;rsquo;s not that old. He started with C!
-It&amp;rsquo;s common to think of C and other &amp;ldquo;old&amp;rdquo; languages as being &amp;ldquo;close to the machine,&amp;rdquo; but that&amp;rsquo;s because the Unix abstractions have become so ubiquitous that we no longer think of them as abstractions.</description>
+      <description>You encounter a crusty old-timer who tells you how great programming used to be: the computer just did what you told it. Languages were simple and easy to understand. In awe, you ask: &amp;ldquo;Did you write FORTRAN? or assembly?&amp;rdquo; The old-timer laughs: he&amp;rsquo;s not that old. He started with C!&#xA;It&amp;rsquo;s common to think of C and other &amp;ldquo;old&amp;rdquo; languages as being &amp;ldquo;close to the machine,&amp;rdquo; but that&amp;rsquo;s because the Unix abstractions have become so ubiquitous that we no longer think of them as abstractions.</description>
     </item>
-    
     <item>
       <title>Rust Needs Metaphors, Part 2: Traits</title>
       <link>https://asthasr.github.io/posts/rust-needs-metaphors-2/</link>
       <pubDate>Wed, 14 Oct 2020 06:29:48 -0400</pubDate>
-      
       <guid>https://asthasr.github.io/posts/rust-needs-metaphors-2/</guid>
-      <description>When I began learning Haskell, typeclasses were confusing to me: at first, because I didn&amp;rsquo;t fully understand why they were needed, and later, because I didn&amp;rsquo;t understand the advantages they offered over Java&amp;rsquo;s interfaces. If you&amp;rsquo;re new to Rust but haven&amp;rsquo;t used Haskell before, you&amp;rsquo;ll likely be in the same boat, but moreso; traits are pervasive in the ecosystem.
-At heart, traits are very similar to interfaces in Java or C♯.</description>
+      <description>When I began learning Haskell, typeclasses were confusing to me: at first, because I didn&amp;rsquo;t fully understand why they were needed, and later, because I didn&amp;rsquo;t understand the advantages they offered over Java&amp;rsquo;s interfaces. If you&amp;rsquo;re new to Rust but haven&amp;rsquo;t used Haskell before, you&amp;rsquo;ll likely be in the same boat, but moreso; traits are pervasive in the ecosystem.&#xA;At heart, traits are very similar to interfaces in Java or C♯.</description>
     </item>
-    
     <item>
       <title>Rust Needs Metaphors, Part 1: Lifetimes</title>
       <link>https://asthasr.github.io/posts/rust-needs-metaphors-1/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://asthasr.github.io/posts/rust-needs-metaphors-1/</guid>
-      <description>I recently had a conversation with a friend who said: &amp;ldquo;I don&amp;rsquo;t trust most of what I hear about Rust, because it sounds like agitprop from the Rust Evangelism Strike Force, but people like you whom I trust and respect seem to like it. Can you help me understand why?&amp;rdquo;
-I tried to. I said things that make sense, in the abstract: it offers a very powerful type system, it allows me to feel more confident about my code in surprising ways, and so on.</description>
+      <description>I recently had a conversation with a friend who said: &amp;ldquo;I don&amp;rsquo;t trust most of what I hear about Rust, because it sounds like agitprop from the Rust Evangelism Strike Force, but people like you whom I trust and respect seem to like it. Can you help me understand why?&amp;rdquo;&#xA;I tried to. I said things that make sense, in the abstract: it offers a very powerful type system, it allows me to feel more confident about my code in surprising ways, and so on.</description>
     </item>
-    
     <item>
       <title>Under the Rug: Hidden (but Essential) Complexity</title>
       <link>https://asthasr.github.io/posts/under-the-rug/</link>
       <pubDate>Thu, 23 Apr 2020 08:16:06 -0400</pubDate>
-      
       <guid>https://asthasr.github.io/posts/under-the-rug/</guid>
-      <description>I don&amp;rsquo;t like docopt. That makes me an outlier; most people I&amp;rsquo;ve talked to seem to think it makes command-line applications &amp;ldquo;easy.&amp;rdquo; They like its premise that, by writing documentation, you&amp;rsquo;re writing code. When you make a command-line application with docopt, you&amp;rsquo;ve automatically got the help text written and the module documented properly, right? Why bother with something verbose and object-oriented like argparse?
-My objection is that you aren&amp;rsquo;t writing code, but you&amp;rsquo;re also not writing documentation, despite the name of the package.</description>
+      <description>I don&amp;rsquo;t like docopt. That makes me an outlier; most people I&amp;rsquo;ve talked to seem to think it makes command-line applications &amp;ldquo;easy.&amp;rdquo; They like its premise that, by writing documentation, you&amp;rsquo;re writing code. When you make a command-line application with docopt, you&amp;rsquo;ve automatically got the help text written and the module documented properly, right? Why bother with something verbose and object-oriented like argparse?&#xA;My objection is that you aren&amp;rsquo;t writing code, but you&amp;rsquo;re also not writing documentation, despite the name of the package.</description>
     </item>
-    
     <item>
       <title>Loops and Recursion</title>
       <link>https://asthasr.github.io/posts/loops-and-recursion/</link>
       <pubDate>Sun, 22 Dec 2019 08:27:13 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/loops-and-recursion/</guid>
       <description>Recursion was a concept that took me a long time to understand. It wasn&amp;rsquo;t until years after I&amp;rsquo;d started programming that I felt I really understood it, and it wasn&amp;rsquo;t until years after that that I felt confident reaching for it as a tool. Like almost everyone, the first way that I learned to think of iteration was with loops. If you wanted to add something together, for example, you would create a &amp;ldquo;bookkeeping&amp;rdquo; variable and modify it inside the loop.</description>
     </item>
-    
     <item>
       <title>The M-Word: The Culture of Programming</title>
       <link>https://asthasr.github.io/posts/the-m-word/</link>
       <pubDate>Sat, 14 Dec 2019 15:46:58 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/the-m-word/</guid>
-      <description>In addition to [the monad] being useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&amp;mdash;&amp;ldquo;Oh, that&amp;rsquo;s what it is!&amp;quot;&amp;mdash;you lose the ability to explain it to anybody. &amp;mdash; Doug Crockford.
- I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&amp;rsquo;ve probably used.</description>
+      <description>In addition to it begin useful, it is also cursed and the curse of the monad is that once you get the epiphany, once you understand&amp;mdash;&amp;ldquo;Oh, that&amp;rsquo;s what it is!&amp;rdquo;&amp;mdash;you lose the ability to explain it to anybody. &amp;mdash; Doug Crockford.&#xA;I had a problem, once. I was working on a Rails application which generated integration files to be consumed by external partners. They were generated every night in a dozen formats and shipped around the Internet to populate sites you&amp;rsquo;ve probably used.</description>
     </item>
-    
     <item>
       <title>Mind the Gaps</title>
       <link>https://asthasr.github.io/posts/mind-the-gaps/</link>
       <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://asthasr.github.io/posts/mind-the-gaps/</guid>
-      <description>&amp;ldquo;If you truly accumulate effort for a long time, then you will advance.&amp;rdquo; Xunzi.
- It&amp;rsquo;s no secret that many programmers are self-taught. Some of us, myself included, lack formal credentials related to computer science. I&amp;rsquo;ve worked with good programmers who didn&amp;rsquo;t graduate high school. It&amp;rsquo;s a strange profession, with the skills often acquired simply as a side effect of tinkering. You don&amp;rsquo;t hear about many civil engineers or corporate attorneys who do what they do because they enjoyed playing Zork on their dad&amp;rsquo;s office computer.</description>
+      <description>&amp;ldquo;If you truly accumulate effort for a long time, then you will advance.&amp;rdquo; Xunzi.&#xA;It&amp;rsquo;s no secret that many programmers are self-taught. Some of us, myself included, lack formal credentials related to computer science. I&amp;rsquo;ve worked with good programmers who didn&amp;rsquo;t graduate high school. It&amp;rsquo;s a strange profession, with the skills often acquired simply as a side effect of tinkering. You don&amp;rsquo;t hear about many civil engineers or corporate attorneys who do what they do because they enjoyed playing Zork on their dad&amp;rsquo;s office computer.</description>
     </item>
-    
     <item>
       <title>On Symbolic Logic</title>
       <link>https://asthasr.github.io/posts/on-symbolic-logic/</link>
       <pubDate>Wed, 20 Nov 2019 14:51:10 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/on-symbolic-logic/</guid>
-      <description>I went to public school in the United States, and I was always &amp;ldquo;bad at math.&amp;rdquo; I hated homework and tests, and it never got better: as I went through the grades, the problems got longer and more intricate, and I inevitably would make a calculation error&amp;mdash;misplacing a decimal or flubbing an easy sum&amp;mdash;halfway through. I got used to seeing $\color{red}{-\frac{1}{2}}$ on my papers. Those add up!
-In college, the first thing I did when planning my path through general education was look for a way to avoid Calculus.</description>
+      <description>I went to public school in the United States, and I was always &amp;ldquo;bad at math.&amp;rdquo; I hated homework and tests, and it never got better: as I went through the grades, the problems got longer and more intricate, and I inevitably would make a calculation error&amp;mdash;misplacing a decimal or flubbing an easy sum&amp;mdash;halfway through. I got used to seeing $\color{red}{-\frac{1}{2}}$ on my papers. Those add up!&#xA;In college, the first thing I did when planning my path through general education was look for a way to avoid Calculus.</description>
     </item>
-    
     <item>
       <title>The Danger of &#34;Simplicity&#34;</title>
       <link>https://asthasr.github.io/posts/danger-of-simplicity/</link>
       <pubDate>Sat, 16 Nov 2019 09:05:35 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/danger-of-simplicity/</guid>
-      <description>There are a few tendencies among programmers that involve the totem of &amp;ldquo;simplicity.&amp;rdquo; There&amp;rsquo;s the ancient concept of KISS, of course, but there&amp;rsquo;s also the much-abused YAGNI, the insistence that we &amp;ldquo;Choose Boring Technology,&amp;quot; entire languages that base their elevator pitch around the idea that they&amp;rsquo;re &amp;ldquo;simple,&amp;rdquo; and the concept in object-oriented design that &amp;ldquo;every class should have a single responsibility.&amp;rdquo;
-The problem with these approaches is that &amp;ldquo;simplicity&amp;rdquo; never gets a rigorous definition.</description>
+      <description>There are a few tendencies among programmers that involve the totem of &amp;ldquo;simplicity.&amp;rdquo; There&amp;rsquo;s the ancient concept of KISS, of course, but there&amp;rsquo;s also the much-abused YAGNI, the insistence that we &amp;ldquo;Choose Boring Technology,&amp;rdquo; entire languages that base their elevator pitch around the idea that they&amp;rsquo;re &amp;ldquo;simple,&amp;rdquo; and the concept in object-oriented design that &amp;ldquo;every class should have a single responsibility.&amp;rdquo;&#xA;The problem with these approaches is that &amp;ldquo;simplicity&amp;rdquo; never gets a rigorous definition.</description>
     </item>
-    
     <item>
       <title>&#34;Parsing&#34; in Python</title>
       <link>https://asthasr.github.io/posts/parsing-in-python/</link>
       <pubDate>Sun, 10 Nov 2019 14:02:05 +0700</pubDate>
-      
       <guid>https://asthasr.github.io/posts/parsing-in-python/</guid>
-      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;&amp;ldquo;Parse, Don&amp;rsquo;t Validate,&amp;rdquo;
-&lt;/a&gt; shared it with my
-coworkers, and let it &lt;a href=&#34;https://lobste.rs/s/uemphs/parse_don_t_validate&#34;&gt;bring me out of
-retirement&lt;/a&gt; on
-&lt;a href=&#34;https://lobste.rs/&#34;&gt;lobste.rs&lt;/a&gt;. It captures a concept that I&amp;rsquo;ve struggled to explain,
-leading to cases where I couldn&amp;rsquo;t say why I thought something was better beyond a vague
-&amp;ldquo;It&amp;rsquo;s a matter of taste.&amp;rdquo; That&amp;rsquo;s not very satisfactory as a justification when you&amp;rsquo;re
-trying to explain to someone why they should rework a piece of code in a review.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I recently read &lt;a href=&#34;https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/&#34;&gt;&amp;ldquo;Parse, Don&amp;rsquo;t Validate,&amp;rdquo;&#xA;&lt;/a&gt; shared it with my&#xA;coworkers, and let it &lt;a href=&#34;https://lobste.rs/s/uemphs/parse_don_t_validate&#34;&gt;bring me out of&#xA;retirement&lt;/a&gt; on&#xA;&lt;a href=&#34;https://lobste.rs/&#34;&gt;lobste.rs&lt;/a&gt;. It captures a concept that I&amp;rsquo;ve struggled to explain,&#xA;leading to cases where I couldn&amp;rsquo;t say why I thought something was better beyond a vague&#xA;&amp;ldquo;It&amp;rsquo;s a matter of taste.&amp;rdquo; That&amp;rsquo;s not very satisfactory as a justification when you&amp;rsquo;re&#xA;trying to explain to someone why they should rework a piece of code in a review.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

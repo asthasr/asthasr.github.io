@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.92.2" />
+  <meta name="generator" content="Hugo 0.121.2">
 
   
   <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
@@ -174,8 +174,7 @@ div.title {
 
 </style>
 
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Rust Needs Metaphors, Part 1: Lifetimes"/>
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Rust Needs Metaphors, Part 1: Lifetimes"/>
 <meta name="twitter:description" content="I recently had a conversation with a friend who said: &ldquo;I don&rsquo;t trust most of what I hear about Rust, because it sounds like agitprop from the Rust Evangelism Strike Force, but people like you whom I trust and respect seem to like it. Can you help me understand why?&rdquo;
 I tried to. I said things that make sense, in the abstract: it offers a very powerful type system, it allows me to feel more confident about my code in surprising ways, and so on."/>
 
@@ -271,21 +270,21 @@ associating the value with the scope in which the <code>let</code> occurs, where
 function in a chained statement (particularly if you&rsquo;re using lambdas) may lead to a
 value being bound to a scope that gets dropped before you expect.</p>
 <p>Consider the following:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
-    <span style="font-weight:bold;font-style:italic">let</span> x = <span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string().as_mut_str();
-    x.make_ascii_uppercase();
-    println!(<span style="color:#666;font-style:italic">&#34;{}&#34;</span>, x);
-}
-</code></pre></div><p>Here, the compiler will raise an error because <code>&quot;foo&quot;</code> is converted to a <code>String</code>, but
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> x = <span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string().as_mut_str();
+</span></span><span style="display:flex;"><span>    x.make_ascii_uppercase();
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{}</span><span style="color:#666;font-style:italic">&#34;</span>, x);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here, the compiler will raise an error because <code>&quot;foo&quot;</code> is converted to a <code>String</code>, but
 the next call creates a mutable reference to it that actually lasts longer than the
 string itself. This error can be fixed by making sure that the string lives long enough:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
-    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> foo = <span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string();
-    <span style="font-weight:bold;font-style:italic">let</span> x = foo.as_mut_str();
-    x.make_ascii_uppercase();
-    println!(<span style="color:#666;font-style:italic">&#34;{}&#34;</span>, x);
-}
-</code></pre></div><p>You can try it in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=637ef5cf07175e8d0912aa4a88ecbfbc">playground</a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> <span style="font-weight:bold">mut</span> foo = <span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string();
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> x = foo.as_mut_str();
+</span></span><span style="display:flex;"><span>    x.make_ascii_uppercase();
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{}</span><span style="color:#666;font-style:italic">&#34;</span>, x);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You can try it in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=637ef5cf07175e8d0912aa4a88ecbfbc">playground</a>.</p>
 <h2 id="data-must-always-be-managed">Data must always be managed</h2>
 <p>The implication of the previous rule permeates the language. Every piece of data that
 you need to use needs to be pulled &ldquo;up&rdquo; to a common ancestor. If you envision an
@@ -296,28 +295,28 @@ its management or eventual demise.</p>
 <p>If we applied this logic to the erroneous code above, you can see that the reference
 (produced by <code>as_mut_str</code>) is referring to data that we haven&rsquo;t pulled &ldquo;up&rdquo; to the outer
 scope:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
-    <span style="font-weight:bold;font-style:italic">let</span> x = (<span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string()).as_mut_str();
-    println!(<span style="color:#666;font-style:italic">&#34;{}&#34;</span>, x);
-}
-</code></pre></div><p>Similar issues arise when you attempt to return a reference from a function, although
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> x = (<span style="color:#666;font-style:italic">&#34;foo&#34;</span>.to_string()).as_mut_str();
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#666;font-style:italic">&#34;</span><span style="color:#666;font-style:italic">{}</span><span style="color:#666;font-style:italic">&#34;</span>, x);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Similar issues arise when you attempt to return a reference from a function, although
 the error message is more friendly:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">get_int</span>&lt;&#39;a&gt;() -&gt; <span style="font-weight:bold">&amp;</span>&#39;a <span style="font-weight:bold">u8</span> {
-    <span style="font-weight:bold;font-style:italic">let</span> x = 3;
-    &amp;x
-}
-</code></pre></div><p>This will produce an error that tells you that the function cannot return a reference to
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">get_int</span>&lt;&#39;a&gt;() -&gt; <span style="font-weight:bold">&amp;</span>&#39;a <span style="font-weight:bold">u8</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> x = 3;
+</span></span><span style="display:flex;"><span>    &amp;x
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This will produce an error that tells you that the function cannot return a reference to
 data that it owns. After all, that local, <code>x</code>, will &ldquo;die&rdquo; when the lifetime to which it
 is bound ends. The reference to it, which is being returned from the function, will not.</p>
 <p>Things like shared configuration must be treated similarly. Traditional languages often
 use module-level variables and singletons to contain these sorts of things; Rust
 typically doesn&rsquo;t.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
-    <span style="font-weight:bold;font-style:italic">let</span> config = get_config();  <span style="color:#888;font-style:italic">// returns a config object.
-</span><span style="color:#888;font-style:italic"></span>    first(config);
-    second(config); <span style="color:#888;font-style:italic">// this will raise an error!
-</span><span style="color:#888;font-style:italic"></span>}
-</code></pre></div><p>In this case, <code>first</code> takes ownership of <code>config</code>. In order to use it in <code>second</code>, you
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">fn</span> <span style="color:#666;font-weight:bold;font-style:italic">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic">let</span> config = get_config();  <span style="color:#888;font-style:italic">// returns a config object.
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>    first(config);
+</span></span><span style="display:flex;"><span>    second(config); <span style="color:#888;font-style:italic">// this will raise an error!
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>}
+</span></span></code></pre></div><p>In this case, <code>first</code> takes ownership of <code>config</code>. In order to use it in <code>second</code>, you
 need to either pass it by reference or clone it. In either case, the <code>main</code> function
 will retain ownership of the original object, and only ownership of the reference or
 clone will pass into the functions. You can try it out in the <a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=cf145f031e1ed93fc10963ba26321fca">playground</a>.</p>
@@ -335,7 +334,7 @@ cases. If you aren&rsquo;t consciously <em>choosing</em> to write an explicit li
 compiler&rsquo;s admonition that you need one, back up, and think about why it thinks you do.
 You probably made a mistake.</p>
 <p>If you&rsquo;d like to see why I advise this technique instead of implementing data structures
-check out <a href="https://rust-unofficial.github.io/too-many-lists/">&ldquo;Learn Rust With Entirely Too Many Linked Lists,&quot;</a> which I think
+check out <a href="https://rust-unofficial.github.io/too-many-lists/">&ldquo;Learn Rust With Entirely Too Many Linked Lists,&rdquo;</a> which I think
 demonstrates why I think this is a bad path for the true beginner to take. Also, check
 out the various structures available in <a href="https://doc.rust-lang.org/std/collections/index.html"><code>std::collections</code></a> and <a href="https://lib.rs/data-structures">third-party
 crates</a>.</p>
