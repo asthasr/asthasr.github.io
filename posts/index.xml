@@ -6,8 +6,15 @@
     <description>Recent content in Posts on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Oct 2024 20:05:57 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 02 Nov 2024 09:16:51 -0400</lastBuildDate>
     <atom:link href="https://asthasr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Orthodoxy</title>
+      <link>https://asthasr.github.io/posts/orthodoxy/</link>
+      <pubDate>Sat, 02 Nov 2024 09:16:51 -0400</pubDate>
+      <guid>https://asthasr.github.io/posts/orthodoxy/</guid>
+      <description>Programming is neither a science nor an art. Science proceeds from hypothesis through test to confirmation, and art is as much about the means of expression as it is about its themes. Software, by contrast, is written to solve a problem that&amp;rsquo;s fundamentally more important than the means of its solution. Often that solution has existed since ancient times and simply needs to be encoded as an algorithm that works in the particular environment of the software&amp;rsquo;s patron.</description>
+    </item>
     <item>
       <title>Information Curation for the Programmer</title>
       <link>https://asthasr.github.io/posts/curation/</link>
