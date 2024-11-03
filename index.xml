@@ -6,8 +6,15 @@
     <description>Recent content on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Nov 2024 09:16:51 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 03 Nov 2024 09:21:48 -0500</lastBuildDate>
     <atom:link href="https://asthasr.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Bridges</title>
+      <link>https://asthasr.github.io/posts/building-bridges/</link>
+      <pubDate>Sun, 03 Nov 2024 09:21:48 -0500</pubDate>
+      <guid>https://asthasr.github.io/posts/building-bridges/</guid>
+      <description>Programming is neither an art nor a science, as I wrote in Orthodoxy, but we have an advantage over other crafts in that we can experiment cheaply and our material is our own creativity, like writers rather than sculptors. Where a sculptor working in wood can never escape the possibility of an unexpected knot or flaw in the grain, we&amp;rsquo;re able to tie our &amp;ldquo;material&amp;rdquo; directly to proven theory and to physical reality.</description>
+    </item>
     <item>
       <title>Orthodoxy</title>
       <link>https://asthasr.github.io/posts/orthodoxy/</link>
