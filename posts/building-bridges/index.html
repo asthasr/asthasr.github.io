@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.121.2">
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <title>Building Bridges | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+
+</style>
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Building Bridges"/>
+<meta name="twitter:description" content="Programming is neither an art nor a science, as I wrote in Orthodoxy, but we have an advantage over other crafts in that we can experiment cheaply and our material is our own creativity, like writers rather than sculptors. Where a sculptor working in wood can never escape the possibility of an unexpected knot or flaw in the grain, we&rsquo;re able to tie our &ldquo;material&rdquo; directly to proven theory and to physical reality."/>
+
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZEELKPFTWV"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZEELKPFTWV');
+  </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>Building Bridges</h1>
+<p>Programming is neither an art nor a science, as I wrote in <a href="https://asthasr.github.io/posts/orthodoxy/">Orthodoxy</a>,
+but we have an advantage over other crafts in that we can experiment cheaply and
+our material is our own creativity, like writers rather than sculptors. Where a
+sculptor working in wood can never escape the possibility of an unexpected knot
+or flaw in the grain, we&rsquo;re able to tie our &ldquo;material&rdquo; directly to proven theory
+<em>and</em> to physical reality. Most of us won&rsquo;t be working directly on either of
+those topics, though: computer engineers and theoretical computer scientists are
+rare, when compared to business focused software engineers.</p>
+<p>No, we get to do our work in the messy middle. Think of a bridge: many computer
+scientists are working on building a firm foundation in indisputable
+mathematical truth on the left bank, while computer engineers and systems-level
+developers are laying brick on the right bank. Most software developers are
+working on the main span, furiously nailing bricks together and welding planks
+to plastic as fast as they can. We&rsquo;re concerned with those hammers, nails, and
+welding torches and trying not to look down at the churning water below or
+paying much attention to the elegant towers rising on either bank.</p>
+<p>Surely our numerical superiority has no negative implications for online
+technical discourse, right? Well&hellip;</p>
+<p>I was already familiar with Haskell and category theory before Go arrived on the
+scene, and started my programming journey with BASIC and C in the 1990s. I
+understood the grounding that motivated Rob Pike to try to ignore &ldquo;architecture
+astronauts&rdquo; and revert to a &ldquo;simpler&rdquo; model of error handling and program
+construction. I also understood the rigor that he was sacrificing on the other
+bank by doing so. It felt strange to me, and through experimenting with the
+language grew to an aesthetic revulsion. It&rsquo;s a bridge built by people ignoring
+foundations on one bank.</p>
+<p>Similarly, Haskell itself (although an important language to learn) is almost
+never the tool that I reach for in my own projects. It&rsquo;s simply too divorced
+from the real constraints of hardware and execution. You can write a beautifully
+abstracted piece of business logic that&rsquo;s as perfect as a crystal, impossible to
+extend or evolve, or you can run afoul of a space leak and find your web service
+suddenly requiring more memory than a Google data center.</p>
+<p>The &ldquo;pragmatic&rdquo; middle-of-the-river languages are even worse. I have had the
+opportunity to work with multiple companies at various stages of failure because
+the freedoms of Ruby and Python allowed them to construct systems that
+were <em>literally</em> intractable, where a total rewrite would&rsquo;ve been the only
+possible path forward but was politically impossible.</p>
+<p>In fact, I have come to believe that the &ldquo;middle-of-the-river&rdquo; mentality has
+been the biggest drag on the industry over the last fifty years. It neatly
+explains most of the things that people hate: architecture astronauts exist
+because they are trying to impose order on systems without firm grounding on
+either bank; agile is necessary because you aren&rsquo;t building well-understood
+components; complication is nearly inevitable because it&rsquo;s impossible to
+understand the system; and &ldquo;cargo cult&rdquo;/&ldquo;guru&rdquo; phenomena are encouraged and
+supported because there is no alternative without appeal to one or both banks.</p>
+<p>The last point is particularly dangerous because the false solutions that gurus
+offer are surprisingly sticky. For example, my own cautionary article about
+<a href="https://asthasr.github.io/posts/danger-of-simplicity/">simplicity</a> often gets conflated with a particularly famous talk on the
+subject that I <em>detest</em> specifically because it is advocating a particular model
+of simplicity while also being actively hostile to the &ldquo;left bank&rdquo;—and
+failing to acknowledge the &ldquo;right bank&rdquo; at all. Words with existing (useful!)
+meanings get co-opted into an orthodoxy whose hegemony is extended by its
+adherents.</p>
+<p>I think the path out of this &ldquo;tar pit&rdquo; lies in the acknowledgement and use of
+both foundations that our colleagues are building. Languages, tools, and
+methodologies that acknowledge computational reality while also aspiring to
+encode as many mathematical foundations as possible represent the future. For
+these purposes, I think languages like Rust, OCaml, and Swift show promise.
+TypeScript is also a practical choice, resting entirely on the &ldquo;right bank&rdquo;
+foundation cobbled together for JavaScript out of necessity because of its
+ubiquity. None are ideal: Rust is too low-level for many business applications,
+and has a learning curve close to El Capitan. OCaml&rsquo;s packaging and building
+ecosystem seems like something from an alternate universe that forked sometime
+in the 1980s. Swift is too Apple. TypeScript sometimes feels like a Frankenstein
+that&rsquo;s on the verge of falling apart (and its packaging and building ecosystem
+is <em>Node</em>). Still, all of them offer promising paths toward encoding more
+information in type systems, while also having predictable and tuneable
+performance characteristics.</p>
+<p>Methodologies are more challenging to the individual practitioner. Even
+suboptimal languages can be written with skill and taste, but developing those
+requires a critical and broad approach that doesn&rsquo;t come natural to all of
+us.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> As for the most immediately useful and non-obvious methodology, I
+think the concept of &ldquo;functional core and imperative shell,&rdquo; described in a
+<a href="https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell">Destroy all Software screencast</a> as well as various blog posts and online
+discussions, fits the bill. In the &ldquo;bridge and banks&rdquo; model, you could think of
+this methodology as a way to use the left bank (theory) when you can and right
+bank (reality) when you must. The functional core, a graceful span founded on
+the left bank, reaches toward the center of the river as far as it can, modeling
+domain logic without recourse to concrete computing concepts and with little
+risk of logical error. The imperative shell, rising from utilitarian and
+brutalist foundations on the right, meets it in the middle. Bricks super-glued
+to balloons are minimized and used only where it&rsquo;s genuinely unavoidable.</p>
+<p>This understanding of the industry offers a clear path for improving our own
+capacities. While building from the middle offers only personality cults and
+slickly packaged &ldquo;engineering frameworks&rdquo; as anchor points, we have the
+opportunity to build from solid ground on both banks. Both foundations offer
+clear starting points, both left:</p>
+<ul>
+<li><a href="https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">&ldquo;Why Functional Programming
+Matters&rdquo;</a> by
+John Hughes</li>
+<li><a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">&ldquo;Category Theory for
+Programmers&rdquo;</a>
+by Bartosz Milewski</li>
+<li><a href="https://amzn.to/3Aqode4"><em>Types and Programming Languages</em></a><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> by Benjamin
+Pierce</li>
+</ul>
+<p>and right:</p>
+<ul>
+<li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/"><em>Operating Systems: Three Easy
+Pieces</em></a> by Remzi and Andrea
+Arpaci-Dusseau (or from <a href="https://amzn.to/3YP72fB">Amazon</a><sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>)</li>
+<li><a href="https://amzn.to/3UCEh3j"><em>The Elements of Computing Systems</em></a><sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> by Nisan and
+Schocken</li>
+<li><a href="https://amzn.to/3C8Rf2h"><em>Understanding Software Dynamics</em></a><sup id="fnref3:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> by Sites</li>
+</ul>
+<p>These resources build systematic understanding rather than providing quick fixes
+or easy answers, and all require significant effort, but they&rsquo;ll improve your
+sense of agency in both your practice and your career as a whole. They also give
+you the tools that you need to identify and avoid the salesmen so intent on
+selling you training for their new brick-welding techniques.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>See my <a href="https://asthasr.github.io/posts/curation/">&ldquo;Information Curation for the Programmer&rdquo;</a> post if you feel like you fit this category.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Amazon affiliate link.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+</body>
+
+</html>
