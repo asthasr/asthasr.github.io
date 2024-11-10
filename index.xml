@@ -6,8 +6,15 @@
     <description>Recent content on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Nov 2024 09:21:48 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 10 Nov 2024 11:39:37 -0500</lastBuildDate>
     <atom:link href="https://asthasr.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Missing Middle: Systems as Languages</title>
+      <link>https://asthasr.github.io/posts/missing-middle/</link>
+      <pubDate>Sun, 10 Nov 2024 11:39:37 -0500</pubDate>
+      <guid>https://asthasr.github.io/posts/missing-middle/</guid>
+      <description>In &amp;ldquo;Building Bridges,&amp;rdquo; I describe a philosophy of software architecture based on the idea of systems that span theory (the &amp;ldquo;left bank&amp;rdquo; of the river) and computational reality (the &amp;ldquo;right bank&amp;rdquo; of the river). In this philosophy, the business value that we deliver is primarily in the &amp;ldquo;middle of the river,&amp;rdquo; so to speak. If theory governs one bank and practical constraints another, there&amp;rsquo;s a significant gap between them that also requires design.</description>
+    </item>
     <item>
       <title>Building Bridges</title>
       <link>https://asthasr.github.io/posts/building-bridges/</link>

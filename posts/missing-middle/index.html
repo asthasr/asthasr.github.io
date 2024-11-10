@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.121.2">
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/custom.css" />
+
+  
+  <title>The Missing Middle: Systems as Languages | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+
+</style>
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="The Missing Middle: Systems as Languages"/>
+<meta name="twitter:description" content="In &ldquo;Building Bridges,&rdquo; I describe a philosophy of software architecture based on the idea of systems that span theory (the &ldquo;left bank&rdquo; of the river) and computational reality (the &ldquo;right bank&rdquo; of the river). In this philosophy, the business value that we deliver is primarily in the &ldquo;middle of the river,&rdquo; so to speak. If theory governs one bank and practical constraints another, there&rsquo;s a significant gap between them that also requires design."/>
+
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZEELKPFTWV"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZEELKPFTWV');
+  </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>The Missing Middle: Systems as Languages</h1>
+<p>In <a href="https://asthasr.github.io/posts/building-bridges/">&ldquo;Building Bridges,&rdquo;</a> I describe a philosophy of software architecture
+based on the idea of systems that span theory (the &ldquo;left bank&rdquo; of the river) and
+computational reality (the &ldquo;right bank&rdquo; of the river). In this philosophy, the
+business value that we deliver is primarily in the &ldquo;middle of the river,&rdquo; so to
+speak. If theory governs one bank and practical constraints another, there&rsquo;s a
+significant gap between them that also requires design.</p>
+<p>The most popular design methodology in the modern era is &ldquo;Domain Driven Design&rdquo;
+(hereafter DDD), originally codified in a <a href="https://amzn.to/3ULLYo5">book of the same name</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> by
+Eric Evans. Like so many other philosophies,  its prescriptions often fall apart
+in the face of reality. In particular, it treats persistence as part of the
+model and insists on the supremacy of domain experts&rsquo; language. Both often fail
+to cope with complex state requirements and necessary parts of implementations
+that don&rsquo;t neatly fit &ldquo;business perspectives.&rdquo;<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Its core idea of a system as a model of the business domain it is intended to
+serve is good, though. Systems need to serve a purpose, and present that purpose
+intelligibly to several different groups: the implementors, the business support
+team, the sales team, and customers. In other words, software systems need to
+tell a story to each of those classes of users. In the original DDD book, Evans
+captures this concept through a focus on a concept he calls &ldquo;Ubiquitous
+language.&rdquo; This language is intended to be sourced from the experts'
+understanding of the domain, supplemented only by &ldquo;high-level organizing
+principles imposed on the model.&rdquo;</p>
+<p>The idea of a language as the organizing principle of the system is a great one,
+as far as it goes, but DDD relies too much on non-technical experts. To be
+frank, from personal experience, I have worked with only a few domain experts
+who used coherent and consistent language for their business domains. Even if
+they do, this can be thrown into disarray when the software system acquires
+another purpose or needs to absorb a second system, and implementation can be
+strengthened by keeping domain experts&rsquo; input at arm&rsquo;s length.</p>
+<p>I think a more productive style of design is sourced from a secondary DDD text,
+<a href="https://amzn.to/3UKJEO4"><em>Domain Storytelling</em></a><sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Its premise is that systems are collections
+of scenarios that consist of <em>actors</em> who act upon <em>domain objects</em> via
+<em>activities</em>. In other words, sentences that consist of subjects acting upon
+objects via verbs. I won&rsquo;t restate domain storytelling&rsquo;s propositions here in
+their entirety. You can get the gist of the system from their <a href="https://domainstorytelling.org/">website</a>,
+and the key insight is really the conception of a system as a set of scenarios
+built from nouns and verbs. Much of the rest is ceremony around that: eliciting
+the scenarios from domain experts and using diagrams to encode them. Like all
+such systems, it&rsquo;s optimistic in some ways, impractical in others, and generally
+more formal than it needs to be. No matter: the important part is the language.</p>
+<p>Language is powerful because it can be used to express the actions and logic of
+the system with no reference to anything outside. This is another weakness of
+DDD: although it acknowledges and emphasizes the power of domain language, it
+doesn&rsquo;t make space for that language to be encoded without recourse to
+implementation details. A lot of Evans&rsquo; book is dedicated to discussing
+repositories, aggregates, bounded contexts, anticorruption layers, and other
+implementation concerns that are ultimately unrelated to the domain. As a
+&ldquo;middle of the river&rdquo; book, it has only false foundations (design patterns,
+specifically) and no cohesive way to model relationships with hardware and
+state.</p>
+<p>Genuine theoretical models are based on math and proof. There are patterns that
+we can rely on, like algebraic data types, pure functions, state machines, and
+monadic error handling, but these exist outside of and independent of the
+language that we develop for the system. DDD and other &ldquo;object-first&rdquo;
+methodologies either ignore or reject this concept. The &ldquo;patterns&rdquo; must describe
+objects that the model subsumes, and behavior of the pattern objects cannot be
+truly inferred because patterns <em>do not exist</em> except as a name. Every
+<code>AbstractFactory</code> that you encounter may behave differently from any other, and
+still be perfectly defensible as an &ldquo;abstract factory.&rdquo; The name of the class
+offers no explanatory power to the language of the system. Robust theoretical
+constructs don&rsquo;t have this problem, because they have mathematical properties
+that exist independently of their implementation.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>To maintain the separation between the model and its foundations, almost all
+business logic should be written as pure functions<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> in terms of simple
+data structures. How those data structures are constructed or what happens after
+a pure function is invoked is not the concern of the business logic. As an
+example, an apartment leasing system is built on a single core function:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ocaml" data-lang="ocaml"><span style="display:flex;"><span><span style="font-weight:bold">let</span> create_lease ~apartment ~tenants ~start_date ~length_months ~rent =
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> end_date = add_months start_date length_months <span style="font-weight:bold">in</span>
+</span></span><span style="display:flex;"><span>    { apartment; tenants; start_date; end_date; rent }
+</span></span></code></pre></div><p>Of course, this might be the culmination of a number of additional steps, but
+<code>create_lease</code> is the purpose of the system, and those additional steps should
+also be modeled in terms of data that&rsquo;s &ldquo;just there&rdquo; and outputs that go
+&ldquo;somewhere.&rdquo; Every function will then serve as the verb in the language of the
+system, acting on the nouns embodied in the data structures. Impurity, commonly
+called &ldquo;side effects&rdquo; (or &ldquo;non-determinism&rdquo; in more formal resources), is pushed
+out to the edge of this language system and modeled within the type system. This
+is conceptually the same as the &ldquo;functional core, imperative shell&rdquo; design, with
+a bit more rigor. Let&rsquo;s expand on the premise a little.</p>
+<p>In this system, we might receive an HTML form specifying that a tenant (whose
+data is included) is renting a specific apartment. That form is posted to a
+<code>/create-lease</code> endpoint, exposed by a web framework, and parsed by that same
+web framework into four important data structures: the tenant, the start date,
+lease length, and an apartment specifier. After these objects have been
+constructed from the user&rsquo;s input, they can be passed into a workflow function
+that embodies a &ldquo;sentence&rdquo; of the system language. This workflow function can
+then use stateful functions and business logic as necessary to complete the
+process, eventually returning either a successful result or an explanatory
+error.</p>
+<p>In this architecture, there are five main subsystems:</p>
+<ol>
+<li>The impure shell is the <strong>Coordinator</strong>. It depends on the domain language
+and system state and is the entry point to all of the system&rsquo;s logic.</li>
+<li>The results of the coordinator are processed and presented to the user as
+<strong>Output</strong>. This could be via a web service, CLI output, or a GUI, depending
+on how the system was invoked.</li>
+<li>That invocation is handled by <strong>Input</strong>. This is the part of the system that
+routes web requests, displays HTML forms, or exposes command line arguments,
+parses the input, and dispatches to the appropriate coordinator methods.</li>
+<li>The pure domain language is the <strong>Logic</strong>. It depends on nothing and is
+defined in terms of itself. If need be, it can be shared between multiple
+applications as a library because it is isolated from other concerns.</li>
+<li>Persistence of all kinds is handled by the <strong>State</strong> subsystem. It exposes
+logical interfaces to the coordinator, but the coordinator is ignorant of the
+implementation details. It asks for what it needs, and the State subsystem
+gives it back—or fails.</li>
+</ol>
+<p>As a mnemonic, you can think of this as the <strong>COILS architecture</strong>. Notice that
+its dependencies are all unidirectional:</p>
+<pre class="mermaid">graph LR
+    Input --> Coordinator
+    Output --> Coordinator
+    Coordinator --> State
+    Coordinator --> Logic
+</pre>
+
+<p>The level of abstraction that you choose to implement at each dependency
+boundary will vary depending on your system&rsquo;s needs, but this architecture
+offers us a way to express the &ldquo;middle of the river&rdquo; domain language without
+getting tied up in the minutiae of implementation details and without the
+pathological flexibility of object-first modeling. The right bank is hidden
+behind the State interface, safely exposed to the coordinator through logically
+named functions, or handled completely out of the sight of the core system by
+the Input and Output subsystems. This is where sophisticated typing will usually
+be used: result types are used for error handling and optional results from the
+system state, and nondeterministic inputs and outputs may play a role in those
+subsystems. The domain logic will make use of relatively simple algebraic data
+types and functions.</p>
+<p>My next post will be a more concrete, demonstrating what our hypothetical
+leasing system might look like if it was really implemented. If the terms above
+were too much, consider reading about algebraic data types (ADTs) first.
+<a href="https://bartoszmilewski.com/2015/01/13/simple-algebraic-data-types/">&ldquo;Simple Algebraic Data Types&rdquo;</a> is a good introduction. It uses Haskell
+but should be readable. If that&rsquo;s not good enough, Claude Opus gives reasonable
+explanations of this concept and you can choose the language you prefer.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>An Amazon Affiliate link.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>I once worked on a system where funds were made available to
+the user at some point in the future. The domain experts called these
+&ldquo;deposits,&rdquo; and were very concerned about the complexity of making sure that
+&ldquo;future deposits&rdquo; didn&rsquo;t get spent early. I solved this by calling them
+&ldquo;fund allocations&rdquo; and moving them into a ledger as a credit on the
+effective date, so that they were never debited before they had been
+credited. This also neatly fixed a problem with the previous system, which
+had never been able to reliably offer running balances.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Another way to look at it is that by grounding part of the system&rsquo;s
+design in computer science, you can take advantage of others&rsquo; work on making
+sure that those ideas are actually usable in the context of the real world.
+Even if you interpret the beginnings of the &ldquo;design patterns&rdquo; movement
+charitably, its proponents did not do the leg work to make sure that this
+was true for all of the patterns they described, so object-oriented design
+in DDD and other methodologies often becomes sadly misshapen from its
+original architecture simply because that architecture wasn&rsquo;t fit for
+purpose.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Pure functions are those that act only on their inputs and produce only
+their outputs. They have no &ldquo;side effects&rdquo; on the real world.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+  
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+  </script>
+
+
+</body>
+
+</html>
