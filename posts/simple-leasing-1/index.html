@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.121.2">
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/custom.css" />
+
+  
+  <title>Simple Leasing, Part 1: The Project | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 900px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+
+</style>
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Simple Leasing, Part 1: The Project"/>
+<meta name="twitter:description" content="The last few posts have been theoretical; this one isn&rsquo;t. Let&rsquo;s start a project from scratch, building on the principles of the COILS architecture I proposed in the last post.
+Business Requirements The first task for any project is eliciting business requirements from stakeholders. COILS isn&rsquo;t intended to prescribe a methodology for that part of a project, but it does suggest that you should end up with domain stories that function as sentences written in the language of the system that you want to write."/>
+
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZEELKPFTWV"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZEELKPFTWV');
+  </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>Simple Leasing, Part 1: The Project</h1>
+<p>The last few posts have been theoretical; this one isn&rsquo;t. Let&rsquo;s start a project from scratch, building on the principles of the COILS architecture I proposed in the last post.</p>
+<h2 id="business-requirements">Business Requirements</h2>
+<p>The first task for any project is eliciting business requirements from stakeholders. COILS isn&rsquo;t intended to prescribe a methodology for that part of a project, but it does suggest that you should end up with <em>domain stories</em> that function as sentences written in the <em>language</em> of the system that you want to write.</p>
+<p>Sticking with the apartment leasing system, that might look like this:</p>
+<ol>
+<li>An <em>administrator</em> configures the system with the leasable assets.</li>
+<li>An <em>administrator</em> configures users for managers.</li>
+<li>A <em>prospective tenant</em> searches for available <em>apartments</em>.</li>
+<li>A <em>manager</em> records a signed <em>lease</em>.</li>
+<li>A <em>tenant</em> pays his <em>rent</em>.</li>
+<li>A <em>manager</em> generates notices for unpaid <em>rent</em>.</li>
+<li>A <em>manager</em> generates <em>occupancy reports</em>.</li>
+</ol>
+<p>From this set of sentences, nouns and verbs start to emerge:</p>
+<ul>
+<li>Administrators are concerned with making sure that the system is functional for the day-to-day users.</li>
+<li>Managers are responsible for helping prospective tenants sign a lease and making sure they pay rent.</li>
+<li>Tenants must pay their rent.</li>
+</ul>
+<p>Notice, too, that technical details are also suggested by the different responsibilities:</p>
+<ol>
+<li>Administrative tasks will need their own interface (or &ldquo;execution context&rdquo;).</li>
+<li>Managers will need to be authenticated<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> and authorized<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> for certain tasks.</li>
+<li>Similarly, tenants will need to be authenticated and authorized&hellip;</li>
+<li>&hellip;but not <em>prospective</em> tenants.</li>
+</ol>
+<p>We don&rsquo;t necessarily need to implement the most technically complex parts of the system at first, so we can pick and choose what we want to focus on. I usually like to focus on administrative tasks first, so that we can slowly build a working system from the ground up. It&rsquo;s hard to do that if you haven&rsquo;t built a way to interact with the data at the ground level.</p>
+<h2 id="the-project">The Project</h2>
+<p>This example is going to use TypeScript, <code>pnpm</code> for package management, and <code>jest</code> for unit tests. Optionally, you can also use <code>prettier</code> for formatting. Describing how to set up projects in this environment is beyond the scope of this article, and can be a moving target in the Node ecosystem, but suffice to say that after the initial project setup you&rsquo;ll end up with a directory structure something like this:</p>
+<pre tabindex="0"><code>simple-leasing/
+    package.json
+    pnpm-lock.yaml
+    tsconfig.json
+</code></pre><p>The structure of the source tree is entirely up to us, and this is where many beginners start to falter. &ldquo;Middle-of-the-river&rdquo; methodologies often prescribe pattern names, but without explicitly illustrating how this maps to the practical reality of the source tree. That&rsquo;s because it&rsquo;s a matter of taste and preference, but they never <em>quite</em> come out and say that! For myself, I like to keep the top of my source hierarchy relatively clean and use nested &ldquo;modules&rdquo; for different concerns. As a bonus, this makes it easier to split a project into different source artifacts if that becomes desirable. If you&rsquo;re using a Unix-based system, you can run <code>mkdir -p src/{common,core,state,web,cli}</code> and end up with my preferred structure:</p>
+<pre tabindex="0"><code>src/
+    cli/
+    common/
+    core/
+    state/
+    web/
+</code></pre><p>Some of these might not be obvious:</p>
+<ul>
+<li><code>cli</code> directory will contain a command line interface (CLI) for the system. This will likely be the only place where administrative tasks are available, in this example. Authentication and authorization are implied if you have access to an execution environment where a CLI can impact the system! The CLI will be an implementation of the <strong>OI</strong> part of COILS.</li>
+<li><code>common</code> is for utility types and associated functions. This is where cross-cutting concerns like error handling and logging can be placed. In practice, almost all of the system — including some parts of the pure <code>core</code> — will need access to these types.</li>
+<li><code>core</code> is where pure business logic and its coordinator(s) (the <strong>C</strong> and <strong>L</strong> in COILS) will reside. You can think of coordinators as the public interface to this module.</li>
+<li><code>state</code> will contain multiple impure interfaces to the outside world, and represents the <strong>S</strong> in COILS. Think database connections, file handling, and external integrations.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
+<li><code>web</code> is the primary interface for tenants and property managers. This is another implementation of the <strong>OI</strong> part of COILS.</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>Now that we have a basic project setup, the next article will cover how to begin fleshing out this skeletal architecture. We&rsquo;ll begin with the core business logic, writing significant parts of the <strong>C</strong> and <strong>L</strong> (and likely touching on state interfaces). Until then, I encourage you to set up this structure and think about what pure functions we might want to implement the domain stories listed above. Try to get comfortable with the ecosystem, too, if you&rsquo;re not already. It&rsquo;s hard to follow along if you&rsquo;re struggling with your tools!</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>To <strong>authenticate</strong> a user means to make sure that they are who they say they are, often using username and password.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>To <strong>authorize</strong> a user means to make sure that they have access to perform a particular action or to see certain data.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>This example will hand-wave integrations, but good examples for a leasing system include credit screening and criminal background checks for the conversion of a <em>prospective</em> tenant into a <em>signed</em> tenant.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+  
+
+</body>
+
+</html>

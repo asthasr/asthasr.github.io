@@ -6,8 +6,15 @@
     <description>Recent content in Posts on data Blog = Blog { me :: Programmer, posts :: [Opinion] }</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Nov 2024 11:39:37 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 23 Nov 2024 07:04:15 -0500</lastBuildDate>
     <atom:link href="https://asthasr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simple Leasing, Part 1: The Project</title>
+      <link>https://asthasr.github.io/posts/simple-leasing-1/</link>
+      <pubDate>Sat, 23 Nov 2024 07:04:15 -0500</pubDate>
+      <guid>https://asthasr.github.io/posts/simple-leasing-1/</guid>
+      <description>The last few posts have been theoretical; this one isn&amp;rsquo;t. Let&amp;rsquo;s start a project from scratch, building on the principles of the COILS architecture I proposed in the last post.&#xA;Business Requirements The first task for any project is eliciting business requirements from stakeholders. COILS isn&amp;rsquo;t intended to prescribe a methodology for that part of a project, but it does suggest that you should end up with domain stories that function as sentences written in the language of the system that you want to write.</description>
+    </item>
     <item>
       <title>The Missing Middle: Systems as Languages</title>
       <link>https://asthasr.github.io/posts/missing-middle/</link>
