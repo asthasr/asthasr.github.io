@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.121.2">
+
+  
+  <meta name="description" content="Opinions and discussions of various topics, mostly related to programming.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://asthasr.github.io/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://asthasr.github.io/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://asthasr.github.io/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://asthasr.github.io/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://asthasr.github.io/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/bootstrap.min.css" />
+
+  
+  <link rel="stylesheet" href="https://asthasr.github.io/css/custom.css" />
+
+  
+  <title>Simple Leasing, Part 2: The Core | data Blog = Blog { me :: Programmer, posts :: [Opinion] }</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #f8fafc;
+}
+
+
+
+body {
+  color: #294656;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #a9c6d6;
+}
+
+
+
+.custom-navbar a {
+  color: #294656;
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 900px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+
+div.title {
+    font-family: monospace;
+    size: 600%;
+    padding: 10px;
+    background-color: #294656;
+    color: #f8fafc;
+}
+
+</style>
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Simple Leasing, Part 2: The Core"/>
+<meta name="twitter:description" content="In Part 1, we set up a basic TypeScript project structure to fit the COILS architecture. Next, we&rsquo;ll start filling out that project structure. The best starting point depends on a project&rsquo;s purpose:
+Web or mobile apps often start with the UX because the UX is the app&rsquo;s value proposition and needs to be the focus of the design. Data pipelines usually have a source and a sink, and determining how to load and process the former is a natural starting point."/>
+
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZEELKPFTWV"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZEELKPFTWV');
+  </script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+  <script>MathJax = {tex: { inlineMath: [['$', '$']] }};</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-chtml.js">
+</script>
+<div class="title">
+    data Blog = Blog { me :: Programmer, posts :: [Opinion] }
+</div>
+<nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/index.xml">RSS</a>
+    
+  </div>
+</nav>
+
+  
+  <div class="container">
+    <article>
+      <h1>Simple Leasing, Part 2: The Core</h1>
+<p>In <a href="https://asthasr.github.io/posts/simple-leasing-1/">Part 1</a>, we set up a basic TypeScript project structure to fit the
+<a href="https://asthasr.github.io/posts/missing-middle/">COILS architecture</a>. Next, we&rsquo;ll start filling out that project structure.
+The best starting point depends on a project&rsquo;s purpose:</p>
+<ul>
+<li>Web or mobile apps often start with the UX because the UX is the app&rsquo;s value
+proposition and needs to be the focus of the design.</li>
+<li>Data pipelines usually have a source and a sink, and determining how to load
+and process the former is a natural starting point.</li>
+<li>In &ldquo;line of business&rdquo; apps like Simple Leasing, we&rsquo;re focused on the nouns and
+verbs of the system language that we&rsquo;re building and can step directly into
+the business logic.</li>
+</ul>
+<h2 id="entities-and-relationships">Entities and Relationships</h2>
+<p>When an application is a true greenfield project, I like to begin by thinking
+through the administrative tasks that are necessary for the system to work,
+even for tests. In this case, those are:</p>
+<ol>
+<li>An <em>administrator</em> configures the system with the leasable assets.</li>
+<li>An <em>administrator</em> configures users for managers.</li>
+</ol>
+<p>The question of &ldquo;users&rdquo; is complex and often treated as an externality, so let&rsquo;s
+defer that for now and focus on the first: leasable assets. Obviously, that
+means <em>apartments</em>, but there is typically some organization implied: apartments
+are located in a <em>building</em>, and buildings belong to a <em>complex</em>. We&rsquo;ll focus
+our project on a single apartment complex, its buildings and their apartments,
+for simplicity.</p>
+<p>Presented as a formal entity-relationship diagram,<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> this constrained set of
+physical assets might look like this:</p>
+<pre class="mermaid">erDiagram
+    COMPLEX ||--|{ BUILDING : contains
+    BUILDING ||--|{ APARTMENT : contains
+</pre>
+
+<p>Diagrams are a powerful design tool, making it easy to express relationships
+between entities and evolving naturally with the design. For example, you might
+notice that all of these entities are separate physical places, and that it
+might be necessary to present them on a map or provide directions (not to
+mention having a place to look up the mailing address for the lessees later).
+Let&rsquo;s add an <em>address</em> entity and make our ERD a little less linear:</p>
+<pre class="mermaid">erDiagram
+    COMPLEX ||--|{ BUILDING : contains
+    BUILDING ||--|{ APARTMENT : contains
+
+    COMPLEX ||--|| ADDRESS : has
+    BUILDING ||--|| ADDRESS : has
+    APARTMENT ||--|| ADDRESS : has
+</pre>
+
+<h2 id="getting-down-to-business-logic">Getting Down to Business (Logic)</h2>
+<p>At this point, I prefer to write code for these nouns and a few verbs that
+operate on them. We can build a full vertical slice of the system and sanity
+check our project structure. Some people prefer to defer writing code until
+later in the process, but this early stage is where I think powerful type
+systems really shine. Where should that code go, though?</p>
+<p>In the previous post, we created a few directories:</p>
+<pre tabindex="0"><code>src/
+    cli/
+    common/
+    core/
+    state/
+    web/
+</code></pre><p>All of our business entities are part of the pure &ldquo;Logic&rdquo; part of the COILS
+model, and should live in <code>core</code>. These will be the primary nouns of the
+language and must exist independently from external concerns. I&rsquo;m going to be
+very basic and call the module <code>entities.ts</code>. All names are negotiable and can
+be changed later, so there&rsquo;s no need to agonize over them.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="font-weight:bold">export</span> <span style="font-weight:bold">type</span> Address = {
+</span></span><span style="display:flex;"><span>  address1: <span style="font-weight:bold">string</span>;
+</span></span><span style="display:flex;"><span>  address2: <span style="font-weight:bold">string</span> | <span style="font-weight:bold">undefined</span>; <span style="color:#888;font-style:italic">// Optional for unit numbers, etc.
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>  city: <span style="font-weight:bold">string</span>;
+</span></span><span style="display:flex;"><span>  state: <span style="font-weight:bold">string</span>;
+</span></span><span style="display:flex;"><span>  zip: <span style="font-weight:bold">string</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">export</span> <span style="font-weight:bold">type</span> Complex = {
+</span></span><span style="display:flex;"><span>  name: <span style="font-weight:bold">string</span>;
+</span></span><span style="display:flex;"><span>  address: <span style="font-weight:bold">Address</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">export</span> <span style="font-weight:bold">type</span> Building = {
+</span></span><span style="display:flex;"><span>  name: <span style="font-weight:bold">string</span>;
+</span></span><span style="display:flex;"><span>  address: <span style="font-weight:bold">Address</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">export</span> <span style="font-weight:bold">type</span> Apartment = {
+</span></span><span style="display:flex;"><span>  <span style="font-weight:bold">number</span>: <span style="font-weight:bold">string</span>;
+</span></span><span style="display:flex;"><span>  bedrooms: <span style="font-weight:bold">number</span>;
+</span></span><span style="display:flex;"><span>  bathrooms: <span style="font-weight:bold">number</span>;
+</span></span><span style="display:flex;"><span>  area: <span style="font-weight:bold">number</span>;
+</span></span><span style="display:flex;"><span>  address: <span style="font-weight:bold">Address</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Next, we turn to the verbs that operate on these nouns exclusively. In this
+case, that means &ldquo;&hellip;configures the system with leasable assets.&rdquo; Since this is
+an administrative task, it involves minimal business logic, and will be a
+concern of input to a coordinator and data storage. Coordinators are the public
+API of the core, so we can place them in <code>core/index.ts</code><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>The first thing to realize is that our entities don&rsquo;t encode their own
+relationships, so input to this sentence—which we&rsquo;ll formalize as
+<code>createPhysicalAssets</code>—will need to do so.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#888;font-style:italic">// TypeScript doesn&#39;t allow named arguments, so an &#34;args&#34; type is a common
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic">// pattern. &#34;Props&#34; is also a common name in UX contexts.
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span><span style="font-weight:bold">type</span> CreatePhysicalAssetsArgs = {
+</span></span><span style="display:flex;"><span>  <span style="color:#888;font-style:italic">// We&#39;re focusing on a single &#34;Complex.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>  complex: <span style="font-weight:bold">Complex</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#888;font-style:italic">// The complex can contain multiple buildings...
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>  buildings: {
+</span></span><span style="display:flex;"><span>    building: <span style="font-weight:bold">Building</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#888;font-style:italic">// ..each of which contains multiple apartments.
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>    apartments: <span style="font-weight:bold">Apartment</span>[],
+</span></span><span style="display:flex;"><span>  }[];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Coordinators are also responsible for instructing the State layer to retrieve
+data we need or save data that we provide. We&rsquo;ll need to provide the coordinator
+with an interface that can represent the actions that it needs to specify to the
+state layer. We&rsquo;ll call that interface <code>State</code>, and we can leave it as a stub
+for now.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="font-weight:bold">type</span> State = {};
+</span></span></code></pre></div><p>We can then implement the logic for this first function in terms of our
+entities, arguments, and state:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic">function</span> createPhysicalAssets(state: <span style="font-weight:bold">State</span>, args: <span style="font-weight:bold">CreatePhysicalAssetsArgs</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#888;font-style:italic">// Record the complex first, as the root of our hierarchy.
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>  <span style="font-weight:bold">const</span> complex = state.saveComplex(args.complex);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#888;font-style:italic">// Iterate over the buildings, saving each...
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>  <span style="font-weight:bold">for</span> (<span style="font-weight:bold">const</span> buildingArgs <span style="font-weight:bold">of</span> args.buildings) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">const</span> building = state.saveBuilding(complex, buildingArgs.building);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#888;font-style:italic">// ...and each apartment belonging to each building.
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>    <span style="font-weight:bold">for</span> (<span style="font-weight:bold">const</span> apartment <span style="font-weight:bold">of</span> buildingArgs.apartments) {
+</span></span><span style="display:flex;"><span>      state.saveApartment(building, apartment);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This implementation helps add detail to the <code>State</code> interface. You can do this
+as you write the rest of the function, resolving LSP warnings with each, or
+defer the interface definition until after you&rsquo;re done:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="font-weight:bold">type</span> State = {
+</span></span><span style="display:flex;"><span>  saveComplex(complex: <span style="font-weight:bold">Complex</span>): Complex;
+</span></span><span style="display:flex;"><span>  saveBuilding(complex: <span style="font-weight:bold">Complex</span>, building: <span style="font-weight:bold">Building</span>): Building;
+</span></span><span style="display:flex;"><span>  saveApartment(building: <span style="font-weight:bold">Building</span>, apartment: <span style="font-weight:bold">Apartment</span>): Apartment;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>There is nuance in the design. We don&rsquo;t currently provide a way to update an
+existing building without specifying its <code>Complex</code>, for example. That&rsquo;s not a
+big issue yet, though, and we can always evolve this interface as we continue to
+implement sentences from the business domain.</p>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>One key aspect that <em>is</em> a big issue is that this pure <code>State</code> is missing a key
+factor: <em>what if the state operation fails?</em> Handling fallibility, or
+<em>impurity</em>, differentiates the coordinator and state layers from the logic, and
+right now we haven&rsquo;t created a way to encode that impurity in the type system.
+In the next article, we&rsquo;ll introduce <code>Result</code> types and continue to implement
+<code>createPhysicalAssets</code> as a &ldquo;vertical slice&rdquo; of the system.</p>
+<p>Until then, try implementing the logic above yourself, and consider working
+ahead by following this implementation pattern for some of the other domain
+sentences.</p>
+<p>Good luck!</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>It&rsquo;s worth learning at least one style of ERDs and using a tool to
+generate them. [Mermaid&rsquo;s ERDs][merd] are good enough for most use cases and
+have the advantage of working in GitHub markdown, [as of 2022][ghm].
+[merd]: <a href="https://mermaid.js.org/syntax/entityRelationshipDiagram.html">https://mermaid.js.org/syntax/entityRelationshipDiagram.html</a>
+[ghm]: <a href="https://github.blog/developer-skills/github/include-diagrams-markdown-files-mermaid/">https://github.blog/developer-skills/github/include-diagrams-markdown-files-mermaid/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Nothing requires that all of your public API gets crammed into
+<code>index.ts</code>, of course, but it&rsquo;s a useful convention to re-export public
+functions and types there.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </article>
+  </div>
+
+  
+  
+  
+
+  
+
+  
+  
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "neutral" });
+  </script>
+
+
+</body>
+
+</html>

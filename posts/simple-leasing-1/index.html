@@ -265,7 +265,7 @@ Business Requirements The first task for any project is eliciting business requi
     web/
 </code></pre><p>Some of these might not be obvious:</p>
 <ul>
-<li><code>cli</code> directory will contain a command line interface (CLI) for the system. This will likely be the only place where administrative tasks are available, in this example. Authentication and authorization are implied if you have access to an execution environment where a CLI can impact the system! The CLI will be an implementation of the <strong>OI</strong> part of COILS.</li>
+<li><code>cli</code> will contain a command line interface (CLI) for the system. This will likely be the only place where administrative tasks are available, in this example. Authentication and authorization are implied if you have access to an execution environment where a CLI can impact the system! The CLI will be an implementation of the <strong>OI</strong> part of COILS.</li>
 <li><code>common</code> is for utility types and associated functions. This is where cross-cutting concerns like error handling and logging can be placed. In practice, almost all of the system — including some parts of the pure <code>core</code> — will need access to these types.</li>
 <li><code>core</code> is where pure business logic and its coordinator(s) (the <strong>C</strong> and <strong>L</strong> in COILS) will reside. You can think of coordinators as the public interface to this module.</li>
 <li><code>state</code> will contain multiple impure interfaces to the outside world, and represents the <strong>S</strong> in COILS. Think database connections, file handling, and external integrations.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
